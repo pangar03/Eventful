@@ -8,14 +8,14 @@ export const normalPosts = [
         likes: 100
     },
     {
-        profileimg: "https://plus.unsplash.com/premium_photo-1681234567890-abcdef123456?fm=jpg&q=60&w=3000",
+        profileimg: "https://vivolabs.es/wp-content/uploads/2022/03/perfil-mujer-vivo.png",
         username: "Laura S.",
         posttext: "El mejor café que he probado en años. ¡Definitivamente volveré!",
         postimg: "https://plus.unsplash.com/premium_photo-1678901234567-abcdef654321?fm=jpg&q=60&w=3000",
         likes: 75
     },
     {
-        profileimg: "https://plus.unsplash.com/premium_photo-1681234567890-abcdef123456?fm=jpg&q=60&w=3000",
+        profileimg: "https://media.istockphoto.com/id/1200677760/es/foto/retrato-de-apuesto-joven-sonriente-con-los-brazos-cruzados.jpg?s=612x612&w=0&k=20&c=RhKR8pxX3y_YVe5CjrRnTcNFEGDryD2FVOcUT_w3m4w=",
         username: "Javier M.",
         posttext: "La experiencia fue increíble, pero la comida no estuvo a la altura.",
         postimg: "",

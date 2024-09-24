@@ -1,3 +1,4 @@
+import styles from './normal-post.css';
 export enum Attribute{
     'profileimg' = 'profileimg',
     'username' = 'username',
@@ -22,27 +23,34 @@ class Post extends HTMLElement{
         return Object.values(Attribute);
     }
     
-    attributeChangedCallback(likes: Attribute, oldValue: string | undefined, newValue: string | undefined ) {
-      switch(likes){
+    attributeChangedCallback(propName: Attribute, oldValue: string | undefined, newValue: string | undefined ) {
+      switch(propName){
         case Attribute.likes:
             this.likes = newValue ? Number(newValue) : undefined;
             break;
+
+            default:
+                this[propName] = newValue;
+                break;
       }  
     }
     connectedCallback(){
         this.render();
+        
     }
     render(){
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" href="./src/components/normal-post/normal-post.css">
-            <section>
+            
+            <section class="post-card">
                 <div class="user">
-                    <img src="${this.profileimg}" alt="profileimg">
+                    <div class="circle">
+                        <img src="${this.profileimg}" alt="profileimg">
+                        </div>
                     <h3>${this.username || 'No user'}</h3>
                 </div>
-                <p>${this.posttext}</p>
-                <img src="${this.postimg}" alt="postimg">
+                <p>${this.posttext || ' No post Text'}</p>
+                <img src="${this.postimg}" alt="">
                 <div class="like">
                     <img src="https://firebasestorage.googleapis.com/v0/b/juli-3cbcd.appspot.com/o/heart-icon.png?alt=media&token=aa398358-ec43-4404-a873-370f8066194b" alt="hearticon">
                     <button>${this.likes}</button>
@@ -51,6 +59,9 @@ class Post extends HTMLElement{
             `;
             
         }
+        const cssCard = this.ownerDocument.createElement('style');
+            cssCard.innerHTML = styles;
+            this.shadowRoot?.appendChild(cssCard);
     }
     
 }

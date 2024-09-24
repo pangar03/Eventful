@@ -17,16 +17,21 @@ class AppContainer extends HTMLElement {
             post.setAttribute(Attribute.postimg, user.postimg);
             post.setAttribute(Attribute.likes, user.likes.toString());
             this.normalpost.push(post);
-            this.shadowRoot?.appendChild(post); // Agregar el post aquí
+            this.shadowRoot?.appendChild(post); 
         });
+        
     }
 
     connectedCallback() {
-        // No es necesario llamar a render aquí, ya que ya se han agregado los posts
+        this.render();
+        console.log(this.normalpost);
+        
     }
 
     render() {
-        // Este método no es necesario si no se va a utilizar
+        if (this.shadowRoot) {
+            
+        }
     }
 }
 

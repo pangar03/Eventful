@@ -1,0 +1,28 @@
+
+.post-card{
+    width: 40rem;
+    border-radius: 1rem;
+    background-color: #0E0E11;
+    color: whitesmoke;
+    padding: 0.5rem;
+    box-shadow: 0px 0px 15px 2px rgba(68,105,254,0.27);
+}
+.circle {
+    width: 3rem; /* Ajusta el tamaño según necesites */
+    height: 3rem; /* Debe ser igual al ancho para que sea un círculo */
+    overflow: hidden; /* Oculta cualquier parte de la imagen que sobresalga */
+    border-radius: 50%; /* Hace que el div sea un círculo */
+    display: flex; /* Centra la imagen */
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente */
+}
+
+.circle img {
+    width: 100%; /* Asegura que la imagen llene el contenedor */
+    height: auto; /* Mantiene la proporción de la imagen */
+}
+.user{
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
