@@ -1,1 +1,1 @@
-(()=>{"use strict";class e extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.render()}render(){}}customElements.define("app-container",e)})();
+(()=>{"use strict";class e extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.render()}render(){this.shadowRoot&&(this.shadowRoot.innerHTML="\n             <h1>Hola</h1>\n            ")}}customElements.define("app-container",e)})();

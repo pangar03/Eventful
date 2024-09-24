@@ -1,3 +1,5 @@
+import * as components from './components/indexPadre.js';
+import Post from './components/normal-post/normal-post.js';
 class AppContainer extends HTMLElement {
     constructor() {
         super();
@@ -9,6 +11,11 @@ class AppContainer extends HTMLElement {
     }
 
     render() {
+        if(this.shadowRoot){
+            this.shadowRoot.innerHTML = `
+             <h1>Hola</h1>
+            `
+    }
 
     }
 }
