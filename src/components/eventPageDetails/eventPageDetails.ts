@@ -62,7 +62,7 @@ class EventPageDetails extends HTMLElement {
                 <link rel="stylesheet" href="/src/components/eventPageDetails/eventPageDetails.css">
                 <section class="event-page">
                     <div class="event-page__data">
-                        <div class="data__image"></div>
+                        <div class="data__image" style="background-image: url('${this.image || 'https://images.pexels.com/photos/28216688/pexels-photo-28216688/free-photo-of-acampada-de-otono.png'}');"></div>
                         <div class="data__info">
                             <h1 class="event-indicator">Event</h1>
                             <h1 class="info__text" id="event-title">${this.eventtitle}</h1>

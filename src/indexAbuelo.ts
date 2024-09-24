@@ -19,6 +19,7 @@ class AppContainer extends HTMLElement {
         const container = this.ownerDocument.createElement('main');
         const eventPageDetails = this.ownerDocument.createElement('event-page-details') as EventPageDetails;
         eventPageDetails.setAttribute(Attribute.eventtitle, 'Event Title');
+        eventPageDetails.setAttribute(Attribute.image, 'https://images.pexels.com/photos/587741/pexels-photo-587741.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
         eventPageDetails.setAttribute(Attribute.location, 'Event Location');
         eventPageDetails.setAttribute(Attribute.date, 'Event Date');
         eventPageDetails.setAttribute(Attribute.creator, 'Event Creator');
