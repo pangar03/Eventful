@@ -65,7 +65,7 @@ class EventPageDetails extends HTMLElement {
                         <div class="data__image"></div>
                         <div class="data__info">
                             <h1 class="event-indicator">Event</h1>
-                            <h1 class="info__text">${this.eventtitle}</h1>
+                            <h1 class="info__text" id="event-title">${this.eventtitle}</h1>
                             <h2>Location</h2>
                             <h3 class="info__text">${this.location}</h3>
                             <h2>Date</h2>

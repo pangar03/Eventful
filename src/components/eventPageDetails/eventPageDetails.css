@@ -20,6 +20,10 @@ h2 {
     margin-top: 0.438rem;
 }
 
+#event-title {
+    color: #E8EDFF;
+}
+
 .event-page {
     width: 43.938rem;
     display: flex;
