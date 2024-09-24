@@ -3,7 +3,6 @@ export enum Attribute{
     'username' = 'username',
     'posttext' = 'posttext',
     'postimg' = 'postimg',
-    'hearticon' = 'hearticon',
     'likes' = 'likes',
 }
 
@@ -12,7 +11,6 @@ class Post extends HTMLElement{
     username?: string;
     posttext?: string;
     postimg?: string;
-    hearticon?: string;
     likes?: number;
 
     constructor(){
@@ -21,7 +19,7 @@ class Post extends HTMLElement{
     }
 
     static get observedAttributes(){
-        return Object.keys(Attribute);
+        return Object.values(Attribute);
     }
     
     attributeChangedCallback(likes: Attribute, oldValue: string | undefined, newValue: string | undefined ) {
@@ -41,16 +39,17 @@ class Post extends HTMLElement{
             <section>
                 <div class="user">
                     <img src="${this.profileimg}" alt="profileimg">
-                    <h3>${this.username}</h3>
+                    <h3>${this.username || 'No user'}</h3>
                 </div>
                 <p>${this.posttext}</p>
                 <img src="${this.postimg}" alt="postimg">
-                <div class="icons">
-                    <img src="${this.hearticon}" alt="hearticon">
-                    <p>${this.likes}</p>
+                <div class="like">
+                    <img src="https://firebasestorage.googleapis.com/v0/b/juli-3cbcd.appspot.com/o/heart-icon.png?alt=media&token=aa398358-ec43-4404-a873-370f8066194b" alt="hearticon">
+                    <button>${this.likes}</button>
                 </div>
             </section>
-            `
+            `;
+            
         }
     }
     
