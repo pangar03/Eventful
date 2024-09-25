@@ -50,11 +50,11 @@ class Post extends HTMLElement{
                     <h3>${this.username || 'No user'}</h3>
                 </div>
                 <p>${this.posttext || ' No post Text'}</p>
-                <img src="${this.postimg}" alt="">
-                <div class="like">
+                <img class="postimg" src="${this.postimg}" alt="">
+                <button id="like-button">
                     <img src="https://firebasestorage.googleapis.com/v0/b/juli-3cbcd.appspot.com/o/heart-icon.png?alt=media&token=aa398358-ec43-4404-a873-370f8066194b" alt="hearticon">
-                    <button>${this.likes}</button>
-                </div>
+                    <p>${this.likes}</p>
+                </button>
             </section>
             `;
             

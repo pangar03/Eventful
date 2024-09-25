@@ -24,7 +24,7 @@ class AppContainer extends HTMLElement {
 
     connectedCallback() {
         this.render();
-        console.log(this.normalpost);
+        // console.log(this.normalpost);
         
     }
 

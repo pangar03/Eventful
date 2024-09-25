@@ -11,85 +11,50 @@ export const normalPosts = [
         profileimg: "https://vivolabs.es/wp-content/uploads/2022/03/perfil-mujer-vivo.png",
         username: "Laura S.",
         posttext: "El mejor café que he probado en años. ¡Definitivamente volveré!",
-        postimg: "https://plus.unsplash.com/premium_photo-1678901234567-abcdef654321?fm=jpg&q=60&w=3000",
+        postimg: "https://media-cdn.tripadvisor.com/media/photo-s/1b/3f/14/b7/local.jpg",
         likes: 75
     },
     {
-        profileimg: "https://media.istockphoto.com/id/1200677760/es/foto/retrato-de-apuesto-joven-sonriente-con-los-brazos-cruzados.jpg?s=612x612&w=0&k=20&c=RhKR8pxX3y_YVe5CjrRnTcNFEGDryD2FVOcUT_w3m4w=",
+        profileimg: "https://i.pinimg.com/736x/f5/01/d4/f501d462caaceaf3cbfc761030ac39a7.jpg",
         username: "Javier M.",
         posttext: "La experiencia fue increíble, pero la comida no estuvo a la altura.",
         postimg: "",
         likes: 50
     },
     {
-        profileimg: "https://plus.unsplash.com/premium_photo-1681234567890-ghijkl123456?fm=jpg&q=60&w=3000",
+        profileimg: "https://www.shutterstock.com/image-photo/beauty-black-woman-profile-skincare-600nw-2260382807.jpg",
         username: "Sofia R.",
         posttext: "Un lugar mágico, perfecto para una cena romántica.",
         postimg: "https://plus.unsplash.com/premium_photo-1688901234567-ghijkl654321?fm=jpg&q=60&w=3000",
         likes: 120
     },
     {
-        profileimg: "https://plus.unsplash.com/premium_photo-1681234567890-mnopqr123456?fm=jpg&q=60&w=3000",
+        profileimg: "https://i.pinimg.com/564x/b5/7b/fd/b57bfdd0443364af8348cad8a4c47627.jpg",
         username: "Carlos T.",
         posttext: "No me gustó el servicio, pero la comida estaba bien.",
         postimg: "",
         likes: 30
     },
     {
-        profileimg: "https://plus.unsplash.com/premium_photo-1681234567890-stuvwx123456?fm=jpg&q=60&w=3000",
+        profileimg: "https://i.pinimg.com/564x/d2/54/d9/d254d9cfca7c55d54020c02ed217c995.jpg",
         username: "Ana P.",
         posttext: "¡El mejor evento al que he asistido! Todo fue perfecto.",
         postimg: "https://plus.unsplash.com/premium_photo-1688901234567-stuvwx654321?fm=jpg&q=60&w=3000",
         likes: 200
     },
     {
-        profileimg: "https://plus.unsplash.com/premium_photo-1681234567890-yzabcd123456?fm=jpg&q=60&w=3000",
+        profileimg: "https://i.pinimg.com/564x/03/fc/61/03fc611a998d15a07fd4cf1be6c7d5bc.jpg",
         username: "Luis G.",
         posttext: "No vale la pena, hay mejores opciones en la ciudad.",
         postimg: "",
         likes: 10
     },
     {
-        profileimg: "https://plus.unsplash.com/premium_photo-1681234567890-efghij123456?fm=jpg&q=60&w=3000",
+        profileimg: "https://i.pinimg.com/564x/76/86/f6/7686f68c70c55a6f3f4e54ca1b9996c7.jpg",
         username: "Clara J.",
         posttext: "Ambiente acogedor y buena música. Me encantó.",
         postimg: "https://plus.unsplash.com/premium_photo-1688901234567-efghij654321?fm=jpg&q=60&w=3000",
         likes: 90
     },
-    {
-        profileimg: "https://plus.unsplash.com/premium_photo-1681234567890-klmnop123456?fm=jpg&q=60&w=3000",
-        username: "Ricardo L.",
-        posttext: "Simplemente maravilloso. La atención fue excepcional.",
-        postimg: "",
-        likes: 150
-    },
-    {
-        profileimg: "https://plus.unsplash.com/premium_photo-1681234567890-qrstuv123456?fm=jpg&q=60&w=3000",
-        username: "Marta F.",
-        posttext: "La comida estaba fría y el lugar era ruidoso.",
-        postimg: "",
-        likes: 5
-    },
-    {
-        profileimg: "https://plus.unsplash.com/premium_photo-1681234567890-wxyzab123456?fm=jpg&q=60&w=3000",
-        username: "Fernando H.",
-        posttext: "Un lugar ideal para familias. Muy divertido.",
-        postimg: "https://plus.unsplash.com/premium_photo-1688901234567-wxyzab654321?fm=jpg&q=60&w=3000",
-        likes: 110
-    },
-    {
-        profileimg: "https://plus.unsplash.com/premium_photo-1681234567890-cdefgh123456?fm=jpg&q=60&w=3000",
-        username: "Elena C.",
-        posttext: "No me gustó el ambiente, pero la comida era buena.",
-        postimg: "",
-        likes: 20
-    },
-    {
-        profileimg: "https://plus.unsplash.com/premium_photo-1681234567890-ijklmn123456?fm=jpg&q=60&w=3000",
-        username: "Pablo Q.",
-        posttext: "Increíble experiencia. ¡Recomendado!",
-        postimg: "https://plus.unsplash.com/premium_photo-1688901234567-ijklmn654321?fm=jpg&q=60&w=3000",
-        likes: 130
-    }
-   
+    
 ]
