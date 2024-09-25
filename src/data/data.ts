@@ -1,6 +1,7 @@
 export const posts = [
     {
         uid: 1,
+        isEvent: false,
         profileimg:
             "https://plus.unsplash.com/premium_photo-1678703870962-166fe3f1d274?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cGVyZmlsJTIwZGUlMjBob21icmV8ZW58MHx8MHx8fDA%3D",
         username: "Maurice K.",
@@ -11,6 +12,7 @@ export const posts = [
     },
     {
         uid: 2,
+        isEvent: false,
         profileimg:
             "https://vivolabs.es/wp-content/uploads/2022/03/perfil-mujer-vivo.png",
         username: "Laura S.",
@@ -22,6 +24,7 @@ export const posts = [
     },
     {
         uid: 3,
+        isEvent: false,
         profileimg:
             "https://media.istockphoto.com/id/1200677760/es/foto/retrato-de-apuesto-joven-sonriente-con-los-brazos-cruzados.jpg?s=612x612&w=0&k=20&c=RhKR8pxX3y_YVe5CjrRnTcNFEGDryD2FVOcUT_w3m4w=",
         username: "Javier M.",
@@ -32,6 +35,7 @@ export const posts = [
     },
     {
         uid: 4,
+        isEvent: false,
         profileimg:
             "https://plus.unsplash.com/premium_photo-1681234567890-ghijkl123456?fm=jpg&q=60&w=3000",
         username: "Sofia R.",
@@ -42,6 +46,7 @@ export const posts = [
     },
     {
         uid: 5,
+        isEvent: false,
         profileimg:
             "https://plus.unsplash.com/premium_photo-1681234567890-mnopqr123456?fm=jpg&q=60&w=3000",
         username: "Carlos T.",
@@ -51,6 +56,7 @@ export const posts = [
     },
     {
         uid: 6,
+        isEvent: false,
         profileimg:
             "https://plus.unsplash.com/premium_photo-1681234567890-stuvwx123456?fm=jpg&q=60&w=3000",
         username: "Ana P.",
@@ -61,6 +67,7 @@ export const posts = [
     },
     {
         uid: 7,
+        isEvent: false,
         profileimg:
             "https://plus.unsplash.com/premium_photo-1681234567890-yzabcd123456?fm=jpg&q=60&w=3000",
         username: "Luis G.",
@@ -70,6 +77,7 @@ export const posts = [
     },
     {
         uid: 8,
+        isEvent: false,
         profileimg:
             "https://plus.unsplash.com/premium_photo-1681234567890-efghij123456?fm=jpg&q=60&w=3000",
         username: "Clara J.",
@@ -80,6 +88,7 @@ export const posts = [
     },
     {
         uid: 9,
+        isEvent: false,
         profileimg:
             "https://plus.unsplash.com/premium_photo-1681234567890-klmnop123456?fm=jpg&q=60&w=3000",
         username: "Ricardo L.",
@@ -89,6 +98,7 @@ export const posts = [
     },
     {
         uid: 10,
+        isEvent: false,
         profileimg:
             "https://plus.unsplash.com/premium_photo-1681234567890-qrstuv123456?fm=jpg&q=60&w=3000",
         username: "Marta F.",
@@ -98,6 +108,7 @@ export const posts = [
     },
     {
         uid: 11,
+        isEvent: false,
         profileimg:
             "https://plus.unsplash.com/premium_photo-1681234567890-wxyzab123456?fm=jpg&q=60&w=3000",
         username: "Fernando H.",
@@ -108,6 +119,7 @@ export const posts = [
     },
     {
         uid: 12,
+        isEvent: false,
         profileimg:
             "https://plus.unsplash.com/premium_photo-1681234567890-cdefgh123456?fm=jpg&q=60&w=3000",
         username: "Elena C.",
@@ -117,6 +129,7 @@ export const posts = [
     },
     {
         uid: 13,
+        isEvent: false,
         profileimg:
             "https://plus.unsplash.com/premium_photo-1681234567890-ijklmn123456?fm=jpg&q=60&w=3000",
         username: "Pablo Q.",
@@ -127,6 +140,7 @@ export const posts = [
     },
     {
         uid: 14,
+        isEvent: true,
         eventTitle: "Fiesta de cumpleaños en el parque",
         eventLocation: "Parque Central",
         eventDate: "2024-11-10",
@@ -139,6 +153,7 @@ export const posts = [
     },
     {
         uid: 15,
+        isEvent: true,
         eventTitle: "Taller de yoga al aire libre",
         eventLocation: "Jardín Botánico",
         eventDate: "2024-11-15",
@@ -151,6 +166,7 @@ export const posts = [
     },
     {
         uid: 16,
+        isEvent: true,
         eventTitle: "Concierto de música clásica",
         eventLocation: "Auditorio Municipal",
         eventDate: "2024-11-18",
@@ -163,6 +179,7 @@ export const posts = [
     },
     {
         uid: 17,
+        isEvent: true,
         eventTitle: "Mercado de productos orgánicos",
         eventLocation: "Plaza de la Ciudad",
         eventDate: "2024-11-22",
@@ -175,6 +192,7 @@ export const posts = [
     },
     {
         uid: 18,
+        isEvent: true,
         eventTitle: "Carrera de obstáculos",
         eventLocation: "Parque Acuático",
         eventDate: "2024-11-25",
@@ -187,6 +205,7 @@ export const posts = [
     },
     {
         uid: 19,
+        isEvent: true,
         eventTitle: "Cata de vinos",
         eventLocation: "Viñedo local",
         eventDate: "2024-11-29",
@@ -199,6 +218,7 @@ export const posts = [
     },
     {
         uid: 20,
+        isEvent: true,
         eventTitle: "Festival de cine al aire libre",
         eventLocation: "Parque de la Ciudad",
         eventDate: "2024-12-02-03",
