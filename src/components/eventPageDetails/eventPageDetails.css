@@ -25,12 +25,13 @@ h2 {
 }
 
 .event-page {
-    width: 43.938rem;
+    width: 48.819vw;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 0.875rem;
+    margin: 2.563rem;
     padding-bottom: 1.563rem;
     background-color: #0E0E11;
     border-radius: 25px;
@@ -41,6 +42,7 @@ h2 {
     display: flex;
     align-items: center;
     width: 100%;
+    gap: 2rem;
 }
 
 .event-indicator {
@@ -49,10 +51,6 @@ h2 {
     background: linear-gradient(45deg, rgba(195,136,255,1) 0%, rgba(47,89,255,1) 100%);
     background-clip: text;
     color: transparent;
-}
-
-.data__info {
-    margin-left: 2rem; 
 }
 
 .data__image {
@@ -66,7 +64,6 @@ h2 {
 
 .event-page__description {
     align-self: flex-start;
-    max-height: 11.25rem;
 }
 
 .event-page__description::-webkit-scrollbar {
@@ -116,3 +113,25 @@ h2 {
     background: linear-gradient(45deg, rgb(203, 151, 255) 0%, rgb(78, 112, 246) 100%);
 }
 
+@media (max-width: 768px) {
+    .event-page {
+        width: 80vw;
+    }
+
+    .event-page__data {
+        flex-direction: column;
+    }
+
+    .data__info {
+        align-self: flex-start;
+    }
+
+    .event-page__buttons {
+        flex-direction: column-reverse;
+    }
+
+    .data__image {
+        height: 14.438rem;
+        width: 100%;
+    }
+}
