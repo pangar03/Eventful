@@ -1,0 +1,11 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Switzer', sans-serif;
+    color: #E8EDFF;
+}
+
+body {
+    background-color: #16181A;
+}
