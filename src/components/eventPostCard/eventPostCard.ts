@@ -95,6 +95,10 @@ class EventPostCard extends HTMLElement {
         }
         
         // Learn More Button
+        this.addLearnMoreButton();
+    }
+
+    addLearnMoreButton() {
         const learnMoreButton = this.ownerDocument.createElement("button");
         learnMoreButton.textContent = "Learn More";
         learnMoreButton.classList.add("learn-more-button");
@@ -107,7 +111,7 @@ class EventPostCard extends HTMLElement {
 
         const infoContainer = this.shadowRoot?.querySelector(".data__info")?.appendChild(learnMoreButton);
     }
-
+    
     renderEventDetail() {
         const eventDetails = this.ownerDocument.createElement("event-page-details") as EventPageDetails;
 

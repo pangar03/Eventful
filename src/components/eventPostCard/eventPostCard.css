@@ -75,6 +75,17 @@ h2 {
     display: none;
 }
 
+.learn-more-button {
+    align-self: flex-end;
+    width: auto;
+    padding: 0.625rem 1.125rem;
+    border-radius: 30px;
+    color: #E8EDFF;
+    background-color: #4469FE;
+    border: none;
+    font-size: 1.25rem;
+}
+
 @media (max-width: 768px) {
     .post-card {
         width: 80vw;
@@ -97,5 +108,10 @@ h2 {
     .data__image {
         height: 14.438rem;
         width: 100%;
+    }
+
+    .learn-more-button {
+        width: auto;
+        align-self: center;
     }
 }
