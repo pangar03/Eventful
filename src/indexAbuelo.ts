@@ -1,6 +1,7 @@
 import EventPageDetails, {Attribute as EventPageAttribute} from "./components/eventPageDetails/eventPageDetails";
 import EventPostCard, {Attribute as EventCardAttribute} from "./components/eventPostCard/eventPostCard";
 import Post, { Attribute as PostAttribute } from './components/normal-post/normal-post';
+import Dashboard from './components/dashboard/dashboard';
 
 import { posts } from './data/data';
 
@@ -12,24 +13,10 @@ class AppContainer extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
-// [
-//             normalPosts.forEach((user) => { 
-//                 const post = new Post();
-//                 post.setAttribute(Attribute.profileimg, user.profileimg);
-//                 post.setAttribute(Attribute.username, user.username);
-//                 post.setAttribute(Attribute.posttext, user.posttext);
-//                 post.setAttribute(Attribute.postimg, user.postimg);
-//                 post.setAttribute(Attribute.likes, user.likes.toString());
-//                 this.normalpost.push(post);
-//                 this.shadowRoot?.appendChild(post); 
-//             });]
-        
     }
 
     connectedCallback() {
         this.render();
-        // console.log(this.normalpost);
-        
     }
 
     render() {
@@ -37,6 +24,12 @@ class AppContainer extends HTMLElement {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="/src/indexAbuelo.css">`;
         }
+
+        // Adding the dashboard component
+        const dashboard = this.ownerDocument.createElement('dashboard-component') as Dashboard;
+        console.log("FLAG!");
+        console.log(dashboard);
+        this.shadowRoot?.appendChild(dashboard);
     }
 }
 
