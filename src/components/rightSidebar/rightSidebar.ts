@@ -1,4 +1,4 @@
-import styles from './normal-post.css';
+import styles from './rightSidebar.css';
 export enum Attribute{
     'eventful' = 'eventful',
     'profileimg' = 'profileimg',
@@ -42,27 +42,25 @@ class sideBar extends HTMLElement {
     render(){
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
-            
             <section class="container-right">
-
-                <h1 class="eventful">EVENTFUL</h1>
-
+                <h1 class="eventful">${this.eventful}</h1>
                 <div class="container-user">
-                     <img class="profileimg" src="${this.profileimg}" alt="">
-                    <h3>James Robertson</h3>
+                    <div class="circle">
+                        <img src="${this.profileimg}" alt="profileimg">
+                        </div>
+                    <h3>${this.username}</h3>
                     <div class="numpost">
-                        <p>12</p>
+                        <p>${this.numpost}</p>
                         <p>Posts</p>
                     </div>
                     <div class="friends">
-                        <p>132</p>
-                        <p>Posts</p>
+                        <p>${this.friends}</p>
+                        <p>Friends</p>
                     </div>
+                    <button class="new-post-button">+ New Post</button>
                 </div>
-
-                
             </section>
-            `;
+        `;
             
         }
         const cssCard = this.ownerDocument.createElement('style');

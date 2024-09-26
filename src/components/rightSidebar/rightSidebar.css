@@ -1,0 +1,14 @@
+.circle {
+    width: 5rem; 
+    height: 5rem; 
+    overflow: hidden; 
+    border-radius: 50%; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+}
+
+.circle img {
+    width: auto; 
+    height: 100%;
+}
