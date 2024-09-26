@@ -1,4 +1,4 @@
-import EventPageDetails from "../eventPageDetails/eventPageDetails";
+import EventPageDetails, { Attribute as AttributePageDetails} from "../eventPageDetails/eventPageDetails";
 
 export enum Attribute {
     "uid" = "uid",
@@ -113,22 +113,25 @@ class EventPostCard extends HTMLElement {
     }
     
     renderEventDetail() {
-        const eventDetails = this.ownerDocument.createElement("event-page-details") as EventPageDetails;
+        // IN DEVELOPTMENT
+        console.log("Change to event detail page");
 
-        eventDetails.setAttribute(Attribute.image, this.image?.toString() || "");
-        eventDetails.setAttribute(Attribute.eventtitle, this.eventtitle?.toString() || "");
-        eventDetails.setAttribute(Attribute.location, this.location?.toString() || "");
-        eventDetails.setAttribute(Attribute.date, this.date?.toString() || "");
-        eventDetails.setAttribute(Attribute.creator, this.creator?.toString() || "");
-        eventDetails.setAttribute(Attribute.attendants,  this.attendants?.toString() || "");
-        eventDetails.setAttribute(Attribute.maxattendants,  this.maxattendants?.toString() || "");
-        eventDetails.setAttribute(Attribute.description,  this.description?.toString() || "");
-        eventDetails.setAttribute(Attribute.isattending,  this.isattending?.toString() || "");
+        // const eventDetails = this.ownerDocument.createElement("event-page-details") as EventPageDetails;
 
-        if(this.shadowRoot){
-            this.shadowRoot.innerHTML = '';
-            this.shadowRoot.appendChild(eventDetails);
-        }
+        // eventDetails.setAttribute(AttributePageDetails.image, this.image?.toString() || "");
+        // eventDetails.setAttribute(AttributePageDetails.eventtitle, this.eventtitle?.toString() || "");
+        // eventDetails.setAttribute(AttributePageDetails.location, this.location?.toString() || "");
+        // eventDetails.setAttribute(AttributePageDetails.date, this.date?.toString() || "");
+        // eventDetails.setAttribute(AttributePageDetails.creator, this.creator?.toString() || "");
+        // eventDetails.setAttribute(AttributePageDetails.attendants,  this.attendants?.toString() || "");
+        // eventDetails.setAttribute(AttributePageDetails.maxattendants,  this.maxattendants?.toString() || "");
+        // eventDetails.setAttribute(AttributePageDetails.description,  this.description?.toString() || "");
+        // eventDetails.setAttribute(AttributePageDetails.isattending,  this.isattending?.toString() || "");
+
+        // if(this.shadowRoot){
+        //     this.shadowRoot.innerHTML = '';
+        //     this.shadowRoot.appendChild(eventDetails);
+        // }
     }
 }
 
