@@ -44,7 +44,7 @@ class Post extends HTMLElement {
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-            
+            <link rel="stylesheet" href="/src/components/normal-post/normal-post.css">
             <section class="post-card">
                 <div class="user">
                     <div class="circle">
