@@ -1,1 +1,0 @@
-(()=>{"use strict";class e extends HTMLElement{constructor(){super(),this.attachShadow({mode:"open"})}connectedCallback(){this.render()}render(){this.shadowRoot&&(this.shadowRoot.innerHTML='\n                <link rel="stylesheet" href="/src/indexAbuelo.css">')}}customElements.define("app-container",e)})();
