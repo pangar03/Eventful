@@ -1,0 +1,1 @@
+export { default as Post } from './normal-post/normal-post.js';

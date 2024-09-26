@@ -11,6 +11,8 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "css-loader": "^7.1.2",
+    "file-loader": "^6.2.0",
     "serve": "^14.2.3",
     "ts-loader": "^9.5.1",
     "typescript": "^5.5.4",
