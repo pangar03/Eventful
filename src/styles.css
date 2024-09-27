@@ -5,11 +5,44 @@
     font-family: 'Switzer', sans-serif;
 }
 
+.mobile-navbar {
+    display: none;
+}
+
 .navbar {
-    width: fit-content;
+    width: 20vw;
+    position: fixed;
 }
 
 .screen-container {
     display: flex;
-    justify-content: center;
+    width: 100vw;
+}
+
+.dashboard {
+    width: 40%;
+}
+
+.chat-container {
+    width: 20vw;
+    position: fixed;
+}
+
+@media (max-width: 768px) {
+    .chat-container {
+        display: none;
+    }
+
+    .navbar {
+        display: none;
+    }
+
+    .mobile-navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        position: fixed;
+        align-self: flex-end;
+    }
 }
