@@ -41,23 +41,24 @@ class sideBar extends HTMLElement {
     }
     render(){
         if(this.shadowRoot){
-            this.shadowRoot.innerHTML = `
-            <section class="container-right">
+            this.shadowRoot.innerHTML = `<section class="container-right">
                 <h1 class="eventful">${this.eventful}</h1>
                 <div class="container-user">
                     <div class="circle">
                         <img src="${this.profileimg}" alt="profileimg">
                         </div>
                     <h3>${this.username}</h3>
-                    <div class="numpost">
-                        <p>${this.numpost}</p>
-                        <p>Posts</p>
+                    <div class="containerinfo">
+                        <div class="div-cont">
+                            <p>${this.numpost}</p>
+                            <p id="text-opacity">Posts</p>
+                        </div>
+                        <div class="div-cont">
+                            <p>${this.friends}</p>
+                            <p id="text-opacity">Friends</p>
+                        </div>
                     </div>
-                    <div class="friends">
-                        <p>${this.friends}</p>
-                        <p>Friends</p>
-                    </div>
-                    <button class="new-post-button">+ New Post</button>
+                    <button class="new-post-button">+ New</button>
                 </div>
             </section>
         `;
