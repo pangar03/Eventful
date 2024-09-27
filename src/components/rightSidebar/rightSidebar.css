@@ -61,11 +61,13 @@
     color: whitesmoke;
     border: 0;
     font-weight: 800;
-    padding: 5px 15px;
+    padding: 8px 15px;
     border-radius: 20px;
 }
 .highlight-category{
     color: #DA4646;
+    margin: auto;
+    opacity: 85%;
 }
 .category-container{
     display: flex;
