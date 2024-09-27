@@ -35,17 +35,19 @@ class chatBar extends HTMLElement {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
             <section class="container-left">
-                <div>
-                    <div class="user-chat">
+                <div class="container-left-header">
+                    <div class="tittle">
                         <h2>Messages</h2>
-                        <img src="${this.editicon}" alt="editicon">
+                        <img class="editicon" src="${this.editicon}" alt="editicon">
                     </div>
-                    <div class="user-chat-container"></div> <!-- Contenedor para userChat -->
+                    
                     <div class="search-container">
-                        <img src="https://img.icons8.com/?size=100&id=83218&format=png&color=E8EDFF8F" alt="">
+                        <img id="imglupa" src="https://img.icons8.com/?size=100&id=83218&format=png&color=E8EDFF8F" alt="">
                         <input type="text" placeholder="Search..." class="search-input">
                     </div>
                 </div>
+            <hr class="divider"> <!-- Línea horizontal -->
+                <div class="user-chat-container"></div> <!-- Contenedor para userChat -->
             </section>
             `;
 

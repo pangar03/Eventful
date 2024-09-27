@@ -43,7 +43,7 @@ class userChat extends HTMLElement {
                         </div>
                     <h3>${this.username}</h3>
                 </div>
-                <img src="https://img.icons8.com/?size=100&id=2951&format=png&color=7F98FF85" alt="iconmessage">
+                <img id="iconmessage" src="https://img.icons8.com/?size=100&id=2951&format=png&color=7F98FF85" alt="iconmessage">
 
             </section>
             `;

@@ -1,16 +1,74 @@
-* {
-    margin: 0;
-    padding: 0;
-}
+
 .container-left{
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content:center;
     background-color: #1A1D27;
     height: 100vh;
-    width: 20%;
-    gap: 20px;
     color: whitesmoke;
     box-shadow: 9px 6px 18px -5px rgba(83, 87, 104, 0.511);
+}
+:host {
+    position: fixed; 
+    right: 0; 
+    top: 0; 
+    width: 30%; 
+    height: 100vh; 
+    background-color: #f8f9fa; 
+    box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1); 
+    z-index: 1000;
+    display: flex;
+    flex-direction: column; 
+}
+.editicon{
+    height: 1.5rem;
+}
+.divider {
+    height: 2px; /* Altura de la línea */
+    background-color: #cccccc60; /* Color de la línea */
+    border: 0;
+    width: 100%;
+    margin: 1.8rem 0;
+}
+
+.container-left-header{
+    width: 85%;
+    margin-top: 20px;
+
+}
+
+.tittle {
+    display: flex;
+    justify-content: space-between; 
+    align-items: center;
+}
+
+.search-container {
+    display: flex;
+    align-items: center; 
+    margin-top: 10px; 
+    background-color: rgba(245, 245, 245, 0.064);
+    padding: 4px;
+    border-radius: 5px;
+}
+
+.search-input {
+    margin-left: 10px; 
+    padding: 5px; 
+    border-radius: 4px;
+    flex-grow: 1; /* Permite que el input ocupe el espacio disponible */
+}
+input{
+    border: none;
+    background-color: transparent;
+    color: whitesmoke;
+}
+#imglupa{
+    height: 1.5rem;
+}
+.user-chat-container{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-top: 2rem;
 }
