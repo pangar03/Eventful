@@ -38,10 +38,12 @@ class userChat extends HTMLElement {
             
             <section class="user-chat">
                 <div class="user-nameandimg">
-                    <img src="${this.profileimg}" alt="profileimg">
+                    <div class="circle">
+                        <img src="${this.profileimg}" alt="profileimg">
+                        </div>
                     <h3>${this.username}</h3>
                 </div>
-                <img src="${this.iconmessage}" alt="iconmessage">
+                <img src="https://img.icons8.com/?size=100&id=2951&format=png&color=7F98FF85" alt="iconmessage">
 
             </section>
             `;

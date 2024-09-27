@@ -1,0 +1,16 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+.container-left{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content:center;
+    background-color: #1A1D27;
+    height: 100vh;
+    width: 20%;
+    gap: 20px;
+    color: whitesmoke;
+    box-shadow: 9px 6px 18px -5px rgba(83, 87, 104, 0.511);
+}
