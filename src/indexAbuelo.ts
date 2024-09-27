@@ -5,12 +5,18 @@ import Post, { Attribute as PostAttribute } from './components/normal-post/norma
 
 import { posts } from './data/data';
 
-import * as components from './components/indexPadre';
 import Dashboard from "./components/dashboard/dashboard";
+
+import * as components from './components/indexPadre';
+import sideBar, { Attribute as SidebarAttribute } from './components/rightSidebar/rightSidebar';
+import MobileSidebar from './components/mobile_rightSidebar/mobile_rightSidebar';
 
 class AppContainer extends HTMLElement {
     normalpost: Post[] = [];
     eventPost: EventPostCard[] = [];
+
+    rightSidebar: sideBar[] = [];
+    mobileSidebar?: MobileSidebar[] = []; 
 
     constructor() {
         super();
@@ -47,6 +53,14 @@ class AppContainer extends HTMLElement {
             postCard.setAttribute(EventCardAttribute.isattending, String(post.isAttending) || "");
             this.eventPost.push(postCard);
         });
+
+        const rightSidebar = this.ownerDocument.createElement('side-bar') as sideBar; // Cambiado a 'side-bar'
+        rightSidebar.setAttribute(SidebarAttribute.eventful, 'Eventful');
+        rightSidebar.setAttribute(SidebarAttribute.profileimg, 'https://curicum.de/wp-content/uploads/2019/08/curicum_26_3.jpg');
+        rightSidebar.setAttribute(SidebarAttribute.username, 'James Robertson');
+        rightSidebar.setAttribute(SidebarAttribute.numpost, '12');
+        rightSidebar.setAttribute(SidebarAttribute.friends, '132'); // Asegúrate de que este valor sea correcto
+        this.rightSidebar.push(rightSidebar);
     }
 
     connectedCallback() {
@@ -73,6 +87,14 @@ class AppContainer extends HTMLElement {
                     dashboard.appendChild(post);
                 });
             }
+        }
+        if (this.shadowRoot) {
+            this.rightSidebar.forEach((card) => {
+                this.shadowRoot?.appendChild(card);
+            });
+
+            const mobileSidebar = this.ownerDocument.createElement('mobile-side-bar') as MobileSidebar;
+            this.shadowRoot?.appendChild(mobileSidebar);
         }
     }
 }
