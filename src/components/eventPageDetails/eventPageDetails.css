@@ -25,7 +25,7 @@ h2 {
 }
 
 .event-page {
-    width: 48.819vw;
+    width: 35rem;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,8 +41,8 @@ h2 {
 .event-page__data {
     display: flex;
     align-items: center;
-    width: 100%;
     gap: 2rem;
+    width: 35rem;
 }
 
 .event-indicator {

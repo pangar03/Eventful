@@ -17,10 +17,19 @@
 .screen-container {
     display: flex;
     width: 100vw;
+    height: 100vh; 
+    justify-content: center; 
+    align-items: center;
 }
 
 .dashboard {
-    width: 40%;
+    width: 58%; 
+    height: 100%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; 
+    overflow-x: hidden;
 }
 
 .chat-container {
@@ -28,9 +37,21 @@
     position: fixed;
 }
 
-@media (max-width: 768px) {
+.sidebar {
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 20%; 
+    height: 100vh;
+    background-color: #f8f9fa; 
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1); 
+    overflow-y: auto;
+}
+
+@media (max-width: 431px) {
     .chat-container {
         display: none;
+        background: none;
     }
 
     .navbar {
@@ -44,5 +65,14 @@
         padding: 1rem;
         position: fixed;
         align-self: flex-end;
+    }
+    .sidebar {
+        display: none;
+    }
+    .dashboard{
+        width: 100%;
+        height: 100vh;
+        overflow-y: auto;
+        overflow-x: hidden;
     }
 }

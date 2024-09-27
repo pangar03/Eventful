@@ -41,6 +41,7 @@ class Post extends HTMLElement {
     toggleLike() {
         this.isLiked = !this.isLiked;
         this.likes += this.isLiked ? 1 : -1;
+        this.render();
     }
     render() {
         if (this.shadowRoot) {

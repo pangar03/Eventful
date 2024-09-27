@@ -37,7 +37,7 @@ export const posts = [
         uid: 4,
         isEvent: false,
         profileImg:
-            "https://plus.unsplash.com/premium_photo-1681234567890-ghijkl123456?fm=jpg&q=60&w=3000",
+            "https://images.pexels.com/photos/2272853/pexels-photo-2272853.jpeg?cs=srgb&dl=pexels-manei-2272853.jpg&fm=jpg",
         username: "Sofia R.",
         postText: "Un lugar mágico, perfecto para una cena romántica.",
         postImg:
@@ -48,7 +48,7 @@ export const posts = [
         uid: 5,
         isEvent: false,
         profileImg:
-            "https://plus.unsplash.com/premium_photo-1681234567890-mnopqr123456?fm=jpg&q=60&w=3000",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ4pM8Abhe9wFGL_jDOLjUJ9IkhJj8ewDpkjw&s",
         username: "Carlos T.",
         postText: "No me gustó el servicio, pero la comida estaba bien.",
         postImg: "",
@@ -58,7 +58,7 @@ export const posts = [
         uid: 6,
         isEvent: false,
         profileImg:
-            "https://plus.unsplash.com/premium_photo-1681234567890-stuvwx123456?fm=jpg&q=60&w=3000",
+            "https://images.pexels.com/photos/2836485/pexels-photo-2836485.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500",
         username: "Ana P.",
         postText: "¡El mejor evento al que he asistido! Todo fue perfecto.",
         postImg:
@@ -69,7 +69,7 @@ export const posts = [
         uid: 7,
         isEvent: false,
         profileImg:
-            "https://plus.unsplash.com/premium_photo-1681234567890-yzabcd123456?fm=jpg&q=60&w=3000",
+            "https://i.pinimg.com/236x/e6/05/68/e60568d2e48da486320db25f976a613c.jpg",
         username: "Luis G.",
         postText: "No vale la pena, hay mejores opciones en la ciudad.",
         postImg: "",
@@ -79,7 +79,7 @@ export const posts = [
         uid: 8,
         isEvent: false,
         profileImg:
-            "https://plus.unsplash.com/premium_photo-1681234567890-efghij123456?fm=jpg&q=60&w=3000",
+            "https://i.pinimg.com/236x/e6/05/68/e60568d2e48da486320db25f976a613c.jpg",
         username: "Clara J.",
         postText: "Ambiente acogedor y buena música. Me encantó.",
         postImg:
@@ -90,7 +90,7 @@ export const posts = [
         uid: 9,
         isEvent: false,
         profileImg:
-            "https://plus.unsplash.com/premium_photo-1681234567890-klmnop123456?fm=jpg&q=60&w=3000",
+            "https://i.pinimg.com/236x/9e/f7/d9/9ef7d95f3deb3ed1ad82f01874d661ce.jpg",
         username: "Ricardo L.",
         postText: "Simplemente maravilloso. La atención fue excepcional.",
         postImg: "",
@@ -100,7 +100,7 @@ export const posts = [
         uid: 10,
         isEvent: false,
         profileImg:
-            "https://plus.unsplash.com/premium_photo-1681234567890-qrstuv123456?fm=jpg&q=60&w=3000",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSozvrOQmRqLZpas-oPGz9bd8pYk03v-lEFnA&s",
         username: "Marta F.",
         postText: "La comida estaba fría y el lugar era ruidoso.",
         postImg: "",
@@ -110,7 +110,7 @@ export const posts = [
         uid: 11,
         isEvent: false,
         profileImg:
-            "https://plus.unsplash.com/premium_photo-1681234567890-wxyzab123456?fm=jpg&q=60&w=3000",
+            "https://i.pinimg.com/236x/2f/87/7a/2f877a7c8c41399db8ee650a9f20b42d.jpg",
         username: "Fernando H.",
         postText: "Un lugar ideal para familias. Muy divertido.",
         postImg:
@@ -121,7 +121,7 @@ export const posts = [
         uid: 12,
         isEvent: false,
         profileImg:
-            "https://plus.unsplash.com/premium_photo-1681234567890-cdefgh123456?fm=jpg&q=60&w=3000",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPyqK0oQJUkA22MVjG575gM0g4C6ZxrchXLQ&s",
         username: "Elena C.",
         postText: "No me gustó el ambiente, pero la comida era buena.",
         postImg: "",
@@ -131,7 +131,7 @@ export const posts = [
         uid: 13,
         isEvent: false,
         profileImg:
-            "https://plus.unsplash.com/premium_photo-1681234567890-ijklmn123456?fm=jpg&q=60&w=3000",
+            "https://i.pinimg.com/236x/f0/50/a5/f050a59c938eb60a0840099f22e00188.jpg",
         username: "Pablo Q.",
         postText: "Increíble experiencia. ¡Recomendado!",
         postImg:

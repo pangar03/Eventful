@@ -1,8 +1,7 @@
 import chatBar, { Attribute as ChatBarAttribute } from './components/chatBar/chatBar';
-import EventPageDetails, {Attribute as EventPageAttribute} from "./components/eventPageDetails/eventPageDetails";
-import EventPostCard, {Attribute as EventCardAttribute} from "./components/eventPostCard/eventPostCard";
+import EventPageDetails, { Attribute as EventPageAttribute } from "./components/eventPageDetails/eventPageDetails";
+import EventPostCard, { Attribute as EventCardAttribute } from "./components/eventPostCard/eventPostCard";
 import Post, { Attribute as PostAttribute } from './components/normal-post/normal-post';
-
 
 import { posts } from './data/data';
 
@@ -31,14 +30,14 @@ class AppContainer extends HTMLElement {
 
         normalPost.forEach((post) => {
             const postCard = this.ownerDocument.createElement('normal-post') as Post;
-                postCard.setAttribute(PostAttribute.profileimg, post.profileImg || "");
-                postCard.setAttribute(PostAttribute.username, post.username || "");
-                postCard.setAttribute(PostAttribute.posttext, post.postText || "");
-                postCard.setAttribute(PostAttribute.postimg, post.postImg || "");
-                postCard.setAttribute(PostAttribute.likes, String(post.likes) || "");
-                console.log('post', postCard);
-                this.normalpost.push(postCard);
-        })
+            postCard.setAttribute(PostAttribute.profileimg, post.profileImg || "");
+            postCard.setAttribute(PostAttribute.username, post.username || "");
+            postCard.setAttribute(PostAttribute.posttext, post.postText || "");
+            postCard.setAttribute(PostAttribute.postimg, post.postImg || "");
+            postCard.setAttribute(PostAttribute.likes, String(post.likes) || "");
+            console.log('post', postCard);
+            this.normalpost.push(postCard);
+        });
         
         eventPost.forEach((post) => {
             const postCard = this.ownerDocument.createElement('event-post-card') as EventPostCard;
@@ -69,52 +68,47 @@ class AppContainer extends HTMLElement {
     }
 
     render() {
-        if(this.shadowRoot){
+        if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="/src/styles.css">
                 <section class='screen-container'>
                     <nav class='navbar'></nav>
+                    <aside class='sidebar'></aside> <!-- Añadido contenedor para la barra lateral -->
                     <main class='dashboard'></main>
                     <div class="chat-container"></div>
                     <nav class='mobile-navbar'></nav>
+                    
                 </section>
-                `;
-                
+            `;
         }
 
-
-        if(this.shadowRoot){
-            const dashboard = this.shadowRoot.querySelector('.dashboard');
-            if(dashboard){
-                this.normalpost.forEach((post) => {
-                    dashboard.appendChild(post);
-                });
-                this.eventPost.forEach((post) => {
-                    dashboard.appendChild(post);
-                });
-            }
+        const dashboard = this.shadowRoot?.querySelector('.dashboard');
+        if (dashboard) {
+            this.normalpost.forEach((post) => {
+                dashboard.appendChild(post);
+            });
+            this.eventPost.forEach((post) => {
+                dashboard.appendChild(post);
+            });
         }
 
-        const navBar = this.shadowRoot?.querySelector('.mobile-navbar')!;
+        // Renderizar el rightSidebar en el contenedor correspondiente
+        const sidebar = this.shadowRoot?.querySelector('.sidebar')!;
         this.rightSidebar.forEach((card) => {
-            navBar.appendChild(card);
+            sidebar.appendChild(card);
         });
-        
+
         const mobNavBar = this.shadowRoot?.querySelector('.navbar')!;
         const mobileSidebar = this.ownerDocument.createElement('mobile-side-bar') as MobileSidebar;
         mobNavBar.appendChild(mobileSidebar);
 
         const chatBarInstance = this.ownerDocument.createElement('chat-bar') as chatBar;
-            
-        // Establecer el atributo editicon
         chatBarInstance.setAttribute(ChatBarAttribute.editicon, 'https://img.icons8.com/?size=100&id=86376&format=png&color=E8EDFF8F');
 
-        // Agregar el chatBar al contenedor
         const chatContainer = this.shadowRoot?.querySelector('.chat-container');
         chatContainer?.appendChild(chatBarInstance);
     }
 }
 
 customElements.define('app-container', AppContainer);
-
-
+export default AppContainer;
