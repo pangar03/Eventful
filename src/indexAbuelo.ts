@@ -1,8 +1,10 @@
 import * as components from './components/indexPadre';
 import sideBar, { Attribute } from './components/rightSidebar/rightSidebar';
+import MobileSidebar from './components/mobile_rightSidebar/mobile_rightSidebar';
 
 class AppContainer extends HTMLElement {
     rightSidebar: sideBar[] = [];
+    mobileSidebar?: MobileSidebar[] = []; 
 
     constructor() {
         super();
@@ -26,6 +28,9 @@ class AppContainer extends HTMLElement {
             this.rightSidebar.forEach((card) => {
                 this.shadowRoot?.appendChild(card);
             });
+
+            const mobileSidebar = this.ownerDocument.createElement('mobile-side-bar') as MobileSidebar;
+            this.shadowRoot?.appendChild(mobileSidebar);
         }
     }
 }
