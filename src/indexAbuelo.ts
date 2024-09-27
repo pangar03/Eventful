@@ -1,3 +1,6 @@
+
+import * as components from './components/indexPadre';
+import chatBar, { ChatBarAttribute } from './components/chatBar/chatBar';
 import EventPageDetails, {Attribute as EventPageAttribute} from "./components/eventPageDetails/eventPageDetails";
 import EventPostCard, {Attribute as EventCardAttribute} from "./components/eventPostCard/eventPostCard";
 import Post, { Attribute as PostAttribute } from './components/normal-post/normal-post';
@@ -11,6 +14,7 @@ import * as components from './components/indexPadre';
 import sideBar, { Attribute as SidebarAttribute } from './components/rightSidebar/rightSidebar';
 import MobileSidebar from './components/mobile_rightSidebar/mobile_rightSidebar';
 
+\
 class AppContainer extends HTMLElement {
     normalpost: Post[] = [];
     eventPost: EventPostCard[] = [];
@@ -74,6 +78,7 @@ class AppContainer extends HTMLElement {
                 <section class='screen-container'>
                     <nav class='navbar'></nav>
                     <main class='dashboard'></main>
+                    <div class="chat-container"></div>
                 </section>
                 `;
                 
@@ -99,6 +104,15 @@ class AppContainer extends HTMLElement {
 
         const mobileSidebar = this.ownerDocument.createElement('mobile-side-bar') as MobileSidebar;
         navBar.appendChild(mobileSidebar);
+      
+        const chatBarInstance = this.ownerDocument.createElement('chat-bar') as chatBar;
+            
+        // Establecer el atributo editicon
+        chatBarInstance.setAttribute(Attribute.editicon, 'https://img.icons8.com/?size=100&id=86376&format=png&color=E8EDFF8F');
+
+        // Agregar el chatBar al contenedor
+        const chatContainer = this.shadowRoot.querySelector('.chat-container');
+        chatContainer?.appendChild(chatBarInstance);
     }
 }
 

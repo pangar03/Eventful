@@ -1,0 +1,29 @@
+.user-chat{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: 20rem;
+}
+.user-nameandimg{
+    display: flex ;
+    flex-direction: row;   
+    gap: 1rem; 
+}
+.circle {
+    width: 5rem; 
+    height: 5rem; 
+    overflow: hidden; 
+    border-radius: 50%; 
+    display: flex; 
+    justify-content: center;
+    align-items: center; 
+}
+
+.circle img {
+    width: 100%; 
+    height: auto;
+}
+#iconmessage{
+    height: 2rem;
+}
