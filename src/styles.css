@@ -4,3 +4,12 @@
     background-color: #16181A;
     font-family: 'Switzer', sans-serif;
 }
+
+.navbar {
+    width: fit-content;
+}
+
+.screen-container {
+    display: flex;
+    justify-content: center;
+}

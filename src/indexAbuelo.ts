@@ -71,8 +71,11 @@ class AppContainer extends HTMLElement {
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="/src/indexAbuelo.css">
-                <h1>APP CONTAINER</h1>
-                <section class='dashboard'></section>`;
+                <section class='screen-container'>
+                    <nav class='navbar'></nav>
+                    <main class='dashboard'></main>
+                </section>
+                `;
                 
         }
 
@@ -88,14 +91,14 @@ class AppContainer extends HTMLElement {
                 });
             }
         }
-        if (this.shadowRoot) {
-            this.rightSidebar.forEach((card) => {
-                this.shadowRoot?.appendChild(card);
-            });
 
-            const mobileSidebar = this.ownerDocument.createElement('mobile-side-bar') as MobileSidebar;
-            this.shadowRoot?.appendChild(mobileSidebar);
-        }
+        const navBar = this.shadowRoot?.querySelector('.navbar')!;
+        this.rightSidebar.forEach((card) => {
+            navBar.appendChild(card);
+        });
+
+        const mobileSidebar = this.ownerDocument.createElement('mobile-side-bar') as MobileSidebar;
+        navBar.appendChild(mobileSidebar);
     }
 }
 

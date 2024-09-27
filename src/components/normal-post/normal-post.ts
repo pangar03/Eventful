@@ -56,7 +56,7 @@ class Post extends HTMLElement {
                 <p>${this.posttext || " No post Text"}</p>
                 <img class="postimg" src="${this.postimg}" alt="">
                 <button id="like-button">
-                   <img src="${this.isLiked ? 'https://img.icons8.com/?size=100&id=85339&format=png&color=E8EDFF87' : 'https://img.icons8.com/?size=100&id=85038&format=png&color=E8EDFF87'}" alt="hearticon">
+                <img src="${this.isLiked ? 'https://img.icons8.com/?size=100&id=85339&format=png&color=E8EDFF87' : 'https://img.icons8.com/?size=100&id=85038&format=png&color=E8EDFF87'}" alt="hearticon">
                         ${this.likes}
                 </button>
             </section>
