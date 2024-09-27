@@ -12,7 +12,8 @@ class Post extends HTMLElement {
     username?: string;
     posttext?: string;
     postimg?: string;
-    likes?: number;
+    likes: number = 0;
+    isLiked: boolean = false;
 
     constructor() {
         super();
@@ -23,14 +24,10 @@ class Post extends HTMLElement {
         return Object.values(Attribute);
     }
 
-    attributeChangedCallback(
-        propName: Attribute,
-        oldValue: string | undefined,
-        newValue: string | undefined
-    ) {
+    attributeChangedCallback(propName: Attribute, oldValue: string | undefined, newValue: string | undefined ) {
         switch (propName) {
             case Attribute.likes:
-                this.likes = newValue ? Number(newValue) : undefined;
+                this.likes = newValue ? Number(newValue) : 0;
                 break;
 
             default:
@@ -40,6 +37,10 @@ class Post extends HTMLElement {
     }
     connectedCallback() {
         this.render();
+    }
+    toggleLike() {
+        this.isLiked = !this.isLiked;
+        this.likes += this.isLiked ? 1 : -1;
     }
     render() {
         if (this.shadowRoot) {
@@ -55,15 +56,20 @@ class Post extends HTMLElement {
                 <p>${this.posttext || " No post Text"}</p>
                 <img class="postimg" src="${this.postimg}" alt="">
                 <button id="like-button">
-                    <img src="https://firebasestorage.googleapis.com/v0/b/juli-3cbcd.appspot.com/o/heart-icon.png?alt=media&token=aa398358-ec43-4404-a873-370f8066194b" alt="hearticon">
-                    <p>${this.likes}</p>
+                   <img src="${this.isLiked ? 'https://img.icons8.com/?size=100&id=85339&format=png&color=E8EDFF87' : 'https://img.icons8.com/?size=100&id=85038&format=png&color=E8EDFF87'}" alt="hearticon">
+                        ${this.likes}
                 </button>
             </section>
             `;
+
+            const likeButton = this.shadowRoot.getElementById('like-button');
+            likeButton?.addEventListener('click', () => this.toggleLike());
+
+            const cssCard = this.ownerDocument.createElement('style');
+            cssCard.innerHTML = styles;
+            this.shadowRoot?.appendChild(cssCard);
+
         }
-        const cssCard = this.ownerDocument.createElement("style");
-        cssCard.innerHTML = styles;
-        this.shadowRoot?.appendChild(cssCard);
     }
 }
 

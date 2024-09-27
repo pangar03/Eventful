@@ -62,6 +62,7 @@ class AppContainer extends HTMLElement {
                 
         }
 
+
         if(this.shadowRoot){
             const dashboard = this.shadowRoot.querySelector('.dashboard');
             if(dashboard){
@@ -73,7 +74,6 @@ class AppContainer extends HTMLElement {
                 });
             }
         }
-
     }
 }
 
