@@ -1,0 +1,10 @@
+.container-category{
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    gap: 10px;
+}
+.profileimg{
+   height: 1.5rem;
+}

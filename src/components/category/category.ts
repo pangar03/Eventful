@@ -1,4 +1,4 @@
-import styles from './normal-post.css';
+import styles from './category.css';
 export enum Attribute{
     'iconimg' = 'iconimg',
     'text' = 'text',
