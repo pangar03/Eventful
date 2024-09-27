@@ -58,14 +58,6 @@
         display: none;
     }
 
-    .mobile-navbar {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        padding: 1rem;
-        position: fixed;
-        align-self: flex-end;
-    }
     .sidebar {
         display: none;
     }

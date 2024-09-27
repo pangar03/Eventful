@@ -15,32 +15,14 @@ class MobileSidebar extends HTMLElement {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
             <section class="container-right">
-                <div class="category-container"></div> 
+                <div class="category-container">
+                    <img src="https://img.icons8.com/?size=100&id=86527&format=png&color=E8EDFF" class="normal-icon">
+                    <img src="https://img.icons8.com/?size=100&id=59758&format=png&color=E8EDFF" class="normal-icon">
+                    <img src="https://img.icons8.com/?size=100&id=11153&format=png&color=E8EDFF" class="add-icon">
+                    <img src="https://img.icons8.com/?size=100&id=98957&format=png&color=E8EDFF" class="normal-icon">
+                </div> 
             </section>
             `;
-
-            const categories = [
-                { icon: 'https://img.icons8.com/?size=100&id=86527&format=png&color=E8EDFF', text: 'Home' },
-                { icon: 'https://img.icons8.com/?size=100&id=59758&format=png&color=E8EDFF', text: 'Events' },
-                { icon: 'https://img.icons8.com/ios/50/plus-math--v1.png', text: 'Profile' },
-                { icon: '', text: 'Logout' },
-            ];
-
-            // Añadir cada CategoryButton al contenedor de categorías
-            const categoryContainer = this.shadowRoot.querySelector('.category-container');
-            categories.forEach((category, index) => {
-                const categoryButton = this.ownerDocument.createElement('category-button') as CategoryButton;
-                categoryButton.setAttribute(CategoryAttribute.iconimg, category.icon);
-                categoryButton.setAttribute(CategoryAttribute.text, category.text);
-
-                // Agregar clase específica al botón que deseas estilizar
-                if (index === 3) { // Por ejemplo, cambiar el color del cuarto botón
-                    categoryButton.classList.add('highlight-category');
-                }
-
-                categoryContainer?.appendChild(categoryButton);
-            });
-
             const cssCard = this.ownerDocument.createElement('style');
             cssCard.innerHTML = styles;
             this.shadowRoot?.appendChild(cssCard);

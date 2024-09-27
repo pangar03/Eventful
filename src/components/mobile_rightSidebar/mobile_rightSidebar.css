@@ -1,0 +1,22 @@
+.container-right {
+    display: none;
+}
+
+.category-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.add-icon {
+    border: 2px solid linear-gradient(45deg, rgba(195,136,255,1) 0%, rgba(47,89,255,1) 100%);
+    border-radius: 40px;
+}
+
+@media (max-width: 431px) {
+    .container-right {
+        display: flex;
+        width: 100vw;
+        position: absolute;
+        bottom: 0;
+    }
+}
