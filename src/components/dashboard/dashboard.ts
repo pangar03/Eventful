@@ -1,20 +1,21 @@
-import EventPageDetails, {Attribute as EventPageAttribute} from "./components/eventPageDetails/eventPageDetails";
-import EventPostCard, {Attribute as EventCardAttribute} from "./components/eventPostCard/eventPostCard";
-import Post, { Attribute as PostAttribute } from './components/normal-post/normal-post';
+import EventPageDetails, {Attribute as EventPageAttribute} from "../eventPageDetails/eventPageDetails";
+import EventPostCard, {Attribute as EventCardAttribute} from "../eventPostCard/eventPostCard";
+import Post, { Attribute as PostAttribute } from '../normal-post/normal-post';
 
+import { posts } from '../../data/data';
 
-import { posts } from './data/data';
-
-import * as components from './components/indexPadre';
-import Dashboard from "./components/dashboard/dashboard";
-
-class AppContainer extends HTMLElement {
+class Dashboard extends HTMLElement {
     normalpost: Post[] = [];
     eventPost: EventPostCard[] = [];
-
+    
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+    }
+
+    connectedCallback() {
+        console.log('hola');
+        
 
         const normalPost = posts.filter((post) => !post.isEvent);
         console.log('normalPost', normalPost);
@@ -47,22 +48,26 @@ class AppContainer extends HTMLElement {
             postCard.setAttribute(EventCardAttribute.isattending, String(post.isAttending) || "");
             this.eventPost.push(postCard);
         });
-    }
 
-    connectedCallback() {
         this.render();
+        
     }
 
     render() {
+
+        console.log("FLAG!!")
+        console.log('noemal post', this.normalpost);
+        
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="/src/indexAbuelo.css">
-                <h1>APP CONTAINER</h1>
-                <section class='dashboard'></section>`;
-                
-        }
+                <link rel="stylesheet" href="/src/components/dashboard/dashboard.css">
+                <section class="dashboard"></section>
+            `;
+        } 
+        this.initialRender();
+    }
 
-
+    initialRender() {
         if(this.shadowRoot){
             const dashboard = this.shadowRoot.querySelector('.dashboard');
             if(dashboard){
@@ -74,9 +79,11 @@ class AppContainer extends HTMLElement {
                 });
             }
         }
+
+            
     }
 }
 
-customElements.define('app-container', AppContainer);
-
+customElements.define('dashboard-component', Dashboard);
+export default Dashboard;
 

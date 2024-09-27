@@ -1,13 +1,13 @@
-import styles from './normal-post.css';
-export enum Attribute{
-    'profileimg' = 'profileimg',
-    'username' = 'username',
-    'posttext' = 'posttext',
-    'postimg' = 'postimg',
-    'likes' = 'likes',
+import styles from "./normal-post.css";
+export enum Attribute {
+    "profileimg" = "profileimg",
+    "username" = "username",
+    "posttext" = "posttext",
+    "postimg" = "postimg",
+    "likes" = "likes",
 }
 
-class Post extends HTMLElement{
+class Post extends HTMLElement {
     profileimg?: string;
     username?: string;
     posttext?: string;
@@ -15,15 +15,15 @@ class Post extends HTMLElement{
     likes: number = 0;
     isLiked: boolean = false;
 
-    constructor(){
+    constructor() {
         super();
-        this.attachShadow({mode: 'open'});
+        this.attachShadow({ mode: "open" });
     }
 
-    static get observedAttributes(){
+    static get observedAttributes() {
         return Object.values(Attribute);
     }
-    
+
     attributeChangedCallback(propName: Attribute, oldValue: string | undefined, newValue: string | undefined ) {
         switch (propName) {
             case Attribute.likes:
@@ -33,28 +33,27 @@ class Post extends HTMLElement{
             default:
                 this[propName] = newValue;
                 break;
-      }  
+        }
     }
-    connectedCallback(){
+    connectedCallback() {
         this.render();
-    
     }
     toggleLike() {
         this.isLiked = !this.isLiked;
         this.likes += this.isLiked ? 1 : -1;
     }
-    render(){
-        if(this.shadowRoot){
+    render() {
+        if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-            
+            <link rel="stylesheet" href="/src/components/normal-post/normal-post.css">
             <section class="post-card">
                 <div class="user">
                     <div class="circle">
                         <img src="${this.profileimg}" alt="profileimg">
                         </div>
-                    <h3>${this.username || 'No user'}</h3>
+                    <h3>${this.username || "No user"}</h3>
                 </div>
-                <p>${this.posttext || ' No post Text'}</p>
+                <p>${this.posttext || " No post Text"}</p>
                 <img class="postimg" src="${this.postimg}" alt="">
                 <button id="like-button">
                    <img src="${this.isLiked ? 'https://img.icons8.com/?size=100&id=85339&format=png&color=E8EDFF87' : 'https://img.icons8.com/?size=100&id=85038&format=png&color=E8EDFF87'}" alt="hearticon">
@@ -62,6 +61,7 @@ class Post extends HTMLElement{
                 </button>
             </section>
             `;
+
             const likeButton = this.shadowRoot.getElementById('like-button');
             likeButton?.addEventListener('click', () => this.toggleLike());
 
@@ -70,10 +70,8 @@ class Post extends HTMLElement{
             this.shadowRoot?.appendChild(cssCard);
 
         }
-    
     }
-    
 }
 
-customElements.define('normal-post', Post);
+customElements.define("normal-post", Post);
 export default Post;
