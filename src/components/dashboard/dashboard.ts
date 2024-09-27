@@ -1,26 +1,21 @@
-import EventPageDetails, {Attribute as EventPageAttribute} from "./components/eventPageDetails/eventPageDetails";
-import EventPostCard, {Attribute as EventCardAttribute} from "./components/eventPostCard/eventPostCard";
-import Post, { Attribute as PostAttribute } from './components/normal-post/normal-post';
+import EventPageDetails, {Attribute as EventPageAttribute} from "../eventPageDetails/eventPageDetails";
+import EventPostCard, {Attribute as EventCardAttribute} from "../eventPostCard/eventPostCard";
+import Post, { Attribute as PostAttribute } from '../normal-post/normal-post';
 
+import { posts } from '../../data/data';
 
-import { posts } from './data/data';
-
-import Dashboard from "./components/dashboard/dashboard";
-
-import * as components from './components/indexPadre';
-import sideBar, { Attribute as SidebarAttribute } from './components/rightSidebar/rightSidebar';
-import MobileSidebar from './components/mobile_rightSidebar/mobile_rightSidebar';
-
-class AppContainer extends HTMLElement {
+class Dashboard extends HTMLElement {
     normalpost: Post[] = [];
     eventPost: EventPostCard[] = [];
-
-    rightSidebar: sideBar[] = [];
-    mobileSidebar?: MobileSidebar[] = []; 
-
+    
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+    }
+
+    connectedCallback() {
+        console.log('hola');
+        
 
         const normalPost = posts.filter((post) => !post.isEvent);
         console.log('normalPost', normalPost);
@@ -54,29 +49,25 @@ class AppContainer extends HTMLElement {
             this.eventPost.push(postCard);
         });
 
-        const rightSidebar = this.ownerDocument.createElement('side-bar') as sideBar; // Cambiado a 'side-bar'
-        rightSidebar.setAttribute(SidebarAttribute.eventful, 'Eventful');
-        rightSidebar.setAttribute(SidebarAttribute.profileimg, 'https://curicum.de/wp-content/uploads/2019/08/curicum_26_3.jpg');
-        rightSidebar.setAttribute(SidebarAttribute.username, 'James Robertson');
-        rightSidebar.setAttribute(SidebarAttribute.numpost, '12');
-        rightSidebar.setAttribute(SidebarAttribute.friends, '132'); // Asegúrate de que este valor sea correcto
-        this.rightSidebar.push(rightSidebar);
-    }
-
-    connectedCallback() {
         this.render();
+        
     }
 
     render() {
+
+        console.log("FLAG!!")
+        console.log('noemal post', this.normalpost);
+        
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="/src/indexAbuelo.css">
-                <h1>APP CONTAINER</h1>
-                <section class='dashboard'></section>`;
-                
-        }
+                <link rel="stylesheet" href="/src/components/dashboard/dashboard.css">
+                <section class="dashboard"></section>
+            `;
+        } 
+        this.initialRender();
+    }
 
-
+    initialRender() {
         if(this.shadowRoot){
             const dashboard = this.shadowRoot.querySelector('.dashboard');
             if(dashboard){
@@ -88,17 +79,11 @@ class AppContainer extends HTMLElement {
                 });
             }
         }
-        if (this.shadowRoot) {
-            this.rightSidebar.forEach((card) => {
-                this.shadowRoot?.appendChild(card);
-            });
 
-            const mobileSidebar = this.ownerDocument.createElement('mobile-side-bar') as MobileSidebar;
-            this.shadowRoot?.appendChild(mobileSidebar);
-        }
+            
     }
 }
 
-customElements.define('app-container', AppContainer);
-
+customElements.define('dashboard-component', Dashboard);
+export default Dashboard;
 
