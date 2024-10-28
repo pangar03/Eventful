@@ -38,7 +38,7 @@ class chatBar extends HTMLElement {
                 <div class="container-left-header">
                     <div class="tittle">
                         <h2>Messages</h2>
-                        <img class="editicon" src="${this.editicon}" alt="editicon">
+                        <img class="editicon" src="https://img.icons8.com/?size=100&id=86376&format=png&color=E8EDFF8F" alt="editicon">
                     </div>
                     
                     <div class="search-container">
