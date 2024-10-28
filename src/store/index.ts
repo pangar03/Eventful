@@ -7,7 +7,7 @@ const initialState: AppState = {
     screen: 'DASHBOARD',
     normalPosts: [],
     eventPosts: [],
-    eventUID: 0,
+    eventUID: 1,
 };
 
 export let appState = Storage.get('STORE', initialState);

@@ -93,7 +93,7 @@ export const getPosts = () => {
 
 export const openEvent = (uid: number) => {
     return {
-        action: Actions.OPENPOST,
+        action: Actions.OPENEVENT,
         payload: uid,
     }
 };

@@ -48,23 +48,23 @@ class EventPostCard extends HTMLElement {
     ) {
         switch (propName) {
             case Attribute.uid:
-                this.likes = newValue ? Number(newValue) : undefined;
+                this[propName] = newValue ? Number(newValue) : undefined;
                 break;
 
             case Attribute.likes:
-                this.likes = newValue ? Number(newValue) : undefined;
+                this[propName] = newValue ? Number(newValue) : undefined;
                 break;
 
             case Attribute.attendants:
-                this.attendants = newValue ? Number(newValue) : undefined;
+                this[propName] = newValue ? Number(newValue) : undefined;
                 break;
 
             case Attribute.maxattendants:
-                this.maxattendants = newValue ? Number(newValue) : undefined;
+                this[propName] = newValue ? Number(newValue) : undefined;
                 break;
 
             case Attribute.isattending:
-                this.isattending = newValue ? Boolean(newValue) : undefined;
+                this[propName] = newValue ? Boolean(newValue) : undefined;
                 break;
 
             default:
@@ -112,6 +112,7 @@ class EventPostCard extends HTMLElement {
         learnMoreButton.addEventListener("click", (e) => {
             e.preventDefault();
 
+            console.log("UID", this.uid);            
             dispatch(openEvent(this.uid!));
         });
 

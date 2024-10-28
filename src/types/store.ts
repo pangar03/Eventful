@@ -12,7 +12,7 @@ export type Observer = { render: () => void } & HTMLElement;
 export enum Actions {
     'NAVIGATE' = 'NAVIGATE',
     'GETPOSTS' = 'GETPOSTS',
-    'OPENPOST' = 'OPENPOST',
+    'OPENEVENT' = 'OPENEVENT',
 }
 
 export enum Screens {

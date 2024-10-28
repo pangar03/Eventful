@@ -9,6 +9,7 @@ import "../../components/mobile_rightSidebar/mobile_rightSidebar"
 
 import ChatBar from "../../components/chatBar/chatBar";
 import "../../components/chatBar/chatBar";
+import { addObserver } from "../../store";
 
 class DashboardScreen extends HTMLElement {
     constructor() {

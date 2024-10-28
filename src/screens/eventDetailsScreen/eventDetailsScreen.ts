@@ -10,7 +10,7 @@ import "../../components/chatBar/chatBar";
 import EventPageDetails, { Attribute as EventDetailsAttribute} from "../../components/eventPageDetails/eventPageDetails";
 import "../../components/eventPageDetails/eventPageDetails"
 
-import { appState } from "../../store";
+import { addObserver, appState } from "../../store";
 
 class EventDetailsScreen extends HTMLElement {
     eventId: number = appState.eventUID;

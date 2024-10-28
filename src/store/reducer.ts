@@ -19,10 +19,10 @@ export const reducer = (currentAction: any, currentState: any) => {
                 eventPosts,
 			};
 
-        case Actions.OPENPOST:
+        case Actions.OPENEVENT:
             return {
                 ...currentState,
-                screens: Screens.EVENTDETAILS,
+                screen: Screens.EVENTDETAILS,
                 eventUID: payload,
             };
 

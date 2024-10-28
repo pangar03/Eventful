@@ -1,5 +1,6 @@
 import styles from "./normal-post.css";
 export enum Attribute {
+    "uid" = "uid",
     "profileimg" = "profileimg",
     "username" = "username",
     "posttext" = "posttext",
@@ -9,6 +10,7 @@ export enum Attribute {
 }
 
 class Post extends HTMLElement {
+    uid?: number;
     profileimg?: string;
     username?: string;
     posttext?: string;
@@ -27,8 +29,12 @@ class Post extends HTMLElement {
 
     attributeChangedCallback(propName: Attribute, oldValue: string | undefined, newValue: string | undefined ) {
         switch (propName) {
+            case Attribute.uid:
+                this[propName] = newValue ? Number(newValue) : undefined;
+                break;
+
             case Attribute.likes:
-                this.likes = newValue ? Number(newValue) : 0;
+                this[propName] = newValue ? Number(newValue) : 0;
                 break;
 
             case Attribute.isliked:
