@@ -1,4 +1,5 @@
-import EventPageDetails, { Attribute as AttributePageDetails} from "../eventPageDetails/eventPageDetails";
+import { dispatch } from "../../store";
+import { openEvent } from "../../store/actions";
 
 export enum Attribute {
     "uid" = "uid",
@@ -106,30 +107,10 @@ class EventPostCard extends HTMLElement {
         learnMoreButton.addEventListener("click", (e) => {
             e.preventDefault();
 
-            const eventDetail = this.renderEventDetail();
+            dispatch(openEvent(this.uid!));
         });
 
         const infoContainer = this.shadowRoot?.querySelector(".data__info")?.appendChild(learnMoreButton);
-    }
-    
-    renderEventDetail() {
-        // IN DEVELOPTMENT
-        // const eventDetails = this.ownerDocument.createElement("event-page-details") as EventPageDetails;
-
-        // eventDetails.setAttribute(AttributePageDetails.image, this.image?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.eventtitle, this.eventtitle?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.location, this.location?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.date, this.date?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.creator, this.creator?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.attendants,  this.attendants?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.maxattendants,  this.maxattendants?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.description,  this.description?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.isattending,  this.isattending?.toString() || "");
-
-        // if(this.shadowRoot){
-        //     this.shadowRoot.innerHTML = '';
-        //     this.shadowRoot.appendChild(eventDetails);
-        // }
     }
 }
 
