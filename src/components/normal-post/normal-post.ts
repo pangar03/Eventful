@@ -5,6 +5,7 @@ export enum Attribute {
     "posttext" = "posttext",
     "postimg" = "postimg",
     "likes" = "likes",
+    "isliked" = "isliked",
 }
 
 class Post extends HTMLElement {
@@ -13,7 +14,7 @@ class Post extends HTMLElement {
     posttext?: string;
     postimg?: string;
     likes: number = 0;
-    isLiked: boolean = false;
+    isliked?: boolean;
 
     constructor() {
         super();
@@ -30,6 +31,11 @@ class Post extends HTMLElement {
                 this.likes = newValue ? Number(newValue) : 0;
                 break;
 
+            case Attribute.isliked:
+                this[propName] = propName === 'isliked' ? newValue === 'true' : undefined;
+                break;
+                break;
+
             default:
                 this[propName] = newValue;
                 break;
@@ -39,8 +45,8 @@ class Post extends HTMLElement {
         this.render();
     }
     toggleLike() {
-        this.isLiked = !this.isLiked;
-        this.likes += this.isLiked ? 1 : -1;
+        this.isliked = !this.isliked;
+        this.likes += this.isliked ? 1 : -1;
         this.render();
     }
     render() {
@@ -57,7 +63,7 @@ class Post extends HTMLElement {
                 <p>${this.posttext || " No post Text"}</p>
                 <img class="postimg" src="${this.postimg}" alt="">
                 <button id="like-button">
-                <img src="${this.isLiked ? 'https://img.icons8.com/?size=100&id=85339&format=png&color=E8EDFF87' : 'https://img.icons8.com/?size=100&id=85038&format=png&color=E8EDFF87'}" alt="hearticon">
+                <img src="${this.isliked ? 'https://img.icons8.com/?size=100&id=85339&format=png&color=E8EDFF87' : 'https://img.icons8.com/?size=100&id=85038&format=png&color=E8EDFF87'}" alt="hearticon">
                         ${this.likes}
                 </button>
             </section>
