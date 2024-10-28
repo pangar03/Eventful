@@ -114,8 +114,6 @@ class EventPostCard extends HTMLElement {
     
     renderEventDetail() {
         // IN DEVELOPTMENT
-        console.log("Change to event detail page");
-
         // const eventDetails = this.ownerDocument.createElement("event-page-details") as EventPageDetails;
 
         // eventDetails.setAttribute(AttributePageDetails.image, this.image?.toString() || "");

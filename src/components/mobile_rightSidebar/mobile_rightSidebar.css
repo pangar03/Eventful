@@ -1,4 +1,4 @@
-.container-right {
+.mobile-container-right {
     display: none;
 }
 
@@ -13,7 +13,7 @@
 }
 
 @media (max-width: 431px) {
-    .container-right {
+    .mobile-container-right {
         display: flex;
         width: 100vw;
         position: absolute;

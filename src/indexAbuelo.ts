@@ -23,10 +23,8 @@ class AppContainer extends HTMLElement {
         this.attachShadow({ mode: 'open' });
 
         const normalPost = posts.filter((post) => !post.isEvent);
-        console.log('normalPost', normalPost);
 
         const eventPost = posts.filter((post) => post.isEvent);
-        console.log('eventPost', eventPost);
 
         normalPost.forEach((post) => {
             const postCard = this.ownerDocument.createElement('normal-post') as Post;
@@ -35,7 +33,6 @@ class AppContainer extends HTMLElement {
             postCard.setAttribute(PostAttribute.posttext, post.postText || "");
             postCard.setAttribute(PostAttribute.postimg, post.postImg || "");
             postCard.setAttribute(PostAttribute.likes, String(post.likes) || "");
-            console.log('post', postCard);
             this.normalpost.push(postCard);
         });
         
@@ -72,12 +69,22 @@ class AppContainer extends HTMLElement {
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="/src/styles.css">
                 <section class='screen-container'>
+                    <div class="mobile-bar">
+                        <img src="https://img.icons8.com/?size=100&id=86527&format=png&color=E8EDFF" class="normal-icon">
+                        <img src="https://img.icons8.com/?size=100&id=59758&format=png&color=E8EDFF" class="normal-icon">
+                        <img src="https://img.icons8.com/?size=100&id=11153&format=png&color=E8EDFF" class="add-icon">
+                        <img src="https://img.icons8.com/?size=100&id=98957&format=png&color=E8EDFF" class="normal-icon">
+                    </div>
                     <nav class='navbar'></nav>
                     <aside class='sidebar'></aside> <!-- Añadido contenedor para la barra lateral -->
                     <main class='dashboard'></main>
-                    <div class="chat-container"></div>
-                    <nav class='mobile-navbar'></nav>
+                    <div class="chat-container">
                     
+                    </div>
+                    <nav class='mobile-navbar'>
+                        
+                    </nav>
+
                 </section>
             `;
         }
@@ -98,9 +105,8 @@ class AppContainer extends HTMLElement {
             sidebar.appendChild(card);
         });
 
-        const mobNavBar = this.shadowRoot?.querySelector('.navbar')!;
-        const mobileSidebar = this.ownerDocument.createElement('mobile-side-bar') as MobileSidebar;
-        mobNavBar.appendChild(mobileSidebar);
+        const mobNavBar = this.shadowRoot?.querySelector('.mobile-navbar')!;
+        const mobileSidebar = this.ownerDocument.createElement('mobile-bar') as MobileSidebar;
 
         const chatBarInstance = this.ownerDocument.createElement('chat-bar') as chatBar;
         chatBarInstance.setAttribute(ChatBarAttribute.editicon, 'https://img.icons8.com/?size=100&id=86376&format=png&color=E8EDFF8F');

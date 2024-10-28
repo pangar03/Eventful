@@ -14,14 +14,11 @@ class Dashboard extends HTMLElement {
     }
 
     connectedCallback() {
-        console.log('hola');
         
 
         const normalPost = posts.filter((post) => !post.isEvent);
-        console.log('normalPost', normalPost);
 
         const eventPost = posts.filter((post) => post.isEvent);
-        console.log('eventPost', eventPost);
 
         normalPost.forEach((post) => {
             const postCard = this.ownerDocument.createElement('normal-post') as Post;
@@ -30,7 +27,6 @@ class Dashboard extends HTMLElement {
                 postCard.setAttribute(PostAttribute.posttext, post.postText || "");
                 postCard.setAttribute(PostAttribute.postimg, post.postImg || "");
                 postCard.setAttribute(PostAttribute.likes, String(post.likes) || "");
-                console.log('post', postCard);
                 this.normalpost.push(postCard);
         })
         
@@ -54,10 +50,6 @@ class Dashboard extends HTMLElement {
     }
 
     render() {
-
-        console.log("FLAG!!")
-        console.log('noemal post', this.normalpost);
-        
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
                 <link rel="stylesheet" href="/src/components/dashboard/dashboard.css">

@@ -5,7 +5,7 @@
     font-family: 'Switzer', sans-serif;
 }
 
-.mobile-navbar {
+.mobile-bar {
     display: none;
 }
 
@@ -67,4 +67,29 @@
         overflow-y: auto;
         overflow-x: hidden;
     }
+
+    .mobile-bar {
+        background-color: #242734;
+        padding: 0.875rem 0.5rem 1.5rem 1.5rem;
+        width: 100vw;
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        justify-content: space-around;
+    }
+
+    .mobile-bar img {
+        background:none;
+        width: 30px;
+        height: 30px;
+
+    }
+
+    .add-icon {
+        border: 2px solid;
+        background: linear-gradient(45deg, rgba(195,136,255,1) 0%, rgba(47,89,255,1) 100%);
+        background-clip: border;
+        border-radius: 10px;
+    }
+
 }

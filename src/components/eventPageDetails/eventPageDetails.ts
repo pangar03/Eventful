@@ -136,9 +136,6 @@ class EventPageDetails extends HTMLElement {
         this.shadowRoot?.querySelector('.button-cancel')?.classList.toggle('button-cancel--active');
         this.shadowRoot?.querySelector('.button-confirm')?.classList.toggle('button-confirm--active');
         this.changeAttendants();
-        console.log('Status Changed!!');
-        console.log(this.isattending);
-        console.log(this.attendants);
     }
 
     changeAttendants(){
