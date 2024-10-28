@@ -1,6 +1,8 @@
 import { dispatch } from "../../store";
 import { openEvent } from "../../store/actions";
 
+import Styles from "./eventPostCard.css";
+
 export enum Attribute {
     "uid" = "uid",
     "image" = "image",
@@ -76,7 +78,6 @@ class EventPostCard extends HTMLElement {
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" href="/src/components/eventPostCard/eventPostCard.css">
             <section class="post-card">
                 <div class="event-page__data">
                     <div class="data__image" style="background-image: url('${this.image || 'https://images.pexels.com/photos/28216688/pexels-photo-28216688/free-photo-of-acampada-de-otono.png'}');"></div>
@@ -97,6 +98,10 @@ class EventPostCard extends HTMLElement {
         
         // Learn More Button
         this.addLearnMoreButton();
+
+        const css = this.ownerDocument.createElement('style');
+        css.innerHTML = Styles;
+        this.shadowRoot?.appendChild(css);
     }
 
     addLearnMoreButton() {

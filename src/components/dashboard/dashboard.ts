@@ -6,6 +6,7 @@ import Post, { Attribute as PostAttribute } from '../normal-post/normal-post';
 import '../normal-post/normal-post';
 
 import { posts } from '../../data/data';
+import Styles from './dashboard.css';
 
 import { appState } from "../../store";
 import { getPosts } from "../../store/actions";
@@ -59,7 +60,6 @@ class Dashboard extends HTMLElement {
     render() {
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="/src/components/dashboard/dashboard.css">
                 <section class="dashboard"></section>
             `;
 
@@ -72,6 +72,10 @@ class Dashboard extends HTMLElement {
                     dashboard.appendChild(post);
                 });
             }
+
+            const css = this.ownerDocument.createElement('style');
+            css.innerHTML = Styles;
+            this.shadowRoot.appendChild(css);
         }
     }
 }
