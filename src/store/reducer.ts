@@ -1,4 +1,4 @@
-import { Actions } from "../types/store";
+import { Actions, Screens } from "../types/store";
 
 export const reducer = (currentAction: any, currentState: any) => {
 	const { action, payload } = currentAction;
@@ -15,6 +15,13 @@ export const reducer = (currentAction: any, currentState: any) => {
 				...currentState,
 				products: payload,
 			};
+
+        case Actions.OPENPOST:
+            return {
+                ...currentState,
+                screens: Screens.EVENTDETAILS,
+                eventUID: payload,
+            };
 
 		default:
 			return currentState;

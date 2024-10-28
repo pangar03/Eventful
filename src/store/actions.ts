@@ -14,3 +14,10 @@ export const getPosts = () => {
         payload: null, // REPLACE WITH DATA
     }
 };
+
+export const openEvent = (uid: number) => {
+    return {
+        action: Actions.OPENPOST,
+        payload: uid,
+    }
+};
