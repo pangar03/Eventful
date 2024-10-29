@@ -27,9 +27,9 @@ class EventDetailsScreen extends HTMLElement {
     render() {
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
-                <div>
+                <div class="app-container">
                     <side-bar></side-bar>
-                        <div id="event-details"></div>
+                    <div id="event-details"></div>
                     <chat-bar></chat-bar>
                 </div>
                 <div id="mobile-bar">
