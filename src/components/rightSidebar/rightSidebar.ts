@@ -2,7 +2,6 @@ import styles from './rightSidebar.css';
 import CategoryButton, { Attribute as CategoryAttribute } from '../category/category';
 
 export enum Attribute {
-    'eventful' = 'eventful',
     'profileimg' = 'profileimg',
     'username' = 'username',
     'numpost' = 'numpost',
@@ -10,7 +9,6 @@ export enum Attribute {
 }
 
 class sideBar extends HTMLElement {
-    eventful?: string;
     profileimg?: string;
     username?: string;
     numpost?: number;
@@ -44,7 +42,7 @@ class sideBar extends HTMLElement {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
             <section class="container-right">
-                <h1 class="eventful">${this.eventful}</h1>
+                <h1 class="eventful">Eventful</h1>
                 <div class="container-user">
                     <div class="circle">
                         <img src="${this.profileimg}" alt="profileimg">

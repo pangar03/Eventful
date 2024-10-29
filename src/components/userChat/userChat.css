@@ -3,16 +3,17 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    width: 20rem;
+    gap: 1.5rem;
 }
 .user-nameandimg{
     display: flex ;
-    flex-direction: row;   
+    flex-direction: row;
+    align-items: center;   
     gap: 1rem; 
 }
 .circle {
-    width: 5rem; 
-    height: 5rem; 
+    width: 2.5rem; 
+    height: 2.5rem; 
     overflow: hidden; 
     border-radius: 50%; 
     display: flex; 
@@ -25,5 +26,5 @@
     height: auto;
 }
 #iconmessage{
-    height: 2rem;
+    height: 1.5rem;
 }

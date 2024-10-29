@@ -1,8 +1,16 @@
 import EventPageDetails, {Attribute as EventPageAttribute} from "../eventPageDetails/eventPageDetails";
+import "../eventPageDetails/eventPageDetails";
 import EventPostCard, {Attribute as EventCardAttribute} from "../eventPostCard/eventPostCard";
+import "../eventPostCard/eventPostCard";
 import Post, { Attribute as PostAttribute } from '../normal-post/normal-post';
+import '../normal-post/normal-post';
 
 import { posts } from '../../data/data';
+import Styles from './dashboard.css';
+
+import { appState } from "../../store";
+import { getPosts } from "../../store/actions";
+import { dispatch } from "../../store";
 
 class Dashboard extends HTMLElement {
     normalpost: Post[] = [];
@@ -14,14 +22,15 @@ class Dashboard extends HTMLElement {
     }
 
     connectedCallback() {
-        
+        dispatch(getPosts()); // Update the posts from the store
 
-        const normalPost = posts.filter((post) => !post.isEvent);
+        const normalPostData = appState.normalPosts;
 
-        const eventPost = posts.filter((post) => post.isEvent);
+        const eventPostData = appState.eventPosts;
 
-        normalPost.forEach((post) => {
+        normalPostData.forEach((post: any) => {
             const postCard = this.ownerDocument.createElement('normal-post') as Post;
+                postCard.setAttribute(PostAttribute.uid, String(post.uid) || "");
                 postCard.setAttribute(PostAttribute.profileimg, post.profileImg || "");
                 postCard.setAttribute(PostAttribute.username, post.username || "");
                 postCard.setAttribute(PostAttribute.posttext, post.postText || "");
@@ -30,8 +39,10 @@ class Dashboard extends HTMLElement {
                 this.normalpost.push(postCard);
         })
         
-        eventPost.forEach((post) => {
+        eventPostData.forEach((post: any) => {
             const postCard = this.ownerDocument.createElement('event-post-card') as EventPostCard;
+            
+            postCard.setAttribute(EventCardAttribute.uid, String(post.uid) || "");
             postCard.setAttribute(EventCardAttribute.image, post.eventImg || "");
             postCard.setAttribute(EventCardAttribute.eventtitle, post.eventTitle || "");
             postCard.setAttribute(EventCardAttribute.location, post.eventLocation || "");
@@ -52,15 +63,9 @@ class Dashboard extends HTMLElement {
     render() {
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
-                <link rel="stylesheet" href="/src/components/dashboard/dashboard.css">
                 <section class="dashboard"></section>
             `;
-        } 
-        this.initialRender();
-    }
 
-    initialRender() {
-        if(this.shadowRoot){
             const dashboard = this.shadowRoot.querySelector('.dashboard');
             if(dashboard){
                 this.normalpost.forEach((post) => {
@@ -70,9 +75,11 @@ class Dashboard extends HTMLElement {
                     dashboard.appendChild(post);
                 });
             }
-        }
 
-            
+            const css = this.ownerDocument.createElement('style');
+            css.innerHTML = Styles;
+            this.shadowRoot.appendChild(css);
+        }
     }
 }
 

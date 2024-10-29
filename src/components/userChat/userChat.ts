@@ -1,39 +1,36 @@
-import styles from './userChat.css';
-export enum Attribute{
-    'profileimg' = 'profileimg',
-    'username' = 'username',
-    'iconmessage' = 'iconmessage',
+import styles from "./userChat.css";
+export enum Attribute {
+    "profileimg" = "profileimg",
+    "username" = "username",
+    "iconmessage" = "iconmessage",
 }
 class userChat extends HTMLElement {
-
     profileimg?: string;
     username?: string;
     iconmessage?: string;
-    
 
     constructor() {
         super();
-        this.attachShadow({ mode: 'open' });
+        this.attachShadow({ mode: "open" });
     }
 
-    static get observedAttributes(){
+    static get observedAttributes() {
         return Object.values(Attribute);
     }
 
-    attributeChangedCallback(propName: Attribute, oldValue: string | undefined, newValue: string | undefined ) {
-        switch(propName){
-              default:
-                  this[propName] = newValue;
-                  break;
-        }  
-      }
-    
-      connectedCallback(){
-        this.render();
-        
+    attributeChangedCallback(propName: Attribute, oldValue: string | undefined, newValue: string | undefined) {
+        switch (propName) {
+            default:
+                this[propName] = newValue;
+                break;
+        }
     }
-    render(){
-        if(this.shadowRoot){
+
+    connectedCallback() {
+        this.render();
+    }
+    render() {
+        if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
             
             <section class="user-chat">
@@ -47,14 +44,12 @@ class userChat extends HTMLElement {
 
             </section>
             `;
-            
         }
-        const cssCard = this.ownerDocument.createElement('style');
-            cssCard.innerHTML = styles;
-            this.shadowRoot?.appendChild(cssCard);
+        const cssCard = this.ownerDocument.createElement("style");
+        cssCard.innerHTML = styles;
+        this.shadowRoot?.appendChild(cssCard);
     }
-    
 }
 
-customElements.define('user-chat', userChat);
+customElements.define("user-chat", userChat);
 export default userChat;
