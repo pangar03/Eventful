@@ -32,8 +32,8 @@ class RegisterForm extends HTMLElement {
                         <label for="confirm-password">Confirm Password</label>
                         <input type="password" id="confirm-password" placeholder="Confirm Password" required>
                     </section>
-                    <button type="submit">Create Account</button>
-                    <p>Already have an account? <button class="login-button">Login</button>Z</p>
+                    <button class="register-button" type="submit">Create Account</button>
+                    <p>Already have an account? <button class="login-button">Login</button></p>
                 </form>                    
             `;
 
