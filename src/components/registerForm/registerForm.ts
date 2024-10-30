@@ -1,6 +1,10 @@
 import { registerUser } from "../../utils/firebase";
 import Styles from "./registerForm.css";
 
+import { dispatch } from "../../store";
+import { navigate } from "../../store/actions";
+import { Screens } from "../../types/store";
+
 class RegisterForm extends HTMLElement {
     constructor() {
         super();
@@ -53,6 +57,12 @@ class RegisterForm extends HTMLElement {
                 } else {
                     alert('Error registering user');
                 }
+            });
+
+            // Login Button
+            const loginButton = (this.shadowRoot.querySelector('.login-button')) as HTMLButtonElement;
+            loginButton.addEventListener('click', () => {
+                dispatch(navigate(Screens.LOGIN));
             });
 
             const css = document.createElement('style');
