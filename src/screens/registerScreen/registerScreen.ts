@@ -1,6 +1,8 @@
 import RegisterForm from "../../components/registerForm/registerForm";
 import "../../components/registerForm/registerForm";
 
+import Styles from "./registerScreen.css";
+
 class RegisterScreen extends HTMLElement {
     constructor() {
         super();
@@ -23,6 +25,10 @@ class RegisterScreen extends HTMLElement {
                     <register-form></register-form>
                 </section>
             `;
+
+            const style = this.ownerDocument.createElement('style');
+            style.innerHTML = Styles;
+            this.shadowRoot.appendChild(style);
         }
     }
 }
