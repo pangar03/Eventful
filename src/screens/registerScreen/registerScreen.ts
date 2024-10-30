@@ -1,3 +1,6 @@
+import RegisterForm from "../../components/registerForm/registerForm";
+import "../../components/registerForm/registerForm";
+
 class RegisterScreen extends HTMLElement {
     constructor() {
         super();
@@ -9,7 +12,18 @@ class RegisterScreen extends HTMLElement {
     }
 
     render() {
-
+        if(this.shadowRoot){
+            this.shadowRoot.innerHTML = `
+                <section>
+                    <div>
+                        <h1>Eventful</h1>
+                        <h2 id="subtitle-bold">Join today and discover a new way to be in a community</h2>
+                        <h2 id="subtitle-light">Create, join and discuss about new events today!</h2>
+                    </div>
+                    <register-form></register-form>
+                </section>
+            `;
+        }
     }
 }
 
