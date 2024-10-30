@@ -4,7 +4,7 @@ import Storage from "../utils/storage";
 import { AppState, Observer } from "../types/store";
 
 const initialState: AppState = {
-    screen: 'DASHBOARD',
+    screen: 'REGISTER',
     normalPosts: [],
     eventPosts: [],
     eventUID: 1,

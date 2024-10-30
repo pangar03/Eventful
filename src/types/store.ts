@@ -18,4 +18,6 @@ export enum Actions {
 export enum Screens {
     'DASHBOARD' = 'DASHBOARD',
     'EVENTDETAILS' = 'EVENTDETAILS',
+    'REGISTER' = 'REGISTER',
+    'LOGIN' = 'LOGIN',
 }
