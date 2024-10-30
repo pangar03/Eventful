@@ -1,4 +1,7 @@
-import EventPageDetails, { Attribute as AttributePageDetails} from "../eventPageDetails/eventPageDetails";
+import { dispatch } from "../../store";
+import { openEvent } from "../../store/actions";
+
+import Styles from "./eventPostCard.css";
 
 export enum Attribute {
     "uid" = "uid",
@@ -45,23 +48,23 @@ class EventPostCard extends HTMLElement {
     ) {
         switch (propName) {
             case Attribute.uid:
-                this.likes = newValue ? Number(newValue) : undefined;
+                this[propName] = newValue ? Number(newValue) : undefined;
                 break;
 
             case Attribute.likes:
-                this.likes = newValue ? Number(newValue) : undefined;
+                this[propName] = newValue ? Number(newValue) : undefined;
                 break;
 
             case Attribute.attendants:
-                this.attendants = newValue ? Number(newValue) : undefined;
+                this[propName] = newValue ? Number(newValue) : undefined;
                 break;
 
             case Attribute.maxattendants:
-                this.maxattendants = newValue ? Number(newValue) : undefined;
+                this[propName] = newValue ? Number(newValue) : undefined;
                 break;
 
             case Attribute.isattending:
-                this.isattending = newValue ? Boolean(newValue) : undefined;
+                this[propName] = newValue ? Boolean(newValue) : undefined;
                 break;
 
             default:
@@ -75,7 +78,6 @@ class EventPostCard extends HTMLElement {
     render() {
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
-            <link rel="stylesheet" href="/src/components/eventPostCard/eventPostCard.css">
             <section class="post-card">
                 <div class="event-page__data">
                     <div class="data__image" style="background-image: url('${this.image || 'https://images.pexels.com/photos/28216688/pexels-photo-28216688/free-photo-of-acampada-de-otono.png'}');"></div>
@@ -96,6 +98,10 @@ class EventPostCard extends HTMLElement {
         
         // Learn More Button
         this.addLearnMoreButton();
+
+        const css = this.ownerDocument.createElement('style');
+        css.innerHTML = Styles;
+        this.shadowRoot?.appendChild(css);
     }
 
     addLearnMoreButton() {
@@ -106,30 +112,11 @@ class EventPostCard extends HTMLElement {
         learnMoreButton.addEventListener("click", (e) => {
             e.preventDefault();
 
-            const eventDetail = this.renderEventDetail();
+            console.log("UID", this.uid);            
+            dispatch(openEvent(this.uid!));
         });
 
         const infoContainer = this.shadowRoot?.querySelector(".data__info")?.appendChild(learnMoreButton);
-    }
-    
-    renderEventDetail() {
-        // IN DEVELOPTMENT
-        // const eventDetails = this.ownerDocument.createElement("event-page-details") as EventPageDetails;
-
-        // eventDetails.setAttribute(AttributePageDetails.image, this.image?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.eventtitle, this.eventtitle?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.location, this.location?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.date, this.date?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.creator, this.creator?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.attendants,  this.attendants?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.maxattendants,  this.maxattendants?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.description,  this.description?.toString() || "");
-        // eventDetails.setAttribute(AttributePageDetails.isattending,  this.isattending?.toString() || "");
-
-        // if(this.shadowRoot){
-        //     this.shadowRoot.innerHTML = '';
-        //     this.shadowRoot.appendChild(eventDetails);
-        // }
     }
 }
 
