@@ -1,5 +1,7 @@
 import "./screens/dashboardScreen/dashboardScreen";
 import "./screens/eventDetailsScreen/eventDetailsScreen"
+import "./screens/registerScreen/registerScreen";
+
 
 import { appState, addObserver } from "./store";
 import { Screens } from "./types/store";
@@ -29,7 +31,7 @@ class AppContainer extends HTMLElement {
                     break;
 
                 case Screens.REGISTER:
-                    const register = this.ownerDocument.createElement('register-form');
+                    const register = this.ownerDocument.createElement('register-screen');
                     this.shadowRoot.appendChild(register);
                     break;
                 
