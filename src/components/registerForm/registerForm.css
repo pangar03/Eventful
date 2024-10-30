@@ -71,6 +71,12 @@ p button {
     #title-desktop {
         display: none;
     }
+    #title-mobile {
+        display: block;
+        font-size: 3rem;
+        font-weight: 800;
+        color: #E8EDFF;
+    }
     h3 {
         display: none;
     }
@@ -79,10 +85,9 @@ p button {
     }
     :host{
         display: flex;
-        justify-content: center;
-        align-items: center;
         background: none;
         align-self: center;
+        align-items: flex-start;
         margin: 0;
     }
 

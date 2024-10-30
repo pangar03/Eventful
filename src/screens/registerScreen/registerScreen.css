@@ -1,15 +1,6 @@
-:host {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
 section {
-    height: max-content;
     display: flex;
     align-items: center;
-    height: 100%;
     background: rgb(36,39,52);
     background: linear-gradient(180deg, rgba(36,39,52,1) 0%, rgba(97,76,140,1) 82%, rgba(137,101,198,1) 100%);
 }
@@ -21,10 +12,11 @@ div {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: auto;
+    height: 100vh;
 }
 
 h1 {
+    margin: 0;
     font-size: 4rem;
     font-weight: 900;
     background: #C388FF;
@@ -50,7 +42,10 @@ h2 {
         display: flex;
         flex-direction: column;
         align-items: center;
-        height: max-content;
+    }
+
+    div {
+        height: fit-content;
     }
 
     h1 {
