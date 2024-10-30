@@ -27,6 +27,11 @@ class AppContainer extends HTMLElement {
                     const eventDetails = this.ownerDocument.createElement('event-details-screen');
                     this.shadowRoot.appendChild(eventDetails);
                     break;
+
+                case Screens.REGISTER:
+                    const register = this.ownerDocument.createElement('register-form');
+                    this.shadowRoot.appendChild(register);
+                    break;
                 
                 default:
                     break;
