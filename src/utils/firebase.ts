@@ -1,4 +1,5 @@
 import { firebaseConfig } from "../../fbcg";
+import { appState } from '../store';
 
 let db: any;
 let auth: any;
@@ -27,7 +28,7 @@ export const getPosts = async () => {
 		const querySnapshot = await getDocs(where);
 		const data: any[] = [];
 
-		querySnapshot.forEach((doc) => {
+		querySnapshot.forEach((doc: any) => {
 			data.push(doc.data());
 		});
 
