@@ -9,6 +9,12 @@ export const reducer = (currentAction: any, currentState: any) => {
 				...currentState,
 				screen: payload,
 			};
+		
+		case Actions.SETUSERCREDENTIALS:
+			return {
+				...currentState,
+				user: payload,
+			};
 
 		case Actions.GETPOSTS:
             const normalPosts = payload.filter((post: any) => !post.isEvent);

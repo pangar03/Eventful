@@ -46,13 +46,7 @@ class LoginForm extends HTMLElement {
                 //     return;
                 // }
                 const credentials = {email, password};
-                const result = await loginUser(email, password);
-                if(result){
-                    alert('User registered successfully');
-                    form.reset();
-                } else {
-                    alert('Error registering user');
-                }
+                const result = loginUser(email, password);
             });
 
             // Login Button

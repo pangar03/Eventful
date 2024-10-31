@@ -11,6 +11,7 @@ class AppContainer extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+        addObserver(this);
     };
 
     connectedCallback() {
@@ -45,23 +46,7 @@ class AppContainer extends HTMLElement {
                     break;
             }
         }
-
-        // Renderizar el rightSidebar en el contenedor correspondiente
-        // const sidebar = this.shadowRoot?.querySelector('.sidebar')!;
-        // this.rightSidebar.forEach((card) => {
-        //     sidebar.appendChild(card);
-        // });
-
-        // const mobNavBar = this.shadowRoot?.querySelector('.mobile-navbar')!;
-        // const mobileSidebar = this.ownerDocument.createElement('mobile-bar') as MobileSidebar;
-
-        // const chatBarInstance = this.ownerDocument.createElement('chat-bar') as chatBar;
-        // chatBarInstance.setAttribute(ChatBarAttribute.editicon, 'https://img.icons8.com/?size=100&id=86376&format=png&color=E8EDFF8F');
-
-        // const chatContainer = this.shadowRoot?.querySelector('.chat-container');
-        // chatContainer?.appendChild(chatBarInstance);
     }
 }
 
 customElements.define('app-container', AppContainer);
-export default AppContainer;

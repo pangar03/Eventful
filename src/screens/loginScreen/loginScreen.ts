@@ -1,5 +1,6 @@
 import LoginForm from "../../components/loginForm/loginForm";
 import "../../components/loginForm/loginForm";
+import { addObserver } from "../../store";
 
 import Styles from "./loginScreen.css";
 

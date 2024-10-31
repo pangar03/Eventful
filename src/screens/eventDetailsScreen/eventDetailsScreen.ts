@@ -18,6 +18,7 @@ class EventDetailsScreen extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
+        addObserver(this);
     }
 
     connectedCallback() {
@@ -42,15 +43,15 @@ class EventDetailsScreen extends HTMLElement {
             const event = appState.eventPosts.find((event: any)  => event.uid === this.eventId);
 
             const eventDetailsComponent = document.createElement('event-page-details') as EventPageDetails;
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.image, event.eventImg || "");
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.eventtitle, event.eventTitle || "");
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.location, event.eventLocation || "");
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.date, event.eventDate || "");
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.description, event.description || "");
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.creator, event.creator || "");
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.attendants, String(event.attendants) || "");
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.maxattendants, String(event.maxAttendants) || "");
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.isattending, String(event.isAttending) || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.image, event?.eventImg || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.eventtitle, event?.eventTitle || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.location, event?.eventLocation || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.date, event?.eventDate || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.description, event?.description || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.creator, event?.creator || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.attendants, String(event?.attendants) || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.maxattendants, String(event?.maxAttendants) || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.isattending, String(event?.isAttending) || "");
             eventDetails.appendChild(eventDetailsComponent);
         }
     }

@@ -1,5 +1,6 @@
 import RegisterForm from "../../components/registerForm/registerForm";
 import "../../components/registerForm/registerForm";
+import { addObserver } from "../../store";
 
 import Styles from "./registerScreen.css";
 

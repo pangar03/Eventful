@@ -4,7 +4,7 @@ import { appState } from '../store';
 let db: any;
 let auth: any;
 
-const getFirebaseInstance = async () => {
+export const getFirebaseInstance = async () => {
     if(!db){
         const { getFirestore } = await import("firebase/firestore");
         const { initializeApp } = await import('firebase/app');
@@ -17,7 +17,6 @@ const getFirebaseInstance = async () => {
 
     return { db, auth };
 }
-
 
 export const getPosts = async () => {
     try {
@@ -48,7 +47,7 @@ export const registerUser = async (credentials: any) => {
 
 		const where = doc(db, 'users', userCredential.user.uid);
 		const data = {
-            // ADD THE EXTRA DATA REQUIRED WHEN REGISTERING A USER
+			// Add The Extra Data Here
 		};
 
 		await setDoc(where, data);
@@ -62,13 +61,18 @@ export const registerUser = async (credentials: any) => {
 export const loginUser = async (email: string, password: string) => {
 	try {
 		const { auth } = await getFirebaseInstance();
-		const { signInWithEmailAndPassword } = await import('firebase/auth');
+		const { signInWithEmailAndPassword, setPersistence, browserLocalPersistence } = await import('firebase/auth');
 
-		const userCredential = await signInWithEmailAndPassword(auth, email, password);
-		console.log(userCredential.user);
-		return true;
+		setPersistence(auth, browserLocalPersistence)
+			.then(() => {
+				return signInWithEmailAndPassword(auth, email, password);
+			})
+			.catch((error: any) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				console.log(errorCode, errorMessage);
+			});
 	} catch (error) {
 		console.error(error);
-		return false;
 	}
 };

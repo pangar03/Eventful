@@ -97,3 +97,10 @@ export const openEvent = (uid: number) => {
         payload: uid,
     }
 };
+
+export const setUserCredentials = (user: string) => {
+	return {
+		action: Actions.SETUSERCREDENTIALS,
+		payload: user,
+	};
+};

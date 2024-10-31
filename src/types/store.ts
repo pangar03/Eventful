@@ -5,6 +5,7 @@ export type AppState = {
     normalPosts: NormalPost[];
     eventPosts: EventPost[];
     eventUID: number;
+    user: '';
 };
 
 export type Observer = { render: () => void } & HTMLElement;
@@ -13,6 +14,7 @@ export enum Actions {
     'NAVIGATE' = 'NAVIGATE',
     'GETPOSTS' = 'GETPOSTS',
     'OPENEVENT' = 'OPENEVENT',
+	'SETUSERCREDENTIALS' = 'SETUSERCREDENTIALS',
 }
 
 export enum Screens {
