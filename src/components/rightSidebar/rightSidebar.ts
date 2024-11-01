@@ -1,5 +1,6 @@
 import styles from './rightSidebar.css';
 import CategoryButton, { Attribute as CategoryAttribute } from '../category/category';
+import { signOut } from '../../utils/firebase';
 
 export enum Attribute {
     'profileimg' = 'profileimg',
@@ -65,10 +66,10 @@ class sideBar extends HTMLElement {
             `;
 
             const categories = [
-                { icon: 'https://img.icons8.com/?size=100&id=86527&format=png&color=4469FE', text: 'Home' },
-                { icon: 'https://img.icons8.com/?size=100&id=59758&format=png&color=7F98FF', text: 'Events' },
-                { icon: 'https://img.icons8.com/?size=100&id=98957&format=png&color=535768', text: 'Profile' },
-                { icon: 'https://img.icons8.com/?size=100&id=BdksXmxLaK8r&format=png&color=DA4646', text: 'Logout' },
+                { icon: 'https://img.icons8.com/?size=100&id=86527&format=png&color=4469FE', text: 'Home', id: 'home' },
+                { icon: 'https://img.icons8.com/?size=100&id=59758&format=png&color=7F98FF', text: 'Events', id: 'events' },
+                { icon: 'https://img.icons8.com/?size=100&id=98957&format=png&color=535768', text: 'Profile', id: 'profile' },
+                { icon: 'https://img.icons8.com/?size=100&id=BdksXmxLaK8r&format=png&color=DA4646', text: 'Logout', id: 'logout' },
             ];
 
             // Añadir cada CategoryButton al contenedor de categorías
@@ -77,6 +78,7 @@ class sideBar extends HTMLElement {
                 const categoryButton = this.ownerDocument.createElement('category-button') as CategoryButton;
                 categoryButton.setAttribute(CategoryAttribute.iconimg, category.icon);
                 categoryButton.setAttribute(CategoryAttribute.text, category.text);
+                categoryButton.classList.add(category.id);
 
                 // Agregar clase específica al botón que deseas estilizar
                 if (index === 3) { // Por ejemplo, cambiar el color del cuarto botón
@@ -84,6 +86,14 @@ class sideBar extends HTMLElement {
                 }
 
                 categoryContainer?.appendChild(categoryButton);
+            });
+
+            // Event listeners
+
+            const logout = this.shadowRoot.querySelector('.logout');
+            logout?.addEventListener('click', () => {
+                console.log('Logout');
+                signOut();
             });
 
             const cssCard = this.ownerDocument.createElement('style');

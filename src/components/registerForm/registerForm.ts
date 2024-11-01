@@ -53,7 +53,7 @@ class RegisterForm extends HTMLElement {
                 const result = await registerUser(credentials);
                 if(result){
                     alert('User registered successfully');
-                    form.reset();
+                    dispatch(navigate(Screens.LOGIN));
                 } else {
                     alert('Error registering user');
                 }

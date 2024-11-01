@@ -11,8 +11,7 @@ class LoginScreen extends HTMLElement {
     }
 
     connectedCallback() {
-        
-    console.log('LoginForm connected');
+        console.log('LoginForm connected');
         this.render();
     }
 

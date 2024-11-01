@@ -76,3 +76,15 @@ export const loginUser = async (email: string, password: string) => {
 		console.error(error);
 	}
 };
+
+export const signOut = async () => {
+	const { auth } = await getFirebaseInstance();
+	const { signOut } = await import('firebase/auth');
+
+	signOut(auth).then(() => {
+		appState.user = '';
+		console.log('Sign Out');
+	}).catch((error: any) => {
+		console.error(error);
+	});
+}

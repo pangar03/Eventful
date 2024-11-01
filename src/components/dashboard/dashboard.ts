@@ -8,56 +8,24 @@ import '../normal-post/normal-post';
 import { posts } from '../../data/data';
 import Styles from './dashboard.css';
 
-import { appState } from "../../store";
+import { addObserver, appState } from "../../store";
 import { getPosts } from "../../store/actions";
 import { dispatch } from "../../store";
 
 class Dashboard extends HTMLElement {
-    normalpost: Post[] = [];
-    eventPost: EventPostCard[] = [];
-    
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
+        addObserver(this);
     }
 
-    connectedCallback() {
-        dispatch(getPosts()); // Update the posts from the store
-
-        const normalPostData = appState.normalPosts;
-
-        const eventPostData = appState.eventPosts;
-
-        normalPostData.forEach((post: any) => {
-            const postCard = this.ownerDocument.createElement('normal-post') as Post;
-                postCard.setAttribute(PostAttribute.uid, String(post.uid) || "");
-                postCard.setAttribute(PostAttribute.profileimg, post.profileImg || "");
-                postCard.setAttribute(PostAttribute.username, post.username || "");
-                postCard.setAttribute(PostAttribute.posttext, post.postText || "");
-                postCard.setAttribute(PostAttribute.postimg, post.postImg || "");
-                postCard.setAttribute(PostAttribute.likes, String(post.likes) || "");
-                this.normalpost.push(postCard);
-        })
-        
-        eventPostData.forEach((post: any) => {
-            const postCard = this.ownerDocument.createElement('event-post-card') as EventPostCard;
-            
-            postCard.setAttribute(EventCardAttribute.uid, String(post.uid) || "");
-            postCard.setAttribute(EventCardAttribute.image, post.eventImg || "");
-            postCard.setAttribute(EventCardAttribute.eventtitle, post.eventTitle || "");
-            postCard.setAttribute(EventCardAttribute.location, post.eventLocation || "");
-            postCard.setAttribute(EventCardAttribute.date, post.eventDate || "");
-            postCard.setAttribute(EventCardAttribute.description, post.description || "");
-            postCard.setAttribute(EventCardAttribute.likes, String(post.likes) || "");
-            postCard.setAttribute(EventCardAttribute.creator, post.creator || "");
-            postCard.setAttribute(EventCardAttribute.attendants, String(post.attendants) || "");
-            postCard.setAttribute(EventCardAttribute.maxattendants, String(post.maxAttendants) || "");
-            postCard.setAttribute(EventCardAttribute.isattending, String(post.isAttending) || "");
-            this.eventPost.push(postCard);
-        });
-
-        this.render();
-        
+    async connectedCallback() {
+        if (appState.normalPosts.length === 0 && appState.eventPosts.length === 0) {
+			const action = await getPosts();
+			dispatch(action);
+		} else {
+			this.render();
+		}
     }
 
     render() {
@@ -67,14 +35,36 @@ class Dashboard extends HTMLElement {
             `;
 
             const dashboard = this.shadowRoot.querySelector('.dashboard');
-            if(dashboard){
-                this.normalpost.forEach((post) => {
-                    dashboard.appendChild(post);
-                });
-                this.eventPost.forEach((post) => {
-                    dashboard.appendChild(post);
-                });
-            }
+            appState.normalPosts.forEach((post: any) => {
+                const postCard = this.ownerDocument.createElement('normal-post') as Post;
+
+                postCard.setAttribute(PostAttribute.uid, String(post.uid) || "");
+                postCard.setAttribute(PostAttribute.profileimg, post.profileImg || "");
+                postCard.setAttribute(PostAttribute.username, post.username || "");
+                postCard.setAttribute(PostAttribute.posttext, post.postText || "");
+                postCard.setAttribute(PostAttribute.postimg, post.postImg || "");
+                postCard.setAttribute(PostAttribute.likes, String(post.likes) || "");
+
+                dashboard?.appendChild(postCard);
+            })
+            
+            appState.eventPosts.forEach((post: any) => {
+                const postCard = this.ownerDocument.createElement('event-post-card') as EventPostCard;
+                
+                postCard.setAttribute(EventCardAttribute.uid, String(post.uid) || "");
+                postCard.setAttribute(EventCardAttribute.image, post.eventImg || "");
+                postCard.setAttribute(EventCardAttribute.eventtitle, post.eventTitle || "");
+                postCard.setAttribute(EventCardAttribute.location, post.eventLocation || "");
+                postCard.setAttribute(EventCardAttribute.date, post.eventDate || "");
+                postCard.setAttribute(EventCardAttribute.description, post.description || "");
+                postCard.setAttribute(EventCardAttribute.likes, String(post.likes) || "");
+                postCard.setAttribute(EventCardAttribute.creator, post.creator || "");
+                postCard.setAttribute(EventCardAttribute.attendants, String(post.attendants) || "");
+                postCard.setAttribute(EventCardAttribute.maxattendants, String(post.maxAttendants) || "");
+                postCard.setAttribute(EventCardAttribute.isattending, String(post.isAttending) || "");
+
+                dashboard?.appendChild(postCard);
+            });      
 
             const css = this.ownerDocument.createElement('style');
             css.innerHTML = Styles;
