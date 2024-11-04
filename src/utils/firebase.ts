@@ -42,7 +42,7 @@ export const getPosts = async () => {
 		const { db } = await getFirebaseInstance();
 		const { collection, getDocs } = await import('firebase/firestore');
 
-		const where = collection(db, 'products');
+		const where = collection(db, 'posts');
 		const querySnapshot = await getDocs(where);
 		const data: any[] = [];
 
