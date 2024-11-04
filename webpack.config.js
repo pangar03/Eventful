@@ -37,6 +37,5 @@ module.exports = {
     experiments: { topLevelAwait: true },
     optimization: {
         minimize: true,
-        minimizer: [new TerserPlugin()],
     },
 };
