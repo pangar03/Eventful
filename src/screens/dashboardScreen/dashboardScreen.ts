@@ -10,7 +10,7 @@ import "../../components/mobile_rightSidebar/mobile_rightSidebar"
 import ChatBar from "../../components/chatBar/chatBar";
 import "../../components/chatBar/chatBar";
 import { addObserver, appState, dispatch } from "../../store";
-import { getPosts } from "../../store/actions";
+import { getPostsAction } from "../../store/actions";
 
 class DashboardScreen extends HTMLElement {
     constructor() {
@@ -21,7 +21,7 @@ class DashboardScreen extends HTMLElement {
 
     async connectedCallback() {
         if(appState.normalPosts.length === 0 && appState.eventPosts.length === 0){
-            const action = await getPosts();
+            const action = await getPostsAction();
             dispatch(action);
         } else {
             this.render();
