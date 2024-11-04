@@ -15,6 +15,7 @@ export enum Actions {
     'GETPOSTS' = 'GETPOSTS',
     'OPENEVENT' = 'OPENEVENT',
 	'SETUSERCREDENTIALS' = 'SETUSERCREDENTIALS',
+    'CREATEPOST' = 'CREATEPOST',
 }
 
 export enum Screens {
@@ -22,4 +23,5 @@ export enum Screens {
     'EVENTDETAILS' = 'EVENTDETAILS',
     'REGISTER' = 'REGISTER',
     'LOGIN' = 'LOGIN',
+    'POSTCREATION' = 'POSTCREATION',
 }
