@@ -22,7 +22,7 @@ class CreateEventForm extends HTMLElement {
                         <label for="event-title">Event Title</label>
                         <input type="text" id="event-title" name="event-title" required placeholder="What is the name of the event?">
                     </div>
-                    <div>
+                    <div id="event-image-div">
                         <h3>Image</h3>
                         <label for="image">Upload an image for your new event!</label>
                         <input type="text" id="image" name="image" placeholder="URL of the image"> <!-- CHANGE AS SOON AS STORAGE ISSUE IS RESOLVED -->
