@@ -18,8 +18,10 @@ class CreateEventForm extends HTMLElement {
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
                 <form>
-                    <label for="event-title">Event Title</label>
-                    <input type="text" id="event-title" name="event-title" required placeholder="What is the name of the event?">
+                    <div id="event-title-div">
+                        <label for="event-title">Event Title</label>
+                        <input type="text" id="event-title" name="event-title" required placeholder="What is the name of the event?">
+                    </div>
                     <div>
                         <h3>Image</h3>
                         <label for="image">Upload an image for your new event!</label>
