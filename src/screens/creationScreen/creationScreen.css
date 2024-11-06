@@ -71,3 +71,8 @@ section {
     background: #535768;
     box-shadow: none;
 }
+
+.creation-form {
+    width: 100%;
+    padding: 1.2rem 1rem;
+}
