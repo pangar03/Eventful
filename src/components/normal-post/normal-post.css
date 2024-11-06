@@ -1,6 +1,11 @@
+:host{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .post-card{
-    width: 35rem;
+    width: 50vw;
     border-radius: 1rem;
     background-color: #0E0E11;
     color: whitesmoke;
