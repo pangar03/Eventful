@@ -1,4 +1,4 @@
-import { firebaseConfig } from "../../fbcg";
+import { firebaseConfig } from "../../fbcg"
 import { appState } from '../store';
 
 let db: any;
