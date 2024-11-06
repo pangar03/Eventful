@@ -38,6 +38,12 @@
     font-size: 14px; 
     color: rgba(245, 245, 245, 0.644);
 }
+#description-div{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    gap: 5px;
+}
 h3{
     margin: 0;
 }
