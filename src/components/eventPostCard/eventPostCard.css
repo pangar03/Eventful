@@ -86,6 +86,7 @@ h2 {
     background-color: #4469FE;
     border: none;
     font-size: 1.25rem;
+    cursor: pointer;
 }
 
 @media (max-width: 768px) {

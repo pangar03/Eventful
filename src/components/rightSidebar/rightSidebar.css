@@ -70,10 +70,12 @@
 .new-post-button{
     background:  linear-gradient(293deg, rgba(47,89,255,1) 0%, rgba(195,136,255,1) 100%);
     color: whitesmoke;
-    border: 0;
-    font-weight: 800;
-    padding: 8px 15px;
+    border: none;
+    font-weight: 400;
+    font-size: 1.25rem;
+    padding: 0.5rem 2.5rem;
     border-radius: 20px;
+    cursor: pointer;
 }
 .highlight-category{
     color: #DA4646;
