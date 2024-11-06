@@ -66,7 +66,8 @@ export const registerUser = async (credentials: any) => {
 
 		const where = doc(db, 'users', userCredential.user.uid);
 		const data = {
-			// Add The Extra Data Here
+			username: credentials.username,
+			profileImg: credentials.profileImg,
 		};
 
 		await setDoc(where, data);
@@ -107,3 +108,21 @@ export const signOut = async () => {
 		console.error(error);
 	});
 }
+
+export const getUser = async () => {
+	const { db, auth } = await getFirebaseInstance();
+	const {  doc, getDoc } = await import('firebase/firestore');
+	
+	console.log("USER AUTH", auth.currentUser.uid);
+	
+	const ref = doc(db, 'users', auth.currentUser.uid);
+	const querySnapshot = await getDoc(ref);
+
+	return querySnapshot.data();
+};
+
+export const getPostsByUser = async (uid: string) => {
+	const posts = await getPosts();
+
+	return posts?.filter((post: any) => post.userUID === uid);
+};

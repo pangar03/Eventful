@@ -15,6 +15,8 @@ import '../../components/mobile_rightSidebar/mobile_rightSidebar';
 
 import { addObserver } from '../../store';
 import Styles from './creationScreen.css';
+import { getPostsByUser, getUser } from '../../utils/firebase';
+import { getAuth } from 'firebase/auth';
 
 class CreationScreen extends HTMLElement {
     isEvent: boolean = false;
@@ -29,11 +31,13 @@ class CreationScreen extends HTMLElement {
         this.render();
     }
 
-    render() {
+    async render() {
+        const currentUser = await getUser();
+        const userPosts = await getPostsByUser(currentUser?.uid);
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
                 <div class="app-container">
-                    <side-bar></side-bar>
+                    <side-bar profileimg="${currentUser?.profileImg}" username="${currentUser?.username}" numpost="${userPosts?.length}"></side-bar>
                     <section>
                         <div class="header-container">
                             <h1>New Post</h1>
