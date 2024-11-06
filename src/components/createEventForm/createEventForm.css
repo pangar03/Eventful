@@ -1,12 +1,12 @@
 .create-event-form {
     width: 100%;
-    padding-top: 20px;
+    padding: 1.2rem 1rem;
     border-radius: 10px;
 }
 
 .create-event-form label {
     color: #ffffff;
-    font-size: 14px;
+    font-size: 1.4rem;
     font-weight: bold;
     display: block;
     margin-bottom: 5px;
@@ -43,11 +43,13 @@
     );
     color: #ffffff;
     border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 14px;
+    border-radius: 30px;
+    padding: 0.7rem 2.5rem;
+    margin-top: 1rem;
+    font-size: 1.2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    align-self: center;
 }
 
 .create-event-form button[type="submit"]:hover {

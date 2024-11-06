@@ -32,7 +32,7 @@ class CreationScreen extends HTMLElement {
     render() {
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
-                <div>
+                <div class="app-container">
                     <side-bar></side-bar>
                     <section>
                         <div class="header-container">

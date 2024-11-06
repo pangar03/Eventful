@@ -2,10 +2,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
 }
 
 section {
+    margin: 2.5rem 0;
     padding: 1.5rem 2rem;
     width: 45vw;
     display: flex;
