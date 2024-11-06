@@ -43,5 +43,21 @@ form input[type="text"]#image {
     margin-top: 5px;
     outline: none;
 }
+form button[type="button"],
+form button[type="submit"] {
+    background:  linear-gradient(293deg, rgba(47,89,255,1) 0%, rgba(195,136,255,1) 100%);
+    border: none;
+    color: white;
+    padding: 10px;
+    width: 30%;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 22px;
+    box-shadow: 0 5px 10px rgba(0, 168, 255, 0.3);
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
 
 
