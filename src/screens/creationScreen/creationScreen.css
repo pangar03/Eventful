@@ -82,7 +82,9 @@ section {
     background: #535768;
     box-shadow: none;
 }
-@media (min-width: 768px) {
+
+/* @media (min-width: 768px) {
+
     .switch-button {
         
         font-size: 0.8rem;
@@ -90,4 +92,4 @@ section {
         
     }
     
-}
+} */

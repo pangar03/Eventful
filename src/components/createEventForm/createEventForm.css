@@ -28,7 +28,6 @@
   }
   .create-event-form .date-time {
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 2rem;
   }
@@ -55,7 +54,7 @@ input{
     outline: none;
 }
  
-@media (min-width: 768px) {
+/* @media (min-width: 768px) {
     .create-event-form {
         width: 500px;
         margin: 0 auto;
@@ -69,7 +68,7 @@ input{
     .create-event-form .date-time .time {
         width: auto;
     }
-}
+} */
 
 
 
