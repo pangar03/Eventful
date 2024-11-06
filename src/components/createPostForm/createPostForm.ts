@@ -20,7 +20,7 @@ class CreatePostForm extends HTMLElement {
             this.shadowRoot.innerHTML = `
                 <form>
                     <label for="caption">Caption</label>
-                    <input type="text" id="caption" name="caption" required placeholder="Type here what you want to say to the world...">
+                    <textarea id="caption" name="caption" required placeholder="Type here what you want to say to the world..."></textarea>
                     <div>
                         <h3>Image</h3>
                         <label for="image">Want to post an image as well? Select the option below to add a new picture.</label>
