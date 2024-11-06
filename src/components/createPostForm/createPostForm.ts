@@ -19,7 +19,7 @@ class CreatePostForm extends HTMLElement {
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
                 <form>
-                    <label for="caption">Caption</label>
+                    <h3>Caption</h3>
                     <textarea id="caption" name="caption" required placeholder="Type here what you want to say to the world..."></textarea>
                     <div>
                         <h3>Image</h3>
