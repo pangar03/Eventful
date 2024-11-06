@@ -26,4 +26,16 @@
   .create-event-form input::placeholder {
     color: #7a7a7a;
   }
+  .create-event-form .date-time {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+  }
+ 
+  .create-event-form .date-time .date,
+  .create-event-form .date-time .time {
+    width: 48%;
+  }
+
 
