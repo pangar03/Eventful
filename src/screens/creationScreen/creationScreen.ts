@@ -90,11 +90,11 @@ class CreationScreen extends HTMLElement {
         if(formContainer){        
             if(this.isEvent){
                 formContainer.innerHTML = `
-                    <create-event-form style="display: flex;align-items: flex-start;width: 100%;"></create-event-form>
+                    <create-event-form></create-event-form>
                 `;
             } else {
                 formContainer.innerHTML = `
-                    <create-post-form style="width: 100%";></create-post-form>
+                    <create-post-form></create-post-form>
                 `;
             }
         }
