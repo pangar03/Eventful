@@ -58,6 +58,11 @@ form button[type="submit"] {
     box-shadow: 0 5px 10px rgba(0, 168, 255, 0.3);
     transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
+form button[type="button"]:hover,
+form button[type="submit"]:hover {
+    background-color: #007aff;
+    box-shadow: 0 8px 15px rgba(0, 168, 255, 0.5);
+}
 
 
 
