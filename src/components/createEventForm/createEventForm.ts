@@ -27,10 +27,14 @@ class CreateEventForm extends HTMLElement {
                         <label for="image">Upload an image for your new event!</label>
                         <input type="text" id="image" name="image" placeholder="URL of the image"> <!-- CHANGE AS SOON AS STORAGE ISSUE IS RESOLVED -->
                     </div>
-                    <label for="description">Description</label>
-                    <input type="text" id="description" name="description" required placeholder="Type here what is the event about...">
-                    <label for="location">Location</label>
-                    <input type="text" id="location" name="location" required placeholder="Where will the event take place?">
+                    <div id="description-div">
+                        <label for="description">Description</label>
+                        <input type="text" id="description" name="description" required placeholder="Type here what is the event about...">
+                    </div>
+                    <div id="location-div">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" name="location" required placeholder="Where will the event take place?">
+                    </div>
                     <div class="date-time">
                         <div class="date">
                             <label for="date">Date</label>
@@ -41,8 +45,11 @@ class CreateEventForm extends HTMLElement {
                             <input type="time" id="time" name="time" required>
                         </div>
                     </div>
-                    <label for="participants">Max. Participants</label>
-                    <input type="number" id="participants" name="participants" required placeholder="How many people can join?" min="2">
+                    <div id="participants-div">
+                        <label for="participants">Max. Participants</label>
+                        <input type="number" id="participants" name="participants" required placeholder="How many people can join?" min="2">
+                    </div>
+                    
                     <button type="submit">Publish</button>
                 </form>
             `;
