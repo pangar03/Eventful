@@ -30,4 +30,18 @@ form textarea#caption {
     line-height: 1.5;
     outline: none;
 }
+form div {
+    margin-bottom: 20px;
+}
+form input[type="text"]#image {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #1A1D27;
+    color: #f5f5f7;
+    margin-top: 5px;
+    outline: none;
+}
+
 
