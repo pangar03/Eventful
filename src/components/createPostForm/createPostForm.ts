@@ -29,7 +29,7 @@ class CreatePostForm extends HTMLElement {
                     <button type="submit">Publish</button>
                 </form>
             `;
-
+            
             const form = this.shadowRoot.querySelector('form')!;
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
@@ -37,27 +37,31 @@ class CreatePostForm extends HTMLElement {
                 const postId = new Date().getTime();
                 const caption = form.caption.value;
                 const image = form.image.files[0];
-                let imageUrl;
-                if(image) {
-                    uploadFile(image, 'postImages', String(postId));
-                    imageUrl = await getFile(String(postId), 'postImages');
-                } else {
-                    imageUrl = '';
+
+                let urlImg;
+                if (image) {
+                    await uploadFile(image, 'postImages', String(postId));
+                    urlImg = await getFile(String(postId), 'postImages');
                 }
+
+                console.log("URL", urlImg);
                 
 
-                const post = {
-                    uid: postId,
-                    isEvent: false,
-                    profileImg: "https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331256_1280.png", // CHANGE WITH USER INFO
-                    username: "Default User", // CHANGE WITH USER INFO
-                    postText: caption,
-                    postImg: String(imageUrl),
-                    likes: 0,
-                }
+                // const post = {
+                //     uid: postId,
+                //     isEvent: false,
+                //     profileImg: "https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331256_1280.png", // CHANGE WITH USER INFO
+                //     username: "Default User", // CHANGE WITH USER INFO
+                //     postText: caption,
+                //     postImg: String(await getFile(String(postId), 'postImages')),
+                //     likes: 0,
+                // };
 
-                await addPost(post);
-                dispatch(navigate(Screens.DASHBOARD));
+                // console.log(post);
+                
+
+                // await addPost(post);
+                // dispatch(navigate(Screens.DASHBOARD));
             });
 
             const css = this.ownerDocument.createElement('style');

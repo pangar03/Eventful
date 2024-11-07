@@ -135,7 +135,7 @@ export const uploadFile = async (file: File, dir: string, id: string) => {
 	const { ref, uploadBytes } = await import('firebase/storage');
 
 	const storageRef = ref(storage, `${dir}/${id}`);
-	uploadBytes(storageRef, file).then((snapshot) => {
+	await uploadBytes(storageRef, file).then((snapshot) => {
 		console.log('File uploaded');
 	});
 };
