@@ -2,7 +2,7 @@ import "./screens/dashboardScreen/dashboardScreen";
 import "./screens/eventDetailsScreen/eventDetailsScreen"
 import "./screens/registerScreen/registerScreen";
 import "./screens/loginScreen/loginScreen";
-
+import "./screens/creationScreen/creationScreen";
 
 import { appState, addObserver } from "./store";
 import { Screens } from "./types/store";
@@ -40,6 +40,11 @@ class AppContainer extends HTMLElement {
                 case Screens.LOGIN:
                     const login = this.ownerDocument.createElement('login-screen');
                     this.shadowRoot.appendChild(login);
+                    break;
+                
+                case Screens.POSTCREATION:
+                    const creationScreen = this.ownerDocument.createElement('creation-screen');
+                    this.shadowRoot.appendChild(creationScreen);
                     break;
                 
                 default:

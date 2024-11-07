@@ -21,7 +21,7 @@ class LoginForm extends HTMLElement {
                 <form id="login-form">
                     <h1 id="title-desktop">LOGIN</h1>
                     <h1 id="title-mobile">Login</h1>
-                    <h3>Get back to where you let if</h3>
+                    <h3>Get back to where you left it</h3>
                     <section id="input-container">
                         
                         <label for="email">Email</label>

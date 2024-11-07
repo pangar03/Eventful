@@ -49,11 +49,10 @@ class RegisterForm extends HTMLElement {
                     alert('Passwords do not match');
                     return;
                 }
-                const credentials = {username, email, password};
+                const credentials = {username, email, password, profileImg: 'https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331256_1280.png'};
                 const result = await registerUser(credentials);
                 if(result){
                     alert('User registered successfully');
-                    dispatch(navigate(Screens.LOGIN));
                 } else {
                     alert('Error registering user');
                 }

@@ -4,6 +4,7 @@
     width: 100%;
     height: auto;
     gap: 10px;
+    cursor: pointer;
 }
 .profileimg {
     height: 1.5rem;

@@ -9,7 +9,7 @@ import { posts } from '../../data/data';
 import Styles from './dashboard.css';
 
 import { addObserver, appState } from "../../store";
-import { getPosts } from "../../store/actions";
+import { getPostsAction } from "../../store/actions";
 import { dispatch } from "../../store";
 
 class Dashboard extends HTMLElement {
@@ -21,7 +21,7 @@ class Dashboard extends HTMLElement {
 
     async connectedCallback() {
         if (appState.normalPosts.length === 0 && appState.eventPosts.length === 0) {
-			const action = await getPosts();
+			const action = await getPostsAction();
 			dispatch(action);
 		} else {
 			this.render();

@@ -1,6 +1,9 @@
 import styles from './rightSidebar.css';
 import CategoryButton, { Attribute as CategoryAttribute } from '../category/category';
 import { signOut } from '../../utils/firebase';
+import { navigate } from '../../store/actions';
+import { dispatch } from '../../store';
+import { Screens } from '../../types/store';
 
 export enum Attribute {
     'profileimg' = 'profileimg',
@@ -54,10 +57,6 @@ class sideBar extends HTMLElement {
                             <p>${this.numpost}</p>
                             <p id="text-opacity">Posts</p>
                         </div>
-                        <div class="div-cont">
-                            <p>${this.friends}</p>
-                            <p id="text-opacity">Friends</p>
-                        </div>
                     </div>
                     <button class="new-post-button">+ New</button>
                 </div>
@@ -89,6 +88,27 @@ class sideBar extends HTMLElement {
             });
 
             // Event listeners
+            const newButton = this.shadowRoot.querySelector('.new-post-button');
+            newButton?.addEventListener('click', () => {
+                console.log('New Post');
+                dispatch(navigate(Screens.POSTCREATION));
+            });
+
+            const home = this.shadowRoot.querySelector('.home');
+            home?.addEventListener('click', () => {
+                console.log('Home');
+                dispatch(navigate(Screens.DASHBOARD));
+            });
+
+            const events = this.shadowRoot.querySelector('.events');
+            events?.addEventListener('click', () => {
+                console.log('Events');
+            });
+
+            const profile = this.shadowRoot.querySelector('.profile');
+            profile?.addEventListener('click', () => {
+                console.log('Profile');
+            });
 
             const logout = this.shadowRoot.querySelector('.logout');
             logout?.addEventListener('click', () => {
