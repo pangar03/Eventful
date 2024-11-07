@@ -1,5 +1,5 @@
 import { dispatch } from '../../store';
-import { navigate } from '../../store/actions';
+import { getPostsAction, navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
 import { addPost, getFile, uploadFile } from '../../utils/firebase';
 import Styles from './createEventForm.css';
@@ -61,9 +61,12 @@ class CreateEventForm extends HTMLElement {
                 const postId = new Date().getTime();
                 const title = form['event-title'].value;
                 const image = form.image.files[0];
-                if(image) uploadFile(image, 'eventImages', String(postId));
                 
-                const imageUrl = await getFile(String(postId), 'eventImages');
+                let urlImg;
+                if (image) {
+                    await uploadFile(image, 'eventImages', String(postId));
+                    urlImg = await getFile(String(postId), 'eventImages');
+                }
                 
                 const description = form.description.value;
                 const location = form.location.value;
@@ -79,12 +82,14 @@ class CreateEventForm extends HTMLElement {
                     eventDate: `${date} ${time}`,
                     description,
                     creator: "Default User",
-                    eventImg: String(imageUrl),
+                    eventImg: String(urlImg),
                     attendants: 0,
                     maxAttendants: participants,                    
                 }
 
                 await addPost(post);
+                const action = await getPostsAction();
+                dispatch(action);
                 dispatch(navigate(Screens.DASHBOARD));
             });
 

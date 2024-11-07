@@ -1,7 +1,7 @@
 import Styles from './createPostForm.css';
 
 import { dispatch } from '../../store';
-import { navigate } from '../../store/actions';
+import { getPostsAction, navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
 import { addPost, getFile, uploadFile } from '../../utils/firebase';
 
@@ -44,24 +44,23 @@ class CreatePostForm extends HTMLElement {
                     urlImg = await getFile(String(postId), 'postImages');
                 }
 
-                console.log("URL", urlImg);
+                const post = {
+                    uid: postId,
+                    isEvent: false,
+                    profileImg: "https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331256_1280.png", // CHANGE WITH USER INFO
+                    username: "Default User", // CHANGE WITH USER INFO
+                    postText: caption,
+                    postImg: String(await getFile(String(postId), 'postImages')),
+                    likes: 0,
+                };
+
+                console.log(post);
                 
 
-                // const post = {
-                //     uid: postId,
-                //     isEvent: false,
-                //     profileImg: "https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331256_1280.png", // CHANGE WITH USER INFO
-                //     username: "Default User", // CHANGE WITH USER INFO
-                //     postText: caption,
-                //     postImg: String(await getFile(String(postId), 'postImages')),
-                //     likes: 0,
-                // };
-
-                // console.log(post);
-                
-
-                // await addPost(post);
-                // dispatch(navigate(Screens.DASHBOARD));
+                await addPost(post);
+                const action = await getPostsAction();
+                dispatch(action);
+                dispatch(navigate(Screens.DASHBOARD));
             });
 
             const css = this.ownerDocument.createElement('style');
