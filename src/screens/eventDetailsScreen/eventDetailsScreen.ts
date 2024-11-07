@@ -11,6 +11,7 @@ import EventPageDetails, { Attribute as EventDetailsAttribute} from "../../compo
 import "../../components/eventPageDetails/eventPageDetails"
 
 import { addObserver, appState } from "../../store";
+import { getPostsByUser, getUser } from "../../utils/firebase";
 
 class EventDetailsScreen extends HTMLElement {
     eventId: number = appState.eventUID;
@@ -25,11 +26,13 @@ class EventDetailsScreen extends HTMLElement {
         this.render();
     }
 
-    render() {
+    async render() {
+        const currentUser = await getUser();
+        const userPosts = await getPostsByUser(currentUser?.uid);
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
                 <div class="app-container">
-                    <side-bar></side-bar>
+                    <side-bar profileimg="${currentUser?.profileImg}" username="${currentUser?.username}" numpost="${userPosts?.length}"></side-bar>
                     <div id="event-details"></div>
                     <chat-bar></chat-bar>
                 </div>

@@ -11,6 +11,7 @@ import ChatBar from "../../components/chatBar/chatBar";
 import "../../components/chatBar/chatBar";
 import { addObserver, appState, dispatch } from "../../store";
 import { getPostsAction } from "../../store/actions";
+import { getPostsByUser, getUser } from "../../utils/firebase";
 
 class DashboardScreen extends HTMLElement {
     constructor() {
@@ -28,11 +29,13 @@ class DashboardScreen extends HTMLElement {
         }
     }
 
-    render() {
+    async render() {
+        const currentUser = await getUser();
+        const userPosts = await getPostsByUser(currentUser?.uid);
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
                 <div>
-                    <side-bar></side-bar>
+                    <side-bar profileimg="${currentUser?.profileImg}" username="${currentUser?.username}" numpost="${userPosts?.length}"></side-bar>
                     <dashboard-component></dashboard-component>
                     <chat-bar></chat-bar>
                 </div>

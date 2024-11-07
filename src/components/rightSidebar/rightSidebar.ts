@@ -57,10 +57,6 @@ class sideBar extends HTMLElement {
                             <p>${this.numpost}</p>
                             <p id="text-opacity">Posts</p>
                         </div>
-                        <div class="div-cont">
-                            <p>${this.friends}</p>
-                            <p id="text-opacity">Friends</p>
-                        </div>
                     </div>
                     <button class="new-post-button">+ New</button>
                 </div>
