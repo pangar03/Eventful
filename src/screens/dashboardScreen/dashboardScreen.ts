@@ -30,7 +30,7 @@ class DashboardScreen extends HTMLElement {
     }
 
     async render() {
-        const currentUser = await getUser();
+        const currentUser = await getUser(appState.user);
         const userPosts = await getPostsByUser(currentUser?.uid);
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `

@@ -1,5 +1,7 @@
+import { collection } from "firebase/firestore";
 import { firebaseConfig } from "../../fbcg"
 import { appState } from '../store';
+import { Attribute } from "../components/eventPageDetails/eventPageDetails";
 
 let db: any;
 let auth: any;
@@ -50,7 +52,7 @@ export const getPosts = async () => {
 		const data: any[] = [];
 
 		querySnapshot.forEach((doc: any) => {
-			data.push(doc.data());
+			data.push({...doc.data(), firebaseID: doc.id});
 		});
 
 		return data;
@@ -110,15 +112,13 @@ export const signOut = async () => {
 	}).catch((error: any) => {
 		console.error(error);
 	});
-}
+};
 
-export const getUser = async () => {
+export const getUser = async (uid: string) => {
 	const { db, auth } = await getFirebaseInstance();
 	const {  doc, getDoc } = await import('firebase/firestore');
 	
-	console.log("USER AUTH", auth.currentUser.uid);
-	
-	const ref = doc(db, 'users', auth.currentUser.uid);
+	const ref = doc(db, 'users', uid);
 	const querySnapshot = await getDoc(ref);
 
 	return querySnapshot.data();
@@ -128,6 +128,35 @@ export const getPostsByUser = async (uid: string) => {
 	const posts = await getPosts();
 
 	return posts?.filter((post: any) => post.userUID === uid);
+};
+
+export const interactPost = async (uid: string, attribute: string, value: any) => {
+	try {
+		const { db } = await getFirebaseInstance();
+		const { updateDoc, doc } = await import('firebase/firestore');
+
+		const where = doc(db, 'posts', uid);
+
+		await updateDoc(where, {
+			[attribute]: value,
+		});
+		
+		console.log('Se añadió con exito');
+	} catch (error) {
+		console.error('Error adding document', error);
+	}
+};
+
+export const getPostById = async (uid: string) => {
+	const { db, auth } = await getFirebaseInstance();
+	const {  doc, getDoc } = await import('firebase/firestore');
+	
+	const ref = doc(db, 'posts', uid);
+	const querySnapshot = await getDoc(ref);
+
+	const data = querySnapshot.data();
+
+	return data;
 };
 
 export const uploadFile = async (file: File, dir: string, id: string) => {

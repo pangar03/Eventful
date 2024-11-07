@@ -10,6 +10,8 @@ export const navigate = (screen: string) => {
 
 export const getPostsAction = async () => {
     const data = await getPosts();
+    console.log("DATA", data);
+    
     return {
         action: Actions.GETPOSTS,
         payload: data,

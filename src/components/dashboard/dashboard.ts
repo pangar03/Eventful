@@ -38,7 +38,7 @@ class Dashboard extends HTMLElement {
             appState.normalPosts.forEach((post: any) => {
                 const postCard = this.ownerDocument.createElement('normal-post') as Post;
 
-                postCard.setAttribute(PostAttribute.uid, String(post.uid) || "");
+                postCard.setAttribute(PostAttribute.uid, String(post.firebaseID) || "");
                 postCard.setAttribute(PostAttribute.profileimg, post.profileImg || "");
                 postCard.setAttribute(PostAttribute.username, post.username || "");
                 postCard.setAttribute(PostAttribute.posttext, post.postText || "");
@@ -51,17 +51,12 @@ class Dashboard extends HTMLElement {
             appState.eventPosts.forEach((post: any) => {
                 const postCard = this.ownerDocument.createElement('event-post-card') as EventPostCard;
                 
-                postCard.setAttribute(EventCardAttribute.uid, String(post.uid) || "");
+                postCard.setAttribute(EventCardAttribute.uid, String(post.firebaseID) || "");
                 postCard.setAttribute(EventCardAttribute.image, post.eventImg || "");
                 postCard.setAttribute(EventCardAttribute.eventtitle, post.eventTitle || "");
                 postCard.setAttribute(EventCardAttribute.location, post.eventLocation || "");
                 postCard.setAttribute(EventCardAttribute.date, post.eventDate || "");
                 postCard.setAttribute(EventCardAttribute.description, post.description || "");
-                postCard.setAttribute(EventCardAttribute.likes, String(post.likes) || "");
-                postCard.setAttribute(EventCardAttribute.creator, post.creator || "");
-                postCard.setAttribute(EventCardAttribute.attendants, String(post.attendants) || "");
-                postCard.setAttribute(EventCardAttribute.maxattendants, String(post.maxAttendants) || "");
-                postCard.setAttribute(EventCardAttribute.isattending, String(post.isAttending) || "");
 
                 dashboard?.appendChild(postCard);
             });      

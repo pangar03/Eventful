@@ -13,7 +13,7 @@ import '../../components/chatBar/chatBar';
 import MobileBar from '../../components/mobile_rightSidebar/mobile_rightSidebar';
 import '../../components/mobile_rightSidebar/mobile_rightSidebar';
 
-import { addObserver } from '../../store';
+import { addObserver, appState } from '../../store';
 import Styles from './creationScreen.css';
 import { getPostsByUser, getUser } from '../../utils/firebase';
 import { getAuth } from 'firebase/auth';
@@ -32,7 +32,7 @@ class CreationScreen extends HTMLElement {
     }
 
     async render() {
-        const currentUser = await getUser();
+        const currentUser = await getUser(appState.user);
         const userPosts = await getPostsByUser(currentUser?.uid);
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `

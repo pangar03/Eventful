@@ -1,24 +1,26 @@
+import { appState } from '../../store';
+import { getPostById, interactPost } from '../../utils/firebase';
 import Styles from './eventPageDetails.css';
 
 export enum Attribute {
+    "uid" = "uid",
     "image" = "image",
     "eventtitle" = "eventtitle",
     "location" = "location",
     "date" = "date",
     "creator" = "creator",
-    "attendants" = "attendants",
     "maxattendants" = "maxattendants",
     "description" = "description",
-    "isattending" = "isattending",
 }
 
 class EventPageDetails extends HTMLElement {
+    eventData?: any;
+    uid?: number;
     image?: string;
     eventtitle?: string;
     location?: string;
     date?: string;
     creator?: string;
-    attendants?: number;
     maxattendants?: number;
     description?: string;
     isattending?: boolean;
@@ -34,27 +36,25 @@ class EventPageDetails extends HTMLElement {
 
     attributeChangedCallback(propName: Attribute, oldValue: string | undefined, newValue: string | undefined){
         switch(propName){
-            case Attribute.attendants:
-                this.attendants = newValue ? Number(newValue) : undefined;
-                break;
-            
             case Attribute.maxattendants:
                 this.maxattendants = newValue ? Number(newValue) : undefined;
                 break;
             
-            case Attribute.isattending:
-                this.isattending = newValue ? Boolean(newValue) : undefined;
+            case Attribute.uid:
+                this.uid = newValue ? Number(newValue) : undefined;
                 break;
 
             default:
                 this[propName] = newValue;
                 break;
         }
-
-        this.render();
     }
-
-    connectedCallback() {
+    
+    async connectedCallback() {
+        this.eventData = await getPostById(String(this.uid)!);
+        this.eventData.attendants.find((attendant: any) => attendant.uid === appState.user) ? this.isattending = true : this.isattending = false;
+        
+        console.log(this.isattending);
         this.render();
     }
 
@@ -74,7 +74,7 @@ class EventPageDetails extends HTMLElement {
                             <h2>Creator</h2>
                             <h3 class="info__text">${this.creator}</h3>
                             <h2>Attendants</h2>
-                            <h3 class="attendants info__text">${this.attendants}/${this.maxattendants}</h3>
+                            <h3 class="attendants info__text">${this.eventData.attendants.length}/${this.maxattendants}</h3>
                         </div>
                     </div>
                     <div class="event-page__description">
@@ -100,9 +100,10 @@ class EventPageDetails extends HTMLElement {
             cancelButton.textContent = 'Cancel Attendance';
             cancelButton.classList.add('event-page__button');
             cancelButton.classList.add('button-cancel');
-            cancelButton.addEventListener('click', () => {
+            cancelButton.addEventListener('click', async () => {
                 if(this.isattending){
-                    this.attendants = this.attendants ? this.attendants - 1 : undefined;
+                    this.eventData.attendants = this.eventData.attendants.filter((attendant: any) => attendant !== appState.user);
+                    await interactPost(String(this.uid), "attendants", this.eventData.attendants);
                     this.changeStatus();
                 }
             });
@@ -114,8 +115,8 @@ class EventPageDetails extends HTMLElement {
             confirmButton.classList.add('button-confirm');
             confirmButton.addEventListener('click', () => {
                 if(!this.isattending){
-                    if(this.attendants && this.maxattendants && this.attendants < this.maxattendants){
-                        this.attendants = this.attendants + 1;
+                    if(this.maxattendants && this.eventData.attendants.length < this.maxattendants){
+                        this.eventData.attendants.push(appState.user);
                         this.changeStatus();
                     }
                 }
@@ -145,7 +146,7 @@ class EventPageDetails extends HTMLElement {
 
     changeAttendants(){
         if(this.shadowRoot?.querySelector('.attendants')){
-            this.shadowRoot.querySelector('.attendants')!.textContent = `${this.attendants}/${this.maxattendants}`;
+            this.shadowRoot.querySelector('.attendants')!.textContent = `${this.eventData.attendants.length}/${this.maxattendants}`;
         }    
     }
 }
