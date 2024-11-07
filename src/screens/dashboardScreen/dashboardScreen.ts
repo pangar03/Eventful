@@ -17,7 +17,7 @@ class DashboardScreen extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
-        // addObserver(this);
+        addObserver(this);
     }
 
     async connectedCallback() {
