@@ -13,17 +13,17 @@
     font-size: 1.4rem;
     font-weight: bold;
     display: block;
-    margin-bottom: 5px;
+    margin-bottom: 0.4px;
 }
 .create-event-form input {
     background-color: #1a1d27;
     border: none;
     border-radius: 5px;
     color: #ffffff;
-    padding: 10px;
+    padding: 0.7rem;
     font-size: 14px;
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 1.1px;
 }
 
 .create-event-form input::placeholder {
@@ -40,11 +40,7 @@
     width: 48%;
 }
 .create-event-form button[type="submit"] {
-    background: linear-gradient(
-        293deg,
-        rgba(47, 89, 255, 1) 0%,
-        rgba(195, 136, 255, 1) 100%
-    );
+    background: linear-gradient(293deg,rgba(47, 89, 255, 1) 0%,rgba(195, 136, 255, 1) 100%);
     color: #ffffff;
     border: none;
     border-radius: 30px;
@@ -63,18 +59,4 @@ input {
     outline: none;
 }
 
-/* @media (min-width: 768px) {
-    .create-event-form {
-        width: 500px;
-        margin: 0 auto;
-    }
 
-    .create-event-form .date-time {
-        gap: 1rem;
-    }
-
-    .create-event-form .date-time .date,
-    .create-event-form .date-time .time {
-        width: auto;
-    }
-} */
