@@ -7,10 +7,12 @@ export enum Attribute {
     "postimg" = "postimg",
     "likes" = "likes",
     "isliked" = "isliked",
+    "firebaseid" = "firebaseid",
 }
 
 class Post extends HTMLElement {
-    uid?: number;
+    uid?: string;
+    firebaseid?: string;
     profileimg?: string;
     username?: string;
     posttext?: string;
@@ -29,10 +31,6 @@ class Post extends HTMLElement {
 
     attributeChangedCallback(propName: Attribute, oldValue: string | undefined, newValue: string | undefined ) {
         switch (propName) {
-            case Attribute.uid:
-                this[propName] = newValue ? Number(newValue) : undefined;
-                break;
-
             case Attribute.likes:
                 this[propName] = newValue ? Number(newValue) : 0;
                 break;

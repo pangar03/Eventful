@@ -38,7 +38,7 @@ class Dashboard extends HTMLElement {
             appState.normalPosts.forEach((post: any) => {
                 const postCard = this.ownerDocument.createElement('normal-post') as Post;
 
-                postCard.setAttribute(PostAttribute.uid, String(post.firebaseID) || "");
+                postCard.setAttribute(PostAttribute.uid, String(post.uid) || "");
                 postCard.setAttribute(PostAttribute.profileimg, post.profileImg || "");
                 postCard.setAttribute(PostAttribute.username, post.username || "");
                 postCard.setAttribute(PostAttribute.posttext, post.postText || "");
@@ -51,7 +51,7 @@ class Dashboard extends HTMLElement {
             appState.eventPosts.forEach((post: any) => {
                 const postCard = this.ownerDocument.createElement('event-post-card') as EventPostCard;
                 
-                postCard.setAttribute(EventCardAttribute.uid, String(post.firebaseID) || "");
+                postCard.setAttribute(EventCardAttribute.uid, String(post.uid) || "");
                 postCard.setAttribute(EventCardAttribute.image, post.eventImg || "");
                 postCard.setAttribute(EventCardAttribute.eventtitle, post.eventTitle || "");
                 postCard.setAttribute(EventCardAttribute.location, post.eventLocation || "");

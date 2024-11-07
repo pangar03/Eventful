@@ -18,7 +18,7 @@ export const getPostsAction = async () => {
     }
 };
 
-export const openEvent = (uid: number) => {
+export const openEvent = (uid: string) => {
     return {
         action: Actions.OPENEVENT,
         payload: uid,

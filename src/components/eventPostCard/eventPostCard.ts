@@ -10,15 +10,17 @@ export enum Attribute {
     "location" = "location",
     "date" = "date",
     "description" = "description",
+    "firebaseid" = "firebaseid",
 }
 
 class EventPostCard extends HTMLElement {
-    uid?: number;
+    uid?: string;
     image?: string;
     eventtitle?: string;
     location?: string;
     date?: string;
     description?: string;
+    firebaseid?: string;
 
     constructor() {
         super();
@@ -35,10 +37,6 @@ class EventPostCard extends HTMLElement {
         newValue: string | undefined
     ) {
         switch (propName) {
-            case Attribute.uid:
-                this[propName] = newValue ? Number(newValue) : undefined;
-                break;
-
             default:
                 this[propName] = newValue;
                 break;

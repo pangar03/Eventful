@@ -19,6 +19,7 @@ export const reducer = (currentAction: any, currentState: any) => {
 		case Actions.GETPOSTS:
             const normalPosts = payload.filter((post: any) => !post.isEvent);
             const eventPosts = payload.filter((post: any) => post.isEvent);
+			console.log("POSTS", normalPosts, eventPosts);
 			return {
 				...currentState,
 				normalPosts,

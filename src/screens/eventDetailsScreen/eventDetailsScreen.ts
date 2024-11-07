@@ -14,7 +14,7 @@ import { addObserver, appState } from "../../store";
 import { getPostsByUser, getUser } from "../../utils/firebase";
 
 class EventDetailsScreen extends HTMLElement {
-    eventId: number = appState.eventUID;
+    eventId: number = Number(appState.eventUID);
 
     constructor() {
         super();
@@ -44,9 +44,11 @@ class EventDetailsScreen extends HTMLElement {
             const eventDetails = this.shadowRoot.querySelector('#event-details')!;
 
             const event = appState.eventPosts.find((event: any)  => event.uid === this.eventId);
+            console.log("Event", event);
 
             const eventDetailsComponent = document.createElement('event-page-details') as EventPageDetails;
             eventDetailsComponent.setAttribute(EventDetailsAttribute.uid, String(this.eventId) || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.firebaseid, String(event?.firebaseid) || "");
             eventDetailsComponent.setAttribute(EventDetailsAttribute.image, event?.eventImg || "");
             eventDetailsComponent.setAttribute(EventDetailsAttribute.eventtitle, event?.eventTitle || "");
             eventDetailsComponent.setAttribute(EventDetailsAttribute.location, event?.eventLocation || "");

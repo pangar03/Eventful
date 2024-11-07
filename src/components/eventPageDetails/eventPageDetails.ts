@@ -11,6 +11,7 @@ export enum Attribute {
     "creator" = "creator",
     "maxattendants" = "maxattendants",
     "description" = "description",
+    "firebaseid" = "firebaseid",
 }
 
 class EventPageDetails extends HTMLElement {
@@ -24,6 +25,7 @@ class EventPageDetails extends HTMLElement {
     maxattendants?: number;
     description?: string;
     isattending?: boolean;
+    firebaseid?: string;
     
     constructor() {
         super();
@@ -51,10 +53,16 @@ class EventPageDetails extends HTMLElement {
     }
     
     async connectedCallback() {
-        this.eventData = await getPostById(String(this.uid)!);
-        this.eventData.attendants.find((attendant: any) => attendant.uid === appState.user) ? this.isattending = true : this.isattending = false;
+        console.log("firebaseid", this.firebaseid);
+        
+        this.eventData = appState.eventPosts.find((event: any)  => event.uid === this.uid);
+        console.log("Event Data", this.eventData);
+        this.eventData.attendants.find((attendant: any) => attendant.uid === String(appState.user)) ? this.isattending = true : this.isattending = false;
+        
         
         console.log(this.isattending);
+
+
         this.render();
     }
 
@@ -103,7 +111,9 @@ class EventPageDetails extends HTMLElement {
             cancelButton.addEventListener('click', async () => {
                 if(this.isattending){
                     this.eventData.attendants = this.eventData.attendants.filter((attendant: any) => attendant !== appState.user);
-                    await interactPost(String(this.uid), "attendants", this.eventData.attendants);
+                    console.log("FIREBASEID", this.firebaseid);
+                    console.log("ATTENDANTS", this.eventData.attendants);
+                    await interactPost(this.firebaseid!, "attendants", this.eventData.attendants);
                     this.changeStatus();
                 }
             });
@@ -113,10 +123,11 @@ class EventPageDetails extends HTMLElement {
             confirmButton.textContent = 'Confirm Attendance';
             confirmButton.classList.add('event-page__button');
             confirmButton.classList.add('button-confirm');
-            confirmButton.addEventListener('click', () => {
+            confirmButton.addEventListener('click', async () => {
                 if(!this.isattending){
                     if(this.maxattendants && this.eventData.attendants.length < this.maxattendants){
                         this.eventData.attendants.push(appState.user);
+                        await interactPost(this.firebaseid!, "attendants", this.eventData.attendants);
                         this.changeStatus();
                     }
                 }
