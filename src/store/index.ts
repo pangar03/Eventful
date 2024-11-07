@@ -18,9 +18,8 @@ const onAuth = async () => {
 	const { auth } = await getFirebaseInstance();
 	onAuthStateChanged(auth, (user) => {
 		if (user) {
-			user.uid !== null ? dispatch(setUserCredentials(user.uid)) : ''; //Es la que se encarga de guardar el id del usuario
-			console.log("User is logged in");            
-            dispatch(navigate(Screens.DASHBOARD)); //Esta es la de navegar a dashboard
+			user.uid !== null ? dispatch(setUserCredentials(user.uid)) : '';
+            dispatch(navigate(Screens.DASHBOARD));
 		} else {
 			dispatch(navigate(Screens.LOGIN));
 		}

@@ -1,9 +1,9 @@
 import Styles from './createPostForm.css';
 
 import { dispatch } from '../../store';
-import { navigate } from '../../store/actions';
+import { getPostsAction, navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
-import { addPost } from '../../utils/firebase';
+import { addPost, getFile, uploadFile } from '../../utils/firebase';
 
 class CreatePostForm extends HTMLElement {
     constructor() {
@@ -15,7 +15,7 @@ class CreatePostForm extends HTMLElement {
         this.render();
     }
 
-    render() {
+    async render() {
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
                 <form>
@@ -24,30 +24,42 @@ class CreatePostForm extends HTMLElement {
                     <div>
                         <h3>Image</h3>
                         <label for="image">Want to post an image as well? Select the option below to add a new picture.</label>
-                        <input type="text" id="image" name="image" placeholder="URL of the image"> <!-- CHANGE AS SOON AS STORAGE ISSUE IS RESOLVED -->
+                        <input type="file" id="image" name="image"> <!-- CHANGE AS SOON AS STORAGE ISSUE IS RESOLVED -->
                     </div>
                     <button type="submit">Publish</button>
                 </form>
             `;
-
+            
             const form = this.shadowRoot.querySelector('form')!;
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
+                const postId = new Date().getTime();
                 const caption = form.caption.value;
-                const image = form.image.value;
+                const image = form.image.files[0];
+
+                let urlImg;
+                if (image) {
+                    await uploadFile(image, 'postImages', String(postId));
+                    urlImg = await getFile(String(postId), 'postImages');
+                }
 
                 const post = {
-                    uid: new Date().getTime(),
+                    uid: postId,
                     isEvent: false,
                     profileImg: "https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331256_1280.png", // CHANGE WITH USER INFO
                     username: "Default User", // CHANGE WITH USER INFO
                     postText: caption,
-                    postImg: image,
+                    postImg: String(await getFile(String(postId), 'postImages')),
                     likes: 0,
-                }
+                };
+
+                console.log(post);
+                
 
                 await addPost(post);
+                const action = await getPostsAction();
+                dispatch(action);
                 dispatch(navigate(Screens.DASHBOARD));
             });
 

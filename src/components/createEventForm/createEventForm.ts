@@ -1,7 +1,7 @@
 import { dispatch } from '../../store';
-import { navigate } from '../../store/actions';
+import { getPostsAction, navigate } from '../../store/actions';
 import { Screens } from '../../types/store';
-import { addPost } from '../../utils/firebase';
+import { addPost, getFile, uploadFile } from '../../utils/firebase';
 import Styles from './createEventForm.css';
 
 class CreateEventForm extends HTMLElement {
@@ -25,7 +25,7 @@ class CreateEventForm extends HTMLElement {
                     <div id="event-image-div">
                         <h3>Image</h3>
                         <label for="image">Upload an image for your new event!</label>
-                        <input type="text" id="image" name="image" placeholder="URL of the image"> <!-- CHANGE AS SOON AS STORAGE ISSUE IS RESOLVED -->
+                        <input type="file" id="image" name="image"> <!-- CHANGE AS SOON AS STORAGE ISSUE IS RESOLVED -->
                     </div>
                     <div id="description-div">
                         <label for="description">Description</label>
@@ -58,8 +58,16 @@ class CreateEventForm extends HTMLElement {
             form.addEventListener('submit', async (e) => {
                 e.preventDefault();
 
+                const postId = new Date().getTime();
                 const title = form['event-title'].value;
-                const image = form.image.value;
+                const image = form.image.files[0];
+                
+                let urlImg;
+                if (image) {
+                    await uploadFile(image, 'eventImages', String(postId));
+                    urlImg = await getFile(String(postId), 'eventImages');
+                }
+                
                 const description = form.description.value;
                 const location = form.location.value;
                 const date = form.date.value;
@@ -67,20 +75,21 @@ class CreateEventForm extends HTMLElement {
                 const participants = form.participants.value;
 
                 const post = {
-                    uid: new Date().getTime(),
+                    uid: postId,
                     isEvent: true,
-                    attendees: [],
                     eventTitle: title,
                     eventLocation: location,
                     eventDate: `${date} ${time}`,
                     description,
                     creator: "Default User",
-                    eventImg: image,
+                    eventImg: String(urlImg),
                     attendants: 0,
                     maxAttendants: participants,                    
                 }
 
                 await addPost(post);
+                const action = await getPostsAction();
+                dispatch(action);
                 dispatch(navigate(Screens.DASHBOARD));
             });
 
