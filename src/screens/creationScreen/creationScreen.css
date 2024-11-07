@@ -76,6 +76,7 @@ section {
     width: 100%;
     padding: 1.2rem 1rem;
 }
+
 @media (max-width: 768px) {
     .switch-button {
         font-size: 1rem;
@@ -83,10 +84,20 @@ section {
     .section{
         width: 10rem;
         position: absolute;
+        padding: 1rem;
+   
     }
     #mobile-bar{
         width: 40vw;
         position: absolute;
         margin-left: -28rem;
     }
+    .post-options {
+        gap: 1rem;
+        width: 90%;
+    }
+    .switch-button {
+        width: 70%;
+    }
 }
+
