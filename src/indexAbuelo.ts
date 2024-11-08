@@ -48,6 +48,11 @@ class AppContainer extends HTMLElement {
                     this.shadowRoot.appendChild(creationScreen);
                     break;
                 
+                case Screens.PROFILE:
+                    const profile = this.ownerDocument.createElement('profile-screen');
+                    this.shadowRoot.appendChild(profile);
+                    break;
+                
                 default:
                     break;
             }
