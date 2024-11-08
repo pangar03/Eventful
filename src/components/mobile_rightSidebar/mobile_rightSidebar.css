@@ -1,0 +1,33 @@
+.mobile-container-right {
+    display: none;
+}
+
+.category-container {
+    padding-top: 1rem;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    background-color: #16181A;
+    box-shadow: 0px 0px 22.1px 0 rgba(192, 204, 251, 0.4);
+}
+
+.add-icon {
+    border: 2px solid;
+    border-radius: 40px;
+    border-image-source: linear-gradient(45deg, rgba(195,136,255,1) 0%, rgba(47,89,255,1) 100%);
+    border-image-slice: 1;
+}
+
+img {
+    width: 48px;
+    height: 48px;
+}
+
+@media (max-width: 768px) {
+    .mobile-container-right {
+        display: flex;
+        width: 100vw;
+        position: fixed;
+        bottom: 0;
+    }
+}
