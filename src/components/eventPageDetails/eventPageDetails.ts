@@ -57,7 +57,12 @@ class EventPageDetails extends HTMLElement {
         
         this.eventData = appState.eventPosts.find((event: any)  => event.uid === this.uid);
         console.log("Event Data", this.eventData);
-        this.eventData.attendants.find((attendant: any) => attendant.uid === String(appState.user)) ? this.isattending = true : this.isattending = false;
+        this.eventData.attendants.find((attendant: any) => {
+            console.log("ATTENDANT", attendant);
+            console.log("USER", appState.user);
+            attendant === String(appState.user) ? this.isattending = true : this.isattending = false;
+            console.log("ISATTENDING", this.isattending);
+        });
         
         
         console.log(this.isattending);
@@ -135,6 +140,7 @@ class EventPageDetails extends HTMLElement {
                 }
             });
 
+            console.log(this.isattending);
             this.isattending ? cancelButton.classList.add('button-cancel--active') : confirmButton.classList.add('button-confirm--active');
 
             // Buttons Container
