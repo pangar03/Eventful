@@ -78,19 +78,19 @@ section {
 }
 
 @media (max-width: 768px) {
+
     .switch-button {
         font-size: 1rem;
     }
-    .section{
-        width: 10rem;
-        position: absolute;
+    section{
+        width: 75%;
         padding: 1rem;
+        margin-left: 9%;
    
     }
     #mobile-bar{
-        width: 40vw;
+        width: 100%;
         position: absolute;
-        margin-left: -28rem;
     }
     .post-options {
         gap: 1rem;
