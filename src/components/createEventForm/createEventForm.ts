@@ -18,7 +18,8 @@ class CreateEventForm extends HTMLElement {
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
                 <form class="create-event-form">
-                    <div id="event-title-div">
+                    <section>
+                        <div id="event-title-div">
                         <label for="event-title">Event Title</label>
                         <input type="text" id="event-title" name="event-title" required placeholder="What is the name of the event?">
                     </div>
@@ -50,6 +51,7 @@ class CreateEventForm extends HTMLElement {
                         <label for="participants">Max. Participants</label>
                         <input type="number" id="participants" name="participants" required placeholder="How many people can join?" min="2">
                     </div>
+                    </section>
                     
                     <button type="submit">Publish</button>
                 </form>
