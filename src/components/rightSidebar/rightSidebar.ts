@@ -108,6 +108,7 @@ class sideBar extends HTMLElement {
             const profile = this.shadowRoot.querySelector('.profile');
             profile?.addEventListener('click', () => {
                 console.log('Profile');
+                dispatch(navigate(Screens.PROFILE));
             });
 
             const logout = this.shadowRoot.querySelector('.logout');
