@@ -49,7 +49,7 @@ class CreatePostForm extends HTMLElement {
                     isEvent: false,
                     postText: caption,
                     postImg: String(await getFile(String(postId), 'postImages')),
-                    likes: 0,
+                    likes: [],
                 };
 
                 console.log(post);

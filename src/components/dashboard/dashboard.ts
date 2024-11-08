@@ -46,7 +46,6 @@ class Dashboard extends HTMLElement {
                 postCard.setAttribute(PostAttribute.username, user?.username || "");
                 postCard.setAttribute(PostAttribute.posttext, post.postText || "");
                 postCard.setAttribute(PostAttribute.postimg, post.postImg || "");
-                postCard.setAttribute(PostAttribute.likes, String(post.likes) || "");
 
                 dashboard?.appendChild(postCard);
             })
