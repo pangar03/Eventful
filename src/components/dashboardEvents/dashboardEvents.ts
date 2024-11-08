@@ -6,14 +6,14 @@ import Post, { Attribute as PostAttribute } from '../normal-post/normal-post';
 import '../normal-post/normal-post';
 
 import { posts } from '../../data/data';
-import Styles from './dashboard.css';
+import Styles from './dashboardEvents.css';
 
 import { addObserver, appState } from "../../store";
 import { getPostsAction } from "../../store/actions";
 import { dispatch } from "../../store";
 import { getUser } from "../../utils/firebase";
 
-class Dashboard extends HTMLElement {
+class DashboardEvents extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({ mode: 'open' });
@@ -36,19 +36,21 @@ class Dashboard extends HTMLElement {
             `;
 
             const dashboard = this.shadowRoot.querySelector('.dashboard');
-            appState.normalPosts.forEach(async (post: any) => {
-                const postCard = this.ownerDocument.createElement('normal-post') as Post;
+            
+            appState.eventPosts.forEach(async (post: any) => {
+                const postCard = this.ownerDocument.createElement('event-post-card') as EventPostCard;
 
                 const user = await getUser(post.userUID);
-
-                postCard.setAttribute(PostAttribute.uid, String(post.uid) || "");
-                postCard.setAttribute(PostAttribute.profileimg, user?.profileImg || "");
-                postCard.setAttribute(PostAttribute.username, user?.username || "");
-                postCard.setAttribute(PostAttribute.posttext, post.postText || "");
-                postCard.setAttribute(PostAttribute.postimg, post.postImg || "");
+                
+                postCard.setAttribute(EventCardAttribute.uid, String(post.uid) || "");
+                postCard.setAttribute(EventCardAttribute.image, post.eventImg || "");
+                postCard.setAttribute(EventCardAttribute.eventtitle, post.eventTitle || "");
+                postCard.setAttribute(EventCardAttribute.location, post.eventLocation || "");
+                postCard.setAttribute(EventCardAttribute.date, post.eventDate || "");
+                postCard.setAttribute(EventCardAttribute.description, post.description || "");
 
                 dashboard?.appendChild(postCard);
-            }); 
+            });      
 
             const css = this.ownerDocument.createElement('style');
             css.innerHTML = Styles;
@@ -57,6 +59,6 @@ class Dashboard extends HTMLElement {
     }
 }
 
-customElements.define('dashboard-component', Dashboard);
-export default Dashboard;
+customElements.define('dashboard-events-component', DashboardEvents);
+export default DashboardEvents;
 
