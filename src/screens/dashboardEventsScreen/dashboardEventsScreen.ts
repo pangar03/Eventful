@@ -1,5 +1,5 @@
-import Dashboard from "../../components/dashboard/dashboard";
-import "../../components/dashboard/dashboard"
+import Dashboard from "../../components/dashboardEvents/dashboardEvents";
+import "../../components/dashboardEvents/dashboardEvents"
 
 import SideBar from "../../components/rightSidebar/rightSidebar";
 import "../../components/rightSidebar/rightSidebar"
@@ -13,7 +13,7 @@ import { addObserver, appState, dispatch } from "../../store";
 import { getPostsAction } from "../../store/actions";
 import { getPostsByUser, getUser } from "../../utils/firebase";
 
-class DashboardScreen extends HTMLElement {
+class DashboardEventsScreen extends HTMLElement {
     constructor() {
         super();
         this.attachShadow({mode: 'open'});
@@ -38,7 +38,7 @@ class DashboardScreen extends HTMLElement {
             this.shadowRoot.innerHTML = `
                 <div>
                     <side-bar profileimg="${currentUser?.profileImg}" username="${currentUser?.username}" numpost="${totalPosts}"></side-bar>
-                    <dashboard-component></dashboard-component>
+                    <dashboard-events-component></dashboard-events-component>
                     <chat-bar></chat-bar>
                 </div>
                 <div id="mobile-bar">
@@ -49,5 +49,5 @@ class DashboardScreen extends HTMLElement {
     }
 };
 
-customElements.define('dashboard-screen', DashboardScreen);
-export default DashboardScreen;
+customElements.define('dashboard-events-screen', DashboardEventsScreen);
+export default DashboardEventsScreen;

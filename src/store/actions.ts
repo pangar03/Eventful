@@ -10,13 +10,15 @@ export const navigate = (screen: string) => {
 
 export const getPostsAction = async () => {
     const data = await getPosts();
+    console.log("DATA", data);
+    
     return {
         action: Actions.GETPOSTS,
         payload: data,
     }
 };
 
-export const openEvent = (uid: number) => {
+export const openEvent = (uid: string) => {
     return {
         action: Actions.OPENEVENT,
         payload: uid,
