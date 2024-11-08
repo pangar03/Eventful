@@ -5,6 +5,8 @@
 }
 
 .post-card{
+    display: flex;
+    flex-direction: column;
     width: 50vw;
     border-radius: 1rem;
     background-color: #0E0E11;
@@ -37,6 +39,7 @@
     max-width: 100%;  
     height: auto;
     border-radius: 2rem;
+    margin-bottom: 1rem;
 
 }
 
