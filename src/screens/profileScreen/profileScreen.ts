@@ -34,7 +34,22 @@ class ProfileScreen extends HTMLElement {
                 <div>
                     <side-bar profileimg="${currentUser?.profileImg}" username="${currentUser?.username}" numpost="${userPosts?.length}"></side-bar>
                     <section class="profile-container">
-                         
+                         <div class="profile-picture"></div>
+                            <h2>${currentUser?.username}</h2>
+                                <div class="profile-info">
+                                    <label for="username">Username</label>
+                                    <input type="text" placeholder="" id="username">
+                                    <label for="username">Email</label>
+                                    <input type="email" placeholder="" id="email">
+                                    <label for="username">Current Password</label>
+                                    <input type="password" placeholder="" id="current-password">
+                                    <label for="username">New Password</label>
+                                    <input type="password" placeholder="" id="new-password">
+                                    <label for="username">Confirm New Password</label>
+                                    <input type="password" placeholder="" id="new-password">
+                                </div>
+                            <button>Save Changes</button>
+
                     </section>
                     <chat-bar></chat-bar>
                 </div>
