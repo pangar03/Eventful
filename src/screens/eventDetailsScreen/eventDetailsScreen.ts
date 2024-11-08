@@ -11,7 +11,7 @@ import EventPageDetails, { Attribute as EventDetailsAttribute} from "../../compo
 import "../../components/eventPageDetails/eventPageDetails"
 
 import { addObserver, appState } from "../../store";
-import { getPostsByUser, getUser } from "../../utils/firebase";
+import { getUser } from "../../utils/firebase";
 
 class EventDetailsScreen extends HTMLElement {
     eventId: number = Number(appState.eventUID);

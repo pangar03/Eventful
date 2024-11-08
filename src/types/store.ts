@@ -25,4 +25,5 @@ export enum Screens {
     'REGISTER' = 'REGISTER',
     'LOGIN' = 'LOGIN',
     'POSTCREATION' = 'POSTCREATION',
+    'PROFILE' = 'PROFILE',
 }

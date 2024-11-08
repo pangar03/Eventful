@@ -15,7 +15,7 @@ import '../../components/mobile_rightSidebar/mobile_rightSidebar';
 
 import { addObserver, appState } from '../../store';
 import Styles from './creationScreen.css';
-import { getPostsByUser, getUser } from '../../utils/firebase';
+import { getUser } from '../../utils/firebase';
 import { getAuth } from 'firebase/auth';
 
 class CreationScreen extends HTMLElement {
