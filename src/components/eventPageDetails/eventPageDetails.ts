@@ -109,11 +109,11 @@ class EventPageDetails extends HTMLElement {
             cancelButton.classList.add('event-page__button');
             cancelButton.classList.add('button-cancel');
             cancelButton.addEventListener('click', async () => {
+                console.log("FIREBASEID", this.eventData.firebaseID);
+                console.log("ATTENDANTS", this.eventData.attendants);
                 if(this.isattending){
                     this.eventData.attendants = this.eventData.attendants.filter((attendant: any) => attendant !== appState.user);
-                    console.log("FIREBASEID", this.firebaseid);
-                    console.log("ATTENDANTS", this.eventData.attendants);
-                    await interactPost(this.firebaseid!, "attendants", this.eventData.attendants);
+                    await interactPost(this.eventData.firebaseID!, "attendants", this.eventData.attendants);
                     this.changeStatus();
                 }
             });
@@ -124,10 +124,12 @@ class EventPageDetails extends HTMLElement {
             confirmButton.classList.add('event-page__button');
             confirmButton.classList.add('button-confirm');
             confirmButton.addEventListener('click', async () => {
+                console.log("FIREBASEID", this.eventData.firebaseID);
+                console.log("ATTENDANTS", this.eventData.attendants);
                 if(!this.isattending){
                     if(this.maxattendants && this.eventData.attendants.length < this.maxattendants){
                         this.eventData.attendants.push(appState.user);
-                        await interactPost(this.firebaseid!, "attendants", this.eventData.attendants);
+                        await interactPost(this.eventData.firebaseID!, "attendants", this.eventData.attendants);
                         this.changeStatus();
                     }
                 }
