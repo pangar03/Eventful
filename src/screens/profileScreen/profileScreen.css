@@ -9,12 +9,14 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin-top: 4rem;
 }
 .profile-info{
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-bottom: 1.3px;
+    width: 28%;
 }
 .profile-picture {
     background-color: #cccccc50;
@@ -80,5 +82,8 @@
         display: flex;
         flex-direction: row-reverse;
         align-items: center;
+    }
+    .profile-info{
+        width: 65%;
     }
 }
