@@ -49,6 +49,7 @@ class MobileSidebar extends HTMLElement {
             const profile = this.shadowRoot.querySelector('.profile');
             profile?.addEventListener('click', () => {
                 console.log('Profile');
+                dispatch(navigate(Screens.PROFILE));
             });
 
             const cssCard = this.ownerDocument.createElement('style');
