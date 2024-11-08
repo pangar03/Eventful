@@ -43,6 +43,20 @@
     border-radius: 4px;
     color: #fff;
 }
+.profile-container button {
+    background: linear-gradient(293deg,rgba(47, 89, 255, 1) 0%,rgba(195, 136, 255, 1) 100%);
+    color: #fff;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 1.6rem;
+    font-size: 1rem;
+    cursor: pointer;
+}
+   
+.profile-container button:hover {
+    background-color: #0056b3;
+}
+
 
     
 
