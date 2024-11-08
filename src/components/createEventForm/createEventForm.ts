@@ -24,8 +24,9 @@ class CreateEventForm extends HTMLElement {
                     </div>
                     <div id="event-image-div">
                         <h3>Image</h3>
-                        <label for="image">Upload an image for your new event!</label>
-                        <input type="file" id="image" name="image" required> <!-- CHANGE AS SOON AS STORAGE ISSUE IS RESOLVED -->
+                        <p>Upload an image for your new event!</p>
+                        <label for="image" id="textlabel">Upload File</label>
+                        <input type="file" id="image" name="image"><!-- CHANGE AS SOON AS STORAGE ISSUE IS RESOLVED -->
                     </div>
                     <div id="description-div">
                         <label for="description">Description</label>
