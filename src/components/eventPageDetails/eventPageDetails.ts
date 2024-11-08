@@ -1,5 +1,5 @@
 import { appState } from '../../store';
-import { getPostById, interactPost } from '../../utils/firebase';
+import { interactPost } from '../../utils/firebase';
 import Styles from './eventPageDetails.css';
 
 export enum Attribute {

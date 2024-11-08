@@ -127,7 +127,9 @@ export const getUser = async (uid: string) => {
 export const getPostsByUser = async (uid: string) => {
 	const posts = await getPosts();
 
-	return posts?.filter((post: any) => post.userUID === uid);
+	const filtered = posts?.filter((post: any) => post.userUID === uid);
+
+	return filtered;
 };
 
 export const interactPost = async (uid: string, attribute: string, value: any) => {
@@ -147,17 +149,17 @@ export const interactPost = async (uid: string, attribute: string, value: any) =
 	}
 };
 
-export const getPostById = async (uid: string) => {
-	const { db, auth } = await getFirebaseInstance();
-	const {  doc, getDoc } = await import('firebase/firestore');
+// export const getPostById = async (uid: string) => {
+// 	const { db, auth } = await getFirebaseInstance();
+// 	const {  doc, getDoc } = await import('firebase/firestore');
 	
-	const ref = doc(db, 'posts', uid);
-	const querySnapshot = await getDoc(ref);
+// 	const ref = doc(db, 'posts', uid);
+// 	const querySnapshot = await getDoc(ref);
 
-	const data = querySnapshot.data();
+// 	const data = querySnapshot.data();
 
-	return data;
-};
+// 	return data;
+// };
 
 export const uploadFile = async (file: File, dir: string, id: string) => {
 	const { storage } = await getFirebaseInstance();

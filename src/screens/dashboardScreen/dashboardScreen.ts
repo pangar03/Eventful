@@ -31,11 +31,13 @@ class DashboardScreen extends HTMLElement {
 
     async render() {
         const currentUser = await getUser(appState.user);
-        const userPosts = await getPostsByUser(currentUser?.uid);
+        const userPosts = appState.normalPosts.filter((post: any) => post.userUID === appState.user);
+        const userEvents = appState.eventPosts.filter((event: any) => event.userUID === appState.user);
+        const totalPosts = userPosts.length + userEvents.length;
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
                 <div>
-                    <side-bar profileimg="${currentUser?.profileImg}" username="${currentUser?.username}" numpost="${userPosts?.length}"></side-bar>
+                    <side-bar profileimg="${currentUser?.profileImg}" username="${currentUser?.username}" numpost="${totalPosts}"></side-bar>
                     <dashboard-component></dashboard-component>
                     <chat-bar></chat-bar>
                 </div>
