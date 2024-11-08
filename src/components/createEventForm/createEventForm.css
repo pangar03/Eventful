@@ -10,10 +10,11 @@
   
   .create-event-form label {
       color: #ffffff;
-      font-size: 1.2rem;
+      font-size: 1rem;
       font-weight: bold;
       display: block;
-      margin-bottom: 0.4px;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
   }
   .create-event-form input {
       background-color: #1a1d27;
@@ -66,9 +67,6 @@ p{
 }
 
 
-label:hover {
-    background-color: #0056b3;
-}
 #textlabel{
     display: inline-block;
     padding: 0.2rem;
