@@ -1,8 +1,9 @@
-:host {
+/* :host {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-}
+} */
 .profile-container {
     display: flex;
     flex-direction: column;
@@ -52,7 +53,17 @@
     font-size: 1rem;
     cursor: pointer;
 }
-   
+
+.user-posts {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 2.5rem;
+    margin-bottom: 7rem;
+    padding-top: 2.5rem;
+    border-top: solid 1px #cccccc50;
+}
+
 .profile-container button:hover {
     background-color: #0056b3;
 }

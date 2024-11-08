@@ -81,7 +81,7 @@ class ProfileScreen extends HTMLElement {
             if(post.isEvent){
                 const postCard = this.ownerDocument.createElement('event-post-card') as EventPostCard;
                 
-                postCard.setAttribute(EventCardAttribute.uid, String(post.userUID) || "");
+                postCard.setAttribute(EventCardAttribute.uid, String(post.uid) || "");
                 postCard.setAttribute(EventCardAttribute.image, post.eventImg || "");
                 postCard.setAttribute(EventCardAttribute.eventtitle, post.eventTitle || "");
                 postCard.setAttribute(EventCardAttribute.location, post.eventLocation || "");
