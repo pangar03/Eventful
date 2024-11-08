@@ -124,14 +124,6 @@ export const getUser = async (uid: string) => {
 	return querySnapshot.data();
 };
 
-export const getPostsByUser = async (uid: string) => {
-	const posts = await getPosts();
-
-	const filtered = posts?.filter((post: any) => post.userUID === uid);
-
-	return filtered;
-};
-
 export const interactPost = async (uid: string, attribute: string, value: any) => {
 	try {
 		const { db } = await getFirebaseInstance();

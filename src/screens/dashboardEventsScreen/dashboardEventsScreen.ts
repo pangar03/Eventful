@@ -11,7 +11,7 @@ import ChatBar from "../../components/chatBar/chatBar";
 import "../../components/chatBar/chatBar";
 import { addObserver, appState, dispatch } from "../../store";
 import { getPostsAction } from "../../store/actions";
-import { getPostsByUser, getUser } from "../../utils/firebase";
+import { getUser } from "../../utils/firebase";
 
 class DashboardEventsScreen extends HTMLElement {
     constructor() {
