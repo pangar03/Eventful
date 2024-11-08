@@ -47,8 +47,6 @@ class CreatePostForm extends HTMLElement {
                 const post = {
                     uid: postId,
                     isEvent: false,
-                    profileImg: "https://cdn.pixabay.com/photo/2018/04/18/18/56/user-3331256_1280.png", // CHANGE WITH USER INFO
-                    username: "Default User", // CHANGE WITH USER INFO
                     postText: caption,
                     postImg: String(await getFile(String(postId), 'postImages')),
                     likes: 0,

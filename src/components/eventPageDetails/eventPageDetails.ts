@@ -52,21 +52,13 @@ class EventPageDetails extends HTMLElement {
         }
     }
     
-    async connectedCallback() {
-        console.log("firebaseid", this.firebaseid);
-        
+    async connectedCallback() {        
         this.eventData = appState.eventPosts.find((event: any)  => event.uid === this.uid);
-        console.log("Event Data", this.eventData);
         this.eventData.attendants.find((attendant: any) => {
-            console.log("ATTENDANT", attendant);
-            console.log("USER", appState.user);
             attendant === String(appState.user) ? this.isattending = true : this.isattending = false;
-            console.log("ISATTENDING", this.isattending);
         });
         
-        
         console.log(this.isattending);
-
 
         this.render();
     }

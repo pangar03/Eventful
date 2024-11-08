@@ -81,7 +81,6 @@ class CreateEventForm extends HTMLElement {
                     eventLocation: location,
                     eventDate: `${date} ${time}`,
                     description,
-                    creator: "Default User",
                     eventImg: String(urlImg),
                     attendants: [],
                     maxAttendants: participants,                    

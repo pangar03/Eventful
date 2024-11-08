@@ -46,7 +46,8 @@ class EventDetailsScreen extends HTMLElement {
             const eventDetails = this.shadowRoot.querySelector('#event-details')!;
 
             const event = appState.eventPosts.find((event: any)  => event.uid === this.eventId);
-            console.log("Event", event);
+
+            const user = await getUser(Object(event).userUID);
 
             const eventDetailsComponent = document.createElement('event-page-details') as EventPageDetails;
             eventDetailsComponent.setAttribute(EventDetailsAttribute.uid, String(this.eventId) || "");
@@ -56,7 +57,7 @@ class EventDetailsScreen extends HTMLElement {
             eventDetailsComponent.setAttribute(EventDetailsAttribute.location, event?.eventLocation || "");
             eventDetailsComponent.setAttribute(EventDetailsAttribute.date, event?.eventDate || "");
             eventDetailsComponent.setAttribute(EventDetailsAttribute.description, event?.description || "");
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.creator, event?.creator || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.creator, user?.username || "");
             eventDetailsComponent.setAttribute(EventDetailsAttribute.maxattendants, String(event?.maxAttendants) || "");
             eventDetails.appendChild(eventDetailsComponent);
         }
