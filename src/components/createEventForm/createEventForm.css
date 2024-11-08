@@ -56,7 +56,26 @@
     background: #7f98ff;
 }
 input {
+    display: none;
     outline: none;
+}
+.file-input {
+    display: none; /* Ocultar el input original */
+}
+
+.file-label {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px; /* Espacio superior */
+}
+
+.file-label:hover {
+    background-color: #0056b3;
 }
 
 

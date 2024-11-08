@@ -23,7 +23,8 @@ class CreatePostForm extends HTMLElement {
                     <textarea id="caption" name="caption" required placeholder="Type here what you want to say to the world..."></textarea>
                     <div>
                         <h3>Image</h3>
-                        <label for="image">Want to post an image as well? Select the option below to add a new picture.</label>
+                        <p>Want to post an image as well? Select the option below to add a new picture.</p>
+                        <label for="image" id="textlabel">Upload File</label>
                         <input type="file" id="image" name="image"> <!-- CHANGE AS SOON AS STORAGE ISSUE IS RESOLVED -->
                     </div>
                     <button type="submit">Publish</button>

@@ -5,6 +5,7 @@ form {
     padding: 1.25rem;
     border-radius: 15px;
     flex-direction: column;
+    align-items: center;
 }
 form label {
     margin-bottom: 10px;
@@ -43,6 +44,11 @@ form input[type="text"]#image {
     margin-top: 0.4rem;
     outline: none;
 }
+form button[type="submit"] {
+    display: block; /* Asegura que el botón se comporte como un elemento de bloque */
+    margin: 1.3rem auto 0; /* Centra el botón horizontalmente */
+    width: 30%;
+}
 form button[type="button"],
 form button[type="submit"] {
     background:  linear-gradient(293deg, rgba(47,89,255,1) 0%, rgba(195,136,255,1) 100%);
@@ -50,7 +56,7 @@ form button[type="submit"] {
     color: white;
     padding: 10px;
     width: 30%;
-    border-radius: 10px;
+    border-radius: 3rem;
     cursor: pointer;
     font-size: 16px;
     font-weight: bold;
@@ -63,6 +69,32 @@ form button[type="submit"]:hover {
     background-color: #007aff;
     box-shadow: 0 8px 15px rgba(0, 168, 255, 0.5);
 }
+input[type="file"] {
+    display: none;
+}
+p{
+    opacity: 80%;
+}
 
+label {
+    display: inline-block;
+    padding: 0.2rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    background-color: #7F98FF;
+    color: #0E0E11;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+label:hover {
+    background-color: #0056b3;
+}
+#textlabel{
+    font-weight: 500;
+    color:#0E0E11
+}
 
 
