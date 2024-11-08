@@ -11,6 +11,7 @@ export type NormalPost = {
 
 export type EventPost = {
     uid: number,
+    firebaseid: string,
     isEvent: boolean,
     isAttending: boolean,
     eventTitle: string,

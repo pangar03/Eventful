@@ -103,6 +103,7 @@ class sideBar extends HTMLElement {
             const events = this.shadowRoot.querySelector('.events');
             events?.addEventListener('click', () => {
                 console.log('Events');
+                dispatch(navigate(Screens.DASHBOARDEVENTS));
             });
 
             const profile = this.shadowRoot.querySelector('.profile');

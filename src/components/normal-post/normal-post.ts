@@ -1,3 +1,5 @@
+import { appState } from "../../store";
+import { interactPost } from "../../utils/firebase";
 import styles from "./normal-post.css";
 export enum Attribute {
     "uid" = "uid",
@@ -5,17 +7,17 @@ export enum Attribute {
     "username" = "username",
     "posttext" = "posttext",
     "postimg" = "postimg",
-    "likes" = "likes",
-    "isliked" = "isliked",
+    "firebaseid" = "firebaseid",
 }
 
 class Post extends HTMLElement {
+    postData?: any;
     uid?: number;
+    firebaseid?: string;
     profileimg?: string;
     username?: string;
     posttext?: string;
     postimg?: string;
-    likes: number = 0;
     isliked?: boolean;
 
     constructor() {
@@ -32,14 +34,6 @@ class Post extends HTMLElement {
             case Attribute.uid:
                 this[propName] = newValue ? Number(newValue) : undefined;
                 break;
-
-            case Attribute.likes:
-                this[propName] = newValue ? Number(newValue) : 0;
-                break;
-
-            case Attribute.isliked:
-                this[propName] = propName === 'isliked' ? newValue === 'true' : undefined;
-                break;
                 break;
 
             default:
@@ -47,12 +41,25 @@ class Post extends HTMLElement {
                 break;
         }
     }
-    connectedCallback() {
+    connectedCallback() {   
+        this.postData = appState.normalPosts.find((post: any)  => post.uid === this.uid);
+        console.log(this.postData.likes);
+        
+        this.isliked = this.postData.likes.find((user: any) => user === appState.user) ? true : false;
+        console.log("IS LIKED?", this.isliked);        
+
+        // console.log(this.postData.likes.find((user: any) => {user === String(appState.user);}));
+        
         this.render();
     }
-    toggleLike() {
+    async toggleLike() {
+        console.log("IS LIKED?", this.isliked);
+        if(this.isliked) this.postData.likes = this.postData.likes.filter((user: any) => user !== appState.user);
+        else this.postData.likes.push(appState.user);
+        
+        console.log("LIKES IN POST", this.postData.likes);
+        await interactPost(this.postData.firebaseID!, "likes", this.postData.likes);
         this.isliked = !this.isliked;
-        this.likes += this.isliked ? 1 : -1;
         this.render();
     }
     render() {
@@ -70,7 +77,7 @@ class Post extends HTMLElement {
                 <img class="postimg" src="${this.postimg}" alt="">
                 <button id="like-button">
                 <img src="${this.isliked ? 'https://img.icons8.com/?size=100&id=85339&format=png&color=E8EDFF87' : 'https://img.icons8.com/?size=100&id=85038&format=png&color=E8EDFF87'}" alt="hearticon">
-                        ${this.likes}
+                        ${this.postData.likes.length}
                 </button>
             </section>
             `;

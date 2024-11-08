@@ -14,7 +14,7 @@ import { addObserver, appState } from "../../store";
 import { getPostsByUser, getUser } from "../../utils/firebase";
 
 class EventDetailsScreen extends HTMLElement {
-    eventId: number = appState.eventUID;
+    eventId: number = Number(appState.eventUID);
 
     constructor() {
         super();
@@ -27,12 +27,14 @@ class EventDetailsScreen extends HTMLElement {
     }
 
     async render() {
-        const currentUser = await getUser();
-        const userPosts = await getPostsByUser(currentUser?.uid);
+        const currentUser = await getUser(appState.user);
+        const userPosts = appState.normalPosts.filter((post: any) => post.userUID === appState.user);
+        const userEvents = appState.eventPosts.filter((event: any) => event.userUID === appState.user);
+        const totalPosts = userPosts.length + userEvents.length;
         if(this.shadowRoot){
             this.shadowRoot.innerHTML = `
                 <div class="app-container">
-                    <side-bar profileimg="${currentUser?.profileImg}" username="${currentUser?.username}" numpost="${userPosts?.length}"></side-bar>
+                    <side-bar profileimg="${currentUser?.profileImg}" username="${currentUser?.username}" numpost="${totalPosts}"></side-bar>
                     <div id="event-details"></div>
                     <chat-bar></chat-bar>
                 </div>
@@ -45,16 +47,18 @@ class EventDetailsScreen extends HTMLElement {
 
             const event = appState.eventPosts.find((event: any)  => event.uid === this.eventId);
 
+            const user = await getUser(Object(event).userUID);
+
             const eventDetailsComponent = document.createElement('event-page-details') as EventPageDetails;
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.uid, String(this.eventId) || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.firebaseid, String(event?.firebaseid) || "");
             eventDetailsComponent.setAttribute(EventDetailsAttribute.image, event?.eventImg || "");
             eventDetailsComponent.setAttribute(EventDetailsAttribute.eventtitle, event?.eventTitle || "");
             eventDetailsComponent.setAttribute(EventDetailsAttribute.location, event?.eventLocation || "");
             eventDetailsComponent.setAttribute(EventDetailsAttribute.date, event?.eventDate || "");
             eventDetailsComponent.setAttribute(EventDetailsAttribute.description, event?.description || "");
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.creator, event?.creator || "");
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.attendants, String(event?.attendants) || "");
+            eventDetailsComponent.setAttribute(EventDetailsAttribute.creator, user?.username || "");
             eventDetailsComponent.setAttribute(EventDetailsAttribute.maxattendants, String(event?.maxAttendants) || "");
-            eventDetailsComponent.setAttribute(EventDetailsAttribute.isattending, String(event?.isAttending) || "");
             eventDetails.appendChild(eventDetailsComponent);
         }
     }

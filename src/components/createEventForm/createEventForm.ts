@@ -25,7 +25,7 @@ class CreateEventForm extends HTMLElement {
                     <div id="event-image-div">
                         <h3>Image</h3>
                         <label for="image">Upload an image for your new event!</label>
-                        <input type="file" id="image" name="image"> <!-- CHANGE AS SOON AS STORAGE ISSUE IS RESOLVED -->
+                        <input type="file" id="image" name="image" required> <!-- CHANGE AS SOON AS STORAGE ISSUE IS RESOLVED -->
                     </div>
                     <div id="description-div">
                         <label for="description">Description</label>
@@ -81,9 +81,8 @@ class CreateEventForm extends HTMLElement {
                     eventLocation: location,
                     eventDate: `${date} ${time}`,
                     description,
-                    creator: "Default User",
                     eventImg: String(urlImg),
-                    attendants: 0,
+                    attendants: [],
                     maxAttendants: participants,                    
                 }
 

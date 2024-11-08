@@ -10,27 +10,17 @@ export enum Attribute {
     "location" = "location",
     "date" = "date",
     "description" = "description",
-    "likes" = "likes",
-    "creator" = "creator",
-    "attendants" = "attendants",
-    "maxattendants" = "maxattendants",
-    "isattending" = "isattending",
+    "firebaseid" = "firebaseid",
 }
 
 class EventPostCard extends HTMLElement {
-    uid?: number;
+    uid?: string;
     image?: string;
     eventtitle?: string;
     location?: string;
     date?: string;
     description?: string;
-    likes?: number;
-
-    // Conceiled Attributes to build the detail page
-    creator?: string;
-    attendants?: number;
-    maxattendants?: number;
-    isattending?: boolean;
+    firebaseid?: string;
 
     constructor() {
         super();
@@ -47,26 +37,6 @@ class EventPostCard extends HTMLElement {
         newValue: string | undefined
     ) {
         switch (propName) {
-            case Attribute.uid:
-                this[propName] = newValue ? Number(newValue) : undefined;
-                break;
-
-            case Attribute.likes:
-                this[propName] = newValue ? Number(newValue) : undefined;
-                break;
-
-            case Attribute.attendants:
-                this[propName] = newValue ? Number(newValue) : undefined;
-                break;
-
-            case Attribute.maxattendants:
-                this[propName] = newValue ? Number(newValue) : undefined;
-                break;
-
-            case Attribute.isattending:
-                this[propName] = newValue ? Boolean(newValue) : undefined;
-                break;
-
             default:
                 this[propName] = newValue;
                 break;
