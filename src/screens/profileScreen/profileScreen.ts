@@ -5,6 +5,8 @@ import "../../components/mobile_rightSidebar/mobile_rightSidebar";
 import ChatBar from "../../components/chatBar/chatBar";
 import "../../components/chatBar/chatBar";
 
+import categoryButton, {Attribute as CategoryAttribute}  from "../../components/category/category";
+
 import EventPostCard, { Attribute as EventCardAttribute } from "../../components/eventPostCard/eventPostCard";
 import "../../components/eventPostCard/eventPostCard";
 
@@ -13,7 +15,7 @@ import "../../components/normal-post/normal-post";
 
 import { addObserver, appState, dispatch } from "../../store";
 import { getPostsAction } from "../../store/actions";
-import { getUser } from "../../utils/firebase";
+import { getUser, signOut } from "../../utils/firebase";
 import Styles from "./profileScreen.css";
 
 class ProfileScreen extends HTMLElement {
@@ -37,6 +39,14 @@ class ProfileScreen extends HTMLElement {
         const currentUser = await getUser(appState.user);
         const userPosts = this.getPostsByUser();
         console.log("USER POSTS", userPosts);
+        const buttonData = { icon: 'https://img.icons8.com/?size=100&id=BdksXmxLaK8r&format=png&color=DA4646', text: 'Logout', id: 'logout' };
+        
+        const logoutButton = this.ownerDocument.createElement('category-button') as categoryButton;
+        
+        logoutButton.setAttribute(CategoryAttribute.iconimg, buttonData.icon);
+        logoutButton.setAttribute(CategoryAttribute.text, buttonData.text);
+        logoutButton.classList.add(buttonData.id);
+        
         if (this.shadowRoot) {
             this.shadowRoot.innerHTML = `
                 <div>
@@ -57,6 +67,9 @@ class ProfileScreen extends HTMLElement {
                             <input type="password" placeholder="" id="new-password">
                         </div>
                         <button>Save Changes</button>
+                        <div class="logout-button">
+                            <h3>Logout</h3>
+                        </div>
                         <section class="user-posts"></section>
                     </section>
                     <chat-bar></chat-bar>
@@ -66,6 +79,16 @@ class ProfileScreen extends HTMLElement {
                 </div>
             `;
         }
+
+        const logoutButtonContainer = this.shadowRoot?.querySelector(".logout-button");
+        logoutButtonContainer?.appendChild(logoutButton);
+
+        const logout = this.shadowRoot?.querySelector(".logout");
+
+        logout?.addEventListener('click', () => {
+            console.log('Logout');
+            signOut();
+        });
 
         const userPostsContainer = this.shadowRoot?.querySelector(".user-posts");
 

@@ -68,6 +68,17 @@
     background-color: #0056b3;
 }
 
+.logout-button {
+    display: none;
+    color: #DA4646;
+    opacity: 85%;
+}
 
-    
-
+@media (max-width: 768px) {
+    .logout-button {
+        margin-top: 1.5rem;
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+}
